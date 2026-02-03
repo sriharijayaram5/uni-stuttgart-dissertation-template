@@ -45,19 +45,19 @@ Another commonly used process for the creation of diamond waveguides is to use a
 
 The HSQ based Medusa 84 SiH due to its promised longer shelf and continued availability, is a better alternative to FOx. The resist is developed with the same active polymer of HSQ, but the solvent used is butyl acetate instead of methyl isobutyl ketone (MIBK) which is possibly carcinogenic\cite{opaluchMedusa84SiH2025}.
 
-Due to the availability of know-how and established recipes in the institute surrounding HSQ based resists, diamond waveguides are fabricated using grayscale lithography and Medusa. The chosen resist is Medusa 84 (SX AR-N 8400.22) with the quoted highest available film thickness of \qty{400}{\nano\meter} at \qty{4000}{rpm}.
-
 \begin{figure}[h]
     \includegraphics[width=\linewidth]{../figures/height_profile.pdf}
     \caption{(a) Optical image of the dose test squares exposed at varying doses. The dose increases from the top-right to bottom-left with increase in columns first. The change in thickness is apparent in the colour of the resist. (b) A Dektak height profile is measured over the plateaus. }
     \label{fig:medusa_dose}
 \end{figure}
 
+Due to the availability of know-how and established recipes in the institute surrounding HSQ based resists, diamond waveguides are fabricated using grayscale lithography and Medusa. The chosen resist is Medusa 84 (SX AR-N 8400.22) with the quoted highest available film thickness of \qty{400}{\nano\meter} at \qty{4000}{rpm}.
+
 A dose test is performed to determine the dose at which the maximum thickness is achieved and the range of doses over which grayscale lithography is possible. \cref{fig:medusa_dose} shows the obtained results. Doses between $\sim$\qty{150}{\micro\coulomb\per\centi\meter^2} and \qty{400}{\micro\coulomb\per\centi\meter^2} provide a resist thickness between $\sim$\qty{400}{\nano\meter} and \qty{900}{\nano\meter} respectively, for this particular process. 
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{../figures/dose_profile.pdf}
-    \caption{Examples of Medusa mask profiles obtained via grayscale lithography. (a) The exposure is done in a series of concentric rings of fixed linewidth. The dose factor (DF) of each ring is varied as a function of its radius, $f(r)$. A global DF can be sweeped for to find the right dose for a given function. A one-to-one transfer of the funcion is not achieved due to proximity effects during exposure. For comparison, (b) shows conventional profile achieved by overxposure of a small circle. (c) Example of a mask profile achieved with a linear dose function and (d) an inverse exponential dose function.}
+    \caption{Examples of Medusa mask profiles obtained via grayscale lithography. (a) The exposure is done in a series of concentric rings of fixed linewidth. The dose factor (DF) of each ring is varied as a function of its radius, $f(r)$. (b) A conventional profile achieved by overxposure of a small circle. (c) Example of a mask profile achieved with a linear dose function and (d) an inverse exponential dose function.}
     \label{fig:dose_profile}
 \end{figure}
 
@@ -65,7 +65,7 @@ Using this dose dependant thickness, the shape of the mask is adjusted based on 
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{../figures/final_dose_profile2.pdf}
-    \caption{(a) Dose profile utilized to create pillar waveguides using Medusa mask. The dose factor (DF) corresponding to each ring is shown. Each ring has a linewidth of \qty{180}{\nano\meter}. (b) Diamond waveguide fabricated using the grayscale Medusa mask. Due to the larger lateral size, and thickness of the mask, a waveguide height of $\sim\qty{7}{\micro\meter}$ is achieved.}
+    \caption{(a) Dose profile utilized to create pillar waveguides using Medusa mask. The dose factor (DF) corresponding to each ring is shown. Each ring has a linewidth of \qty{180}{\nano\meter}. (b) Diamond waveguide fabricated using the grayscale Medusa mask. Due to the larger lateral size, and thickness of the mask, a waveguide height of $\sim\qty{7}{\micro\meter}$ and is achieved. The sidewall angle is $\sim\ang{69}$.}
     \label{fig:final_dose_profile}
 \end{figure}
 
@@ -88,14 +88,69 @@ PMMA is typically used in a lift-off process wherein the exposed region is remov
     \centering 
     \vspace{-10pt} 
     \includegraphics[width=0.48\textwidth]{../figures/multicone_ref.pdf}
+    \raggedright
     \caption[(a) Single and (b) multicone waveguides]{(a) Single cone waveguide and (b) multicone waveguide\cite{zhuMulticoneDiamondWaveguides2023a}. Reused with permission from American Chemical Society.}
     \label{fig:multicone_ref}
     \vspace{-10pt} % Optional: Save space at the bottom
 \end{wrapfigure}
-The deposited metal then protects the diamond underneath it due to its higher etch resistance to the plasma. However, due to lateral mask erosion during the plasma expsosure, the waveguide can take on shapes more complex than a cylinder. \textcite{zhuMulticoneDiamondWaveguides2023a} show the fabrication of a multicone waveguide by using the lateral erosion of the metal mask to their advantage. \cref{fig:multicone_ref} shows two waveguides achieved by lateral erosion of the mask. The single cone pillar achieves the tapering due to continuous etching while the mask is laterally eroded. The lateral erosion is not prominent initially, hence the truncated cone on top of cylinder strucutre.
+The deposited metal then protects the diamond underneath it due to its higher etch resistance to the plasma. However, due to lateral mask erosion during the plasma expsosure, the waveguide can take on shapes more complex than a cylinder. \textcite{zhuMulticoneDiamondWaveguides2023a} show the fabrication of a multicone waveguide by using the lateral erosion of the metal mask to their advantage. \cref{fig:multicone_ref} shows two waveguides achieved by lateral erosion of the mask. The single cone pillar achieves the tapering due to continuous etching while the mask is laterally eroded. The lateral erosion is not prominent initially, hence the truncated cone on top of cylinder strucutre. The multicone waveguide, improves on this by adding to the end of the process an etch chemistry with a different selectivity (greater lateral erosion). An overview of the recipes from \textcite{zhuMulticoneDiamondWaveguides2023a} is shown in \cref{tab:single_cone,tab:multi_cone}.
 
-TODO (motivate pmma and metal, show chemistry and MC relation, show H and NA relation, mention simulation, move on to well controlled new chemistry, superior titanium mask)
+\begin{table}[h]
+\centering
+\begin{tabular}{ |c|p{4.5cm}|c|  }
+    \hline
+    \multicolumn{3}{|c|}{RIE-ICP Etch recipe} \\
+    \hline
+    Step& \multicolumn{1}{c|}{Chemistry}& Duration (min)\\
+    \hline
+    1& \ce{SF6} (\qty{30}{sccm}) & 0.5\\
 
-To address these limitations, this work utilizes a positive resist (PMMA) approach coupled with a titanium metal hard mask. Initial attempts using aluminum were discarded, as the granularity of the evaporated metal transferred significant roughness to the diamond sidewalls. In contrast, titanium provides a superior interface; the etch chemistry effectively smoothens the titanium at the onset of the RIE-ICP process, ensuring that the underlying diamond remains smooth. Titanium offers exceptional selectivity—consistent with recent experimental studies on ICP etching —enabling the fabrication of high-aspect-ratio structures. Crucially, by employing an optimized tertiary etch recipe, the titanium mask can be eroded radially in a controlled manner. This allows for the production of waveguide structures approximately 5 $\mu$m in height with arbitrary, tunable taper angles, combining the robustness of a metal hard mask with the design flexibility required for optimized photon collection.
+     & \multicolumn{1}{c|}{Repeat $\times$ 4} &  \\
+    2& \ce{SF6} (\qty{30}{sccm}) & 0.5\\
+    3& \ce{O2} (\qty{50}{sccm}) & 8\\
+     & \multicolumn{1}{c|}{Loop} &  \\
+
+    4& \ce{SF6} (\qty{30}{sccm}) & 0.5\\
+    5& \ce{SF6} (\qty{30}{sccm}) & 0.5\\
+    6& \ce{O2} (\qty{50}{sccm}) & 2\\
+
+\hline
+\end{tabular}
+\caption{Etch recipe for single cone waveguide.}
+\label{tab:single_cone}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ |c|p{4.5cm}|c|  }
+    \hline
+    \multicolumn{3}{|c|}{RIE-ICP Etch recipe} \\
+    \hline
+    Step& \multicolumn{1}{c|}{Chemistry}& Duration (min)\\
+    \hline
+    1& \ce{SF6} (\qty{30}{sccm}) & 0.5\\
+
+     & \multicolumn{1}{c|}{Repeat $\times$ 4} & \\
+    2& \ce{SF6} (\qty{30}{sccm}) & 0.5\\
+    3& \ce{O2} (\qty{50}{sccm}) & 10.5\\
+     & \multicolumn{1}{c|}{Loop} & \\
+
+    4& \ce{SF6} (\qty{30}{sccm}) + \ce{O2} (\qty{50}{sccm})& 9\\
+
+\hline
+\end{tabular}
+\caption{Etch recipe for multicone waveguide.}
+\label{tab:multi_cone}
+\end{table}
+
+To increase the lateral erosion, a combined etch chemistry of simultaneous \ce{SF6} and \ce{O2} is used. This results in the two sidewall angles of \ang{64} for the combined chemistry, and \ang{82} for the \ce{O2} only chemistry (the sidewall angle is defined w.r.t to the diamond surface).
+
+\section*{A fabrication friendly waveguide}
+
+A recipe to achieve in-house a similar sidewall angle control, with tall waveguides, while being fabrication friendly is the aim of this work. Fabrication friendliness can be understood with repeatibility, resilience to errors (user and machine), and proximity to design goal as the criteria. These criteria are also kept in mind when deciding on the processes used here. 
+
+Initial attempts using aluminum are performed using an \ce{Al} hard mask. \ce{Al} deposition is difficult in the available e-beam evaporator for a large thickness (\qty{320}{\nano\meter}). \ce{Al} shows strong wetting behaviour of the crucible and flows over onto the cooling adapter holding the crucible. For extended deposition times required for the large thickness, the \ce{Al} deposition is unpredictable in thickness, deposition quality, and cause large current fluctuations in the evaporator. Further, \ce{Al} also oxidizes quickly forming an oxide layer that makes the initial heating of the metal for deposition unpredictable as well.
+
+.were discarded, as the granularity of the evaporated metal transferred significant roughness to the diamond sidewalls. In contrast, titanium provides a superior interface; the etch chemistry effectively smoothens the titanium at the onset of the RIE-ICP process, ensuring that the underlying diamond remains smooth. Titanium offers exceptional selectivity—consistent with recent experimental studies on ICP etching —enabling the fabrication of high-aspect-ratio structures. Crucially, by employing an optimized tertiary etch recipe, the titanium mask can be eroded radially in a controlled manner. This allows for the production of waveguide structures approximately 5 $\mu$m in height with arbitrary, tunable taper angles, combining the robustness of a metal hard mask with the design flexibility required for optimized photon collection.
 
 \clearpage

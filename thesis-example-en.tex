@@ -76,45 +76,59 @@
 \csundef{P@MDback@hrulefill}
 \makeatother
 
-\ifluatex
-  \usepackage[no-math]{fontspec}
-  \usepackage{unicode-math}
+% \ifluatex
+%   \usepackage[no-math]{fontspec}
+%   \usepackage{unicode-math}
 
-  \ifwindows
-    \setmainfont{XCharter}
-    \setsansfont[Ligatures=TeX]{Arial}
-  \else
-    \usepackage{helvet} % source: comment to https://tex.stackexchange.com/q/212357/9075
-    \setmainfont{XCharter}
-  \fi
+%   \ifwindows
+%     \setmainfont{XCharter}
+%     \setsansfont[Ligatures=TeX]{Arial}
+%   \else
+%     \usepackage{helvet} % source: comment to https://tex.stackexchange.com/q/212357/9075
+%     \setmainfont{XCharter}
+%   \fi
 
-  % Use Inconsolata font (https://ctan.org/pkg/inconsolata)
-  % See https://tex.stackexchange.com/q/2241/9075 for a list of other alternative mono-spaced fonts
-  % No [Ligatures=TeX], because we want " rendered as upquotes, not as typographic correct ones
-  % shapely l, upright quotes
-  % If it is too large, add ",Scale=.9"
-  \ifwindows
-    \setmonofont[StylisticSet={1,3}]{Inconsolata}
-  \else
-    \setmonofont[StylisticSet={1,3}]{Inconsolatazi4}
-  \fi
+%   % Use Inconsolata font (https://ctan.org/pkg/inconsolata)
+%   % See https://tex.stackexchange.com/q/2241/9075 for a list of other alternative mono-spaced fonts
+%   % No [Ligatures=TeX], because we want " rendered as upquotes, not as typographic correct ones
+%   % shapely l, upright quotes
+%   % If it is too large, add ",Scale=.9"
+%   \ifwindows
+%     \setmonofont[StylisticSet={1,3}]{Inconsolata}
+%   \else
+%     \setmonofont[StylisticSet={1,3}]{Inconsolatazi4}
+%   \fi
 
-  \usepackage{selnolig}
+%   \usepackage{selnolig}
 
-\else
-  \usepackage{XCharter}
-  \usepackage[scaled=.95]{helvet}
+% \else
+%   \usepackage{XCharter}
+%   \usepackage[scaled=.95]{helvet}
 
-  % Has to be loaded AFTER any font packages. See https://tex.stackexchange.com/a/2869/9075.
-  \usepackage[T1]{fontenc}
-\fi
+%   % Has to be loaded AFTER any font packages. See https://tex.stackexchange.com/a/2869/9075.
+%   \usepackage[T1]{fontenc}
+% \fi
+% Source - https://tex.stackexchange.com/a/134111
+% Posted by MBR, modified by community. See post 'Timeline' for change history
+% Retrieved 2026-02-03, License - CC BY-SA 4.0
+
+% Source - https://tex.stackexchange.com/a/134111
+% Posted by MBR, modified by community. See post 'Timeline' for change history
+% Retrieved 2026-02-03, License - CC BY-SA 4.0
+\addtokomafont{disposition}{\sffamily}
+\setkomafont{subsection}{\sffamily\bfseries}
+\renewcommand{\familydefault}{\sfdefault}
+% \usepackage{inconsolata}
+\usepackage{cmbright}
+
+
 \usepackage{setspace}
 \usepackage{pifont}
 \newcommand{\dingcheck}{\ding{51}}
 \newcommand{\dingcross}{\ding{55}}
 \usepackage{textcomp}
 
-\setkomafont{sectioning}{\normalfont\normalcolor\rmfamily\mdseries}
+% \setkomafont{sectioning}{\normalfont\normalcolor\rmfamily\mdseries}
 \setkomafont{descriptionlabel}{\bfseries}
 \setkomafont{pageheadfoot}{\small\sffamily}
 \setkomafont{pagenumber}{\small\sffamily\bfseries}
@@ -410,7 +424,17 @@
 \makeatother
 \newcommand{\textmarker}[1]{{\color{red} #1}\xspace}
 \newcommand{\modified}[1]{{\color{blue!60!black} #1}\xspace}
+% \usepackage[group-minimum-digits=4,per-mode=fraction]{siunitx}
 \usepackage[group-minimum-digits=4,per-mode=fraction]{siunitx}
+\sisetup{
+    mode = match,             % Match the font of the surrounding text
+    propagate-math-font = true,
+    reset-math-version = false,
+    reset-text-family = false,
+    reset-text-series = false,
+    text-family-to-math = true,
+    text-series-to-math = true
+}
 \usepackage{varioref}
 \usepackage{hyperref}
 
@@ -662,7 +686,7 @@
 \secondexaminer{Prof.~Dr.~Sebastian Loth}
 \dateofexamination{unbekannt}
 \placeofbirth{Kaloor, Cochin}
-\faculty{Fakultät für Physik}
+\faculty{Fakultät für  k}
 \department{3. Physikalisches Institut}
 \maketitle
 
@@ -689,9 +713,9 @@ I would like to thank the little green men from Mars.
 
 \microtypesetup{protrusion=false}
 \tableofcontents
-\listoffigures
-\listoftables
-\lstlistoflistings
+% \listoffigures
+% \listoftables
+% \lstlistoflistings
 
 \chapter*{List of Definitions}
 \addcontentsline{toc}{chapter}{List of Definitions}
