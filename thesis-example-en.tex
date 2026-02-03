@@ -40,12 +40,12 @@
   % nonamelimits,  % Opposite of namelimits.
   % leqno,         % Place equation numbers on the left.
   % reqno,         % Place equation numbers on the right.
-  fleqn,         % Position equations at a fixed indent from the left margin rather than centered in the text column.
+  % fleqn,         % Position equations at a fixed indent from the left margin rather than centered in the text column.
 ]{amsmath}
 \SetMathAlphabet{\mathcal}{normal}{OMS}{amsa}{m}{n} %% AMS font for mathcal
-
+\usepackage{braket}
 \usepackage[fixamsmath,disallowspaces]{mathtools}
-
+\usepackage[version=4]{mhchem}
 \usepackage{fixmath}
 
 \usepackage[amsmath,hyperref]{ntheorem}
@@ -640,7 +640,14 @@
   \end{list}
 }
 \usepackage{scrhack}
-
+\usepackage{wrapfig}
+\usepackage{caption}
+\captionsetup{
+    format=plain,           % 'plain' = text wraps under label
+    justification=justified, % 'centering' (for short), 'justified' (standard), or 'raggedright'
+    labelfont=bf           % Makes "Figure 1" bold
+    % textfont=small          % Makes caption text slightly smaller than body text
+}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}

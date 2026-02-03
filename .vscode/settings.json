@@ -1,0 +1,11 @@
+{
+    "cSpell.languageSettings": [
+    {
+        "languageId": "latex",
+        "ignoreRegExpList": [
+            "\\\\[a-zA-Z]+",          // Ignores commands (e.g., \textbf, \cite)
+            "\\\\[a-zA-Z]+\\{.*?\\}"  // Optional: Ignores command AND content (e.g., \cite{key})
+        ]
+    }
+]
+}
