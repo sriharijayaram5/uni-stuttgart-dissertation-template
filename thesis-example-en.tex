@@ -503,7 +503,7 @@
 \sidecaptionvpos{figure}{c}
 \floatstyle{ruled} %%???
 \usepackage{pdflscape}
-\usepackage[caption=false,font=footnotesize]{subfig}
+% \usepackage[caption=false,font=footnotesize]{subfig}
 \usepackage{mindflow}
 \usepackage[chapter]{algorithm}
 \usepackage{algpseudocodex}
@@ -663,16 +663,28 @@
           \fqauthor
   \end{list}
 }
+
+
 \usepackage{scrhack}
 \usepackage{wrapfig}
 \usepackage{caption}
 \captionsetup{
     format=plain,           % 'plain' = text wraps under label
     justification=justified, % 'centering' (for short), 'justified' (standard), or 'raggedright'
-    labelfont=bf           % Makes "Figure 1" bold
+    labelfont=bf ,
+    labelformat=parens          % Makes "Figure 1" bold
     % textfont=small          % Makes caption text slightly smaller than body text
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 1. Stop subcaption from adding its own parens (to avoid double parens like ((a)))
+\usepackage[labelformat=simple]{subcaption}
+
+% 2. Bake the parens into the counter itself so \cref and \ref see them
+\renewcommand\thesubfigure{(\alph{subfigure})}
+\usepackage{makecell}
+\usepackage{etoolbox}
+% \AtBeginEnvironment{table}{\footnotesize}
+% \AtBeginEnvironment{tabular}{\footnotesize}
 
 \begin{document}
 \setstretch{1.2}

@@ -1,0 +1,133 @@
+% --- Overview table  ---
+\begin{table}[H]
+    \footnotesize
+\centering
+\begin{tabular}{ |c|p{4.5cm}|c|  }
+    \hline
+    \multicolumn{3}{|c|}{RIE-ICP Etch recipe} \\
+    \hline
+    No.&\multicolumn{1}{c|}{Step name}& Repetitions\\
+    \hline
+    1&Standard etch & 4\\
+
+    2&Secondary etch & 2\\
+    3&Tertiary etch& 6-18\\
+
+    4&Titanium clean& 1\\
+
+\hline
+\end{tabular}
+\caption{Etch recipe for the waveguide.}
+\label{tab:MC_etch_overview}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    % --- Table 1 (Left) ---
+    \begin{subtable}{0.45\textwidth}
+        \centering
+        \footnotesize
+        \begin{tabular}{|c|l|c|}
+
+            \hline
+            No.&\multicolumn{1}{c|}{Step name}& Duration (s)\\
+            \hline
+            1&Diamond etch & 120\\
+            2&Cooling & 60\\
+            3&Mask etch& 7\\
+            4&Cooling & 60\\
+        \hline
+        \end{tabular}
+        \caption{Standard etch.} % Optional: becomes (a)
+        \label{tab:exp1}
+    \end{subtable}
+    \hfill % Pushes the tables apart
+    % --- Table 2 (Middle) ---
+    \begin{subtable}{0.45\textwidth}
+        \centering
+        \footnotesize
+        \begin{tabular}{|c|l|c|}
+
+            \hline
+            No.&\multicolumn{1}{c|}{Step name}& Duration (s)\\
+            \hline
+            1&Mask etch& 7\\
+            2&Cooling & 60\\
+            3&Diamond etch & 120\\
+            4&Cooling & 60\\
+
+        \hline
+        \end{tabular}
+        \caption{Secondary etch.} % Optional: becomes (b)
+        \label{tab:exp2}
+    \end{subtable}
+    % --- BREAK THE ROW ---
+    \vspace{1em} % Adds vertical space between rows
+
+    % --- Table 3 (Right) ---
+
+    \begin{subtable}{0.45\textwidth}
+        \centering
+        \footnotesize
+        \begin{tabular}{|c|l|c|}
+
+            \hline
+            No.&\multicolumn{1}{c|}{Step name}& Duration (s)\\
+            \hline
+            1&Mask etch& 30\\
+            2&Cooling & 30\\
+            3&Diamond etch & 30\\
+            4&Cooling & 30\\
+
+        \hline
+        \end{tabular}
+        \caption{Tertiary etch.} % Optional: becomes (c)
+        \label{tab:exp3}
+    \end{subtable}
+    \hfill % Pushes the tables apart
+    % --- Table 4 ---
+    \begin{subtable}{0.45\textwidth}
+        \centering
+        \footnotesize
+         \begin{tabular}{|c|l|c|}
+
+            \hline
+            No.&\multicolumn{1}{c|}{Step name}& Duration (s)\\
+            \hline
+            1&Soft ICP A& 7\\
+            2&Soft ICP B & 60\\
+            3&\ce{SF6} only & 60\\
+            4&Cooling & 60\\
+
+        \hline
+        \end{tabular}
+        \caption{Titanium clean.} % Optional: becomes (b)
+        \label{tab:exp4}
+    \end{subtable}
+    
+    % --- Main Caption ---
+    \caption{Description of the recipes used for the waveguide etching. All recipes from atmosphere start with a cooling step of \qty{15}{\minute} with a temperature setpoint of \qty{20}{\degreeCelsius} to achieve good vaccum, omitted here for readability.}
+    \label{tab:MC_etch_detailed}
+\end{table}
+
+\begin{table}[H]
+\centering
+\footnotesize
+\begin{tabular}{ |l|c|c|c|  }
+  
+    \hline
+    \multicolumn{1}{|c|}{Step name}& Chemistry & Pressure (mTorr)& Power (W)\\
+    \hline
+    Diamond etch & \ce{O2} (\qty{30}{sccm}) & 10 & HF: 100, ICP: 400\\
+    \hline
+    Mask etch & \makecell{\ce{O2} (\qty{30}{sccm}) \\ \ce{CF4} (\qty{2}{sccm})} & 10 & HF: 30, ICP: 150\\
+    \hline
+    \ce{SF6} only & \ce{SF6} (\qty{10}{sccm}) & 10 & HF: 100, ICP: 0\\
+    \hline
+    Cooling & - & 0 & -\\
+
+\hline
+\end{tabular}
+\caption{Plasma chemistry of individual steps.}
+\label{tab:MC_etch_chemistry}
+\end{table}
