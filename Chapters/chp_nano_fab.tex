@@ -113,9 +113,9 @@ The deposited metal then protects the diamond underneath it due to its higher et
 \centering
 \begin{tabular}{ |c|p{4.5cm}|c|  }
     \hline
-    \multicolumn{3}{|c|}{RIE-ICP Etch recipe} \\
+    \multicolumn{3}{|c|}{\bfseries RIE-ICP Etch recipe} \\
     \hline
-    Step& \multicolumn{1}{c|}{Chemistry}& Duration (min)\\
+    \bfseries Step& \multicolumn{1}{c|}{\bfseries Chemistry}&\bfseries  Duration (min)\\
     \hline
     1& \ce{SF6} (\qty{30}{sccm}) & 0.5\\
 
@@ -138,9 +138,9 @@ The deposited metal then protects the diamond underneath it due to its higher et
 \centering
 \begin{tabular}{ |c|p{4.5cm}|c|  }
     \hline
-    \multicolumn{3}{|c|}{RIE-ICP Etch recipe} \\
+    \multicolumn{3}{|c|}{\bfseries RIE-ICP Etch recipe} \\
     \hline
-    Step& \multicolumn{1}{c|}{Chemistry}& Duration (min)\\
+    \bfseries Step& \multicolumn{1}{c|}{\bfseries Chemistry}&\bfseries Duration (min)\\
     \hline
     1& \ce{SF6} (\qty{30}{sccm}) & 0.5\\
 
@@ -224,7 +224,7 @@ FDTD (Finite-Difference Time Domain) simulation is performed to determine whethe
 
 To achieve such an island structure via nanofabrication, a metal mask sandwich is created. The \ce{Ti} mask deposition is performed over another \ce{Ni} metal mask. The goal is to simplify the etching process and reduces the number of processing steps. 
 
-The \ce{Ni} mask is in the shape of a disc whose diameter corresponds to the diameter of the island. A \ce{Ni} mask presents a good choice since it is resistant to \ce{SF6} plasma. First, the waveguide shape is etched to design with required repetitions of \cref{tab:MC_etch_overview}, \hyperref[tab:MC_etch_overview]{Step 3} in combination with the \ce{Ti} mask, which is the top layer. The further removal of \ce{Ti} is with \hyperref[tab:MC_etch_overview]{Step 4}. The \ce{Ni} mask is unaffected by the \ce{SF6} plasma in \hyperref[tab:MC_etch_overview]{Step 4}. The island is etched with the now exposed \ce{Ni} mask and repetitions of Step \hyperref[tab:MC_etch_chemistry]{'Diamond slow etch'}, to the desired height. \cref{fig:island} shows a fabricated island waveguide, with the \ce{Ni} mask left over. The protruding island structure contains an NV ensemble, whereas the rest of the structure is for the purpose of waveguiding. 
+The \ce{Ni} mask is in the shape of a disc whose diameter corresponds to the diameter of the island. A \ce{Ni} mask presents a good choice since it is resistant to \ce{SF6} plasma. The sandwich structure is apparent in \cref{fig:squtip_a}. First, the waveguide shape is etched to design with required repetitions of \cref{tab:MC_etch_overview}, \hyperref[tab:MC_etch_overview]{Step 3} in combination with the \ce{Ti} mask, which is the top layer. The further removal of \ce{Ti} is with \hyperref[tab:MC_etch_overview]{Step 4}. The \ce{Ni} mask is unaffected by the \ce{SF6} plasma in \hyperref[tab:MC_etch_overview]{Step 4}. The island is etched with the now exposed \ce{Ni} mask and repetitions of Step \hyperref[tab:MC_etch_chemistry]{'Diamond slow etch'}, to the desired height. \cref{fig:island} shows a fabricated island waveguide, with the \ce{Ni} mask left over. The protruding island structure contains an NV ensemble, whereas the rest of the structure is for the purpose of waveguiding. 
 
 \section{Waveguide on a cantilever}
 \emph{Cantilever} (n.) \textipa{/"kantIli:v@/}: A long projecting beam or girder fixed at only one end, used chiefly in bridge construction—or, to host an NV center that probes the nanoscale properties of matter.
@@ -241,13 +241,18 @@ At this stage, the structures are true cantilevers and can be broken of at the b
 
 The mask for defining the cantilever is created with a process similar to the previous sections. A two layer PMMA resist is used along with \qty{250}{\nano\meter} of \ce{Cr} as the hard mask. \ce{Cr} is chosen as the hard mask due to high selectivity with diamond under \ce{O2} plasma, and ease of removal via wet chemical etching. TODO Details in appendix.
 
-The cantilever is designed to be large enough for easy detachment and pick-up, small enough to have a high density of devices, and with a bridge structure that can be easily snapped. Since the support structures and cantilevers are relatively large scale structures ($\sim\qty{5}{\micro\meter}$), with significant proximity e-beam exposure, the dose for the smaller scale ($\sim\qty{100}{\nano\meter}$) bridge structure can be too low. To account for this proximity effect correction is performed to make an additional dose factor map for the bridge structure, ensuring reliable exposure. Nevertheless, PMMA is very forgiving in this regard, and transfers the structure over a large range of doses. On the other hand, negative tone resist Medusa, shows incorrect exposure without proximity effect correction (\cref{fig:medusa_cantiA}). 
-
-\begin{figure}[h]
+The cantilever is designed to be large enough for easy detachment and pick-up, small enough to have a high density of devices, and with a bridge structure that can be easily snapped. Since the support structures and cantilevers are relatively large scale structures ($\sim\qty{5}{\micro\meter}$), with significant proximity e-beam exposure, the dose for the smaller scale ($\sim\qty{100}{\nano\meter}$) bridge structure can be too low. To account for this proximity effect correction is performed to make an additional dose factor map for the bridge structure, ensuring reliable exposure. Nevertheless, PMMA is very forgiving in this regard, and transfers the structure over a large range of doses. On the other hand, negative tone resist Medusa, shows incorrect exposure without proximity effect correction (\cref{fig:medusa_cantiA}).
+\begin{figure}[H]
     \centering 
     \includegraphics[width=\textwidth]{../figures/pmma_canti.pdf}
-    \caption{Caption.}
+    \caption{Cantilever mask design and fabricated structure. (a) The cantilever mask design showing the PECS dose cells overlaid on an SEM image of the \ce{Cr} hard mask created. (b) Detailed view of the generated PECS cells and their dose factors. PECS is performed for the entire design but only the cells at the bridge structure are used, to reduce patterning time. (c) SEM image of the cantilever etched into diamond using the \ce{Cr} hard mask. The waveguides are not present on this sample. (d) Image of a released, freestanding cantilever, than can be picked up.}
     \label{fig:pmma_canti}
 \end{figure}
+The fabricated structures are shown in \cref{fig:pmma_canti}. The waveguides are not fabricated on this sample to reduce complexity of the process.
+
+\section*{Conclusion and outlook}
+Scanning probe microscopy using NV centers in diamond require reliable and accessible probes. Key to this is a high yield, cost-effective, tunable, and reproducible process of creating waveguides. The use of an ensemble of preferentially aligned NV confined to a known volume promises such a device. This is established in this chapter with the introduction of island-waveguides that are fabricated using \ce{Ti} mask and a tailored RIE-ICP process. The cantilevers are also developed in a similar process to deliver high yield.
+
+Validation of these probes as high spatial resolution and sensitive magnetometers requires further assembly of cantilevers with the carrier chip.
 
 \clearpage
