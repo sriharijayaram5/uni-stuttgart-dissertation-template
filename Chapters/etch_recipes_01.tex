@@ -4,9 +4,9 @@
 \centering
 \begin{tabular}{ |c|p{4.5cm}|c|  }
     \hline
-    \multicolumn{3}{|c|}{RIE-ICP Etch recipe} \\
+    \multicolumn{3}{|c|}{\bfseries RIE-ICP Etch recipe} \\
     \hline
-    No.&\multicolumn{1}{c|}{Step name}& Repetitions\\
+    \bfseries No.&\multicolumn{1}{c|}{\bfseries Step name}& \bfseries Repetitions\\
     \hline
     1&Standard etch & 4\\
 
@@ -30,7 +30,7 @@
         \begin{tabular}{|c|l|c|}
 
             \hline
-            No.&\multicolumn{1}{c|}{Step name}& Duration (s)\\
+            \bfseries No.&\multicolumn{1}{c|}{\bfseries Step name}& \bfseries Duration (s)\\
             \hline
             1&Diamond etch & 120\\
             2&Cooling & 60\\
@@ -49,7 +49,7 @@
         \begin{tabular}{|c|l|c|}
 
             \hline
-            No.&\multicolumn{1}{c|}{Step name}& Duration (s)\\
+            \bfseries No.&\multicolumn{1}{c|}{\bfseries Step name}& \bfseries Duration (s)\\
             \hline
             1&Mask etch& 7\\
             2&Cooling & 60\\
@@ -72,7 +72,7 @@
         \begin{tabular}{|c|l|c|}
 
             \hline
-            No.&\multicolumn{1}{c|}{Step name}& Duration (s)\\
+            \bfseries No.&\multicolumn{1}{c|}{\bfseries Step name}& \bfseries Duration (s)\\
             \hline
             1&Mask etch& 30\\
             2&Cooling & 30\\
@@ -92,7 +92,7 @@
          \begin{tabular}{|c|l|c|}
 
             \hline
-            No.&\multicolumn{1}{c|}{Step name}& Duration (s)\\
+            \bfseries No.&\multicolumn{1}{c|}{\bfseries Step name}& \bfseries Duration (s)\\
             \hline
             1&Soft ICP A& 7\\
             2&Soft ICP B & 60\\
@@ -106,7 +106,7 @@
     \end{subtable}
     
     % --- Main Caption ---
-    \caption{Description of the recipes used for the waveguide etching. All recipes from atmosphere start with a cooling step of \qty{15}{\minute} with a temperature setpoint of \qty{20}{\degreeCelsius} to achieve good vaccum, omitted here for readability.}
+    \caption{Description of the recipes used for the waveguide etching. All recipes from atmosphere start with a cooling step of \qty{15}{\minute} with a temperature setpoint of \qty{20}{\degreeCelsius} to achieve good vacuum, omitted here for readability.}
     \label{tab:MC_etch_detailed}
 \end{table}
 
@@ -116,7 +116,8 @@
 \begin{tabular}{ |l|c|c|c|  }
   
     \hline
-    \multicolumn{1}{|c|}{Step name}& Chemistry & Pressure (mTorr)& Power (W)\\
+    
+    \multicolumn{1}{|c|}{\bfseries Step name}& \bfseries Chemistry & \bfseries Pressure (mTorr)& \bfseries Power (W)\\
     \hline
     Diamond etch & \ce{O2} (\qty{30}{sccm}) & 10 & HF: 100, ICP: 400\\
     \hline
@@ -125,6 +126,8 @@
     \ce{SF6} only & \ce{SF6} (\qty{10}{sccm}) & 10 & HF: 100, ICP: 0\\
     \hline
     Cooling & - & 0 & -\\
+    \hline
+    \makecell{Diamond slow etch \\ (\qty{5}{\nano\meter/\minute})}& \ce{O2} (\qty{30}{sccm}) & 10 & HF: 30, ICP: 0\\
 
 \hline
 \end{tabular}

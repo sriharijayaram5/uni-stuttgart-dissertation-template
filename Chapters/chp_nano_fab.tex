@@ -18,22 +18,36 @@ A suitable conclusion to these requirements is a diamond waveguide in the shape 
 
 Further advances in diamond nanofabrication allows for a truncated diamond paraboloid having an NV at its focal point, and with an exit aperture designed to allow emission into a small numerical aperture\cite{hedrichParabolicDiamondScanning2020a}. This results in and increased photon flux of $\sim\qty{2.1e6}{\second^{-1}}$ at $P_{sat}\sim\qty{14}{\micro\watt}$ and improved proximity to the scanned sample by virtue of its parabolic geometry.
 
-Though these approaches produce some of the brightest single photon solid state sources, there is room for improvement with regard to optimized collection efficiency, design-first approach, and process reliability and simplicity. \textcite{zhuMulticoneDiamondWaveguides2023a} develop a so-called multicone diamond waveguide that rely on a simple metal mask based etching recipe allowing for a high degree of control over the waveguide height. The previous approaches were limited by the choice of Hydrogen silsesquioxane (HSQ) based negative resists that act as a hard mask for diamond etching. The thickness as selectivity defined the maximum height achievable for the waveguides before the resists is depleted. The choice of metal mask for the waveguides enables more design freedom, and thus a height optimized for high collection efficiency. The multicone waveguides show emitted fluorescence is primarily into a low NA cone therefore reducing experimental cost and complexity associate with high-NA optics.
+Though these approaches produce some of the brightest single photon solid state sources, there is room for improvement with regard to optimized collection efficiency, design-first approach, and process reliability and simplicity. \textcite{zhuMulticoneDiamondWaveguides2023a} develop a so-called multicone diamond waveguide that rely on a simple metal mask based etching recipe allowing for a high degree of control over the waveguide height. 
 
-These works focus on the prolific NV center but is still mainly utilizing single NV based sensing. The reason to use a single center being spatial resolution need for nanoscale sensing, and sensitivity achievable for a scanning probe sensor. Let us consider the point of sensitivity. The figure of merit is the shot noise limited  sensitivity to AC magnetic fields is calculated as
+The previous approaches were limited by the choice of Hydrogen silsesquioxane (HSQ) based negative resists that act as a hard mask for diamond etching. The thickness as selectivity defined the maximum height achievable for the waveguides before the resists is depleted. The choice of metal mask for2 the waveguides enables more design freedom, and thus a height optimized for high collection efficiency. The multicone waveguides show emitted fluorescence is primarily into a low NA cone therefore reducing experimental cost and complexity associate with high-NA optics.
+
+These works focus on the prolific NV center but is still mainly utilizing single NV based sensing. The reason to use a single center being spatial resolution need for nanoscale sensing, and sensitivity achievable for a scanning probe sensor. Let us consider the point of sensitivity. The practical figure of merit to consider is the pulsed ODMR sensitivity
 \begin{equation}\label{eq:sens_shot}
-    \eta_{\text{AC}} \approx \frac{\pi}{2 \gamma_{\text{NV}} C \sqrt{T_2}},
+    \eta_{\text{pulsed}} \approx \frac{8}{3\sqrt{3}} \frac{\hbar}{g_e \mu_b} \frac{1}{C_{\text{pulsed}}\sqrt{\mathscr{N}}} 
+    \frac{\sqrt{t_I + T_2^* + t_R}}{T_2^*}.
 \end{equation}
-where $C = 1/\sqrt{1 + 2(\alpha_0 + \alpha_1)/(\alpha_0 - \alpha_1)^2}$, for $\alpha_0$ and $\alpha_1$, the fluorescence rates of the NV in the states $\ket{0}$ and $\ket{1}$ respectively. TODO (influence of counts, contrast, comparison between single, ensemble not aligned and aligned, Michl reference).
+The numerical prefactors appear due to the lineshape of the pulsed ODMR curve, $g_e \approx 2.003$ is the NV center's electronic g factor\cite{dohertyNitrogenvacancyColourCentre2013}, $\mu_B$ is the Bohr magneton, $\hbar$ is the reduced Planck constant, $C_{\text{pulsed}}$ is the pulsed ODMR contrast, $T_2^*$ is the characteristic dephasing time for a Ramsey type measurement, $t_I$ is the initialization time and $t_R$ is the readout time. The time-averaged photon collection rate is $R$, then the mean number of photons collected per optical readout cycle is $\mathscr{N}=Rt_R$\cite{barrySensitivityOptimizationNVdiamond2020}. 
 
-The second figure of merit is spatial resolution of the magnetic probe. The NV center can achieve a spatial resolution as a sensor of the order of $\sim\qty{1}{\nano\meter}$, which is defined by the spatial extent of its electronic wavefunction\cite{appelFabricationAllDiamond2016}. In practice, the resolution is defined by the proximity of NV center to the sample, which under ideal contact condition of probe and sample, is limited by the depth of the NV center under the diamond surface. This has been controlled by tuning the implantation energy of the dopant nitrogen in the case of defects created by implantation\cite{santonocitoNVCentresVacancies2024}, or via CVD growth conditions\cite{osterkampEngineeringPreferentiallyalignedNitrogenvacancy2019}. The presence of multiple NV here presents the issue that the spatial resolution is diminished due to the random placement of the defect within the apex of the pillar, meaning a spread within a diameter of $\sim\qty{500}{\nano\meter}$. This loss of resolution cannot be mitigated but can be controlled by precise nanofabrication of the apex of the pillar such that the NV centers are localized in a well-defined volume. The following work describes a method to create monolithic diamond quantum sensing probes that utilize an ensemble of preferentially aligned NV centers that are well localized at the apex of the diamond pillar.
+For a preserved $T_2^*$, it is desirable to preserve $C_{\text{pulsed}}$ while increasing $\mathscr{N}$. To do this the sensor number, $N$, density or interrogation volume can be increased. An increase of the interrogation volume is not conducive to the application of NV as high spatial resolution sensor. The sensitivity scales as $1/\sqrt{N}$ because of shot noise, which gives modest enhancement of $\sim5$ times\cite{barrySensitivityOptimizationNVdiamond2020}. 
+
+Nevertheless, the increase of the number of defects increases yield of devices which typically rely on a probabilistic presence of implanted single defects within, for example, the apex of a probe waveguide. Shallow NV centers also experience charge state instabilities, sometimes irreversible, that can render entire probes unusable,\cite{neethirajanControlledSurfaceModification2023}. An increase in the number of defects allows for longer lifetimes of shallow NV devices, albeit with degraded performance. Shallow NV centers can also be incorporated by CVD growth in a $<111>$ orientation diamond substrate with preferential NV axis alignment\cite{michlPerfectAlignmentPreferential2014}. It is therefore desirable to have multiple NV centers in the use as scanning magnetic probe, if the second figure of merit can be retained.
+
+The second figure of merit is spatial resolution of the magnetic probe. The NV center can achieve a spatial resolution as a sensor of the order of $\sim\qty{1}{\nano\meter}$, which is defined by the spatial extent of its electronic wavefunction\cite{appelFabricationAllDiamond2016}. In practice, the resolution is defined by the proximity of NV center to the sample, which under ideal contact condition of probe and sample, is limited by the depth of the NV center under the diamond surface. This has been controlled by tuning the implantation energy of the dopant nitrogen in the case of defects created by implantation\cite{santonocitoNVCentresVacancies2024}, or via CVD growth conditions\cite{osterkampEngineeringPreferentiallyalignedNitrogenvacancy2019}. 
+
+The presence of multiple NV here presents the issue that the spatial resolution is diminished due to the random placement of the defect within the apex of the pillar, meaning a spread within a diameter of $\sim\qty{500}{\nano\meter}$. This loss of resolution cannot be mitigated but can be controlled by precise nanofabrication of the apex of the pillar such that the NV centers are localized in a well-defined volume. 
+
+This chapter describes a method to create monolithic diamond quantum sensing probes that utilize an ensemble of preferentially aligned NV centers that are well localized at the apex of the diamond pillar.
 
 \section{Diamond waveguides - design and fabrication}
 
 The fabrication of diamond waveguides presents distinct engineering challenges driven by the cost, etch resistance, and fragility of the starting material, specifically, electronic-grade single-crystalline (type IIa) diamond membranes with thicknesses of $\sim\qty{30}{\micro\meter}$ and typical lateral dimensions of $\sim\qty{2}{\milli\meter}\times\qty{2}{\milli\meter}$\cite{torosReactiveIonEtching2020}. 
+
 Given the investment in material preparation prior to nanofabrication, process reliability and yield are important. Diamond is a very suitable material for quantum sensing in harsh environments due to its chemical inertness. This very inertness also poses the largest challenge for its nanofabrication, since it requires a high density of inductively coupled plasma etching (ICP-RIE) with an oxygen chemistry to achieve a straight sidewall transfer of a design. Such harsh plasma imposes the requirement of high selectivity mask materials for high aspect ratio etching of diamond. One suitable option is to use metal mask deposited in a lift-off processes such as Cr, Al, Ti\cite{torosReactiveIonEtching2020}, although sidewall roughness is a concern.
 
-Another commonly used process for the creation of diamond waveguides is to use a negative tone electron beam resist that closes resembles \ce{SiO2} on development, Hydrogen silsesquioxane (HSQ). HSQ based resists such as Flowable Oxide (FOx, DuPont) and Medusa 84 \ce{SiH} (Allresist) are versatile, provide low sidewall roughness, and enable grayscale lithography\cite{khoninaGrayscaleLithographyBrief2024,opaluchMedusa84SiH2025} while showing significant etch resistance to \ce{O2} plasma. On the other hand, HSQ based resists are significantly expensive and have poor shelf life. On expiration, HSQ first shows increased dose and the appearance of scum between features\cite{yangUnderstandingHydrogenSilsesquioxane2009,rooksHSQStorage} as shown in \cref{fig:hsq_scum}. This leads to unexpected failure of the process and increases the number of handling steps of the delicate diamond membranes. Furthermore, the thorough removal of developed HSQ is only possible with \ce{HF} acid or Buffered oxide etchant (BOE) that is dangerous to handle.
+Another commonly used process for the creation of diamond waveguides is to use a negative tone electron beam resist that closes resembles \ce{SiO2} on development, Hydrogen silsesquioxane (HSQ). HSQ based resists such as Flowable Oxide (FOx, DuPont) and Medusa 84 \ce{SiH} (Allresist) are versatile, provide low sidewall roughness, and enable grayscale lithography\cite{khoninaGrayscaleLithographyBrief2024,opaluchMedusa84SiH2025} while showing significant etch resistance to \ce{O2} plasma. 
+
+On the other hand, HSQ based resists are significantly expensive and have poor shelf life. On expiration, HSQ first shows increased dose and the appearance of scum between features\cite{yangUnderstandingHydrogenSilsesquioxane2009,rooksHSQStorage} as shown in \cref{fig:hsq_scum}. This leads to unexpected failure of the process and increases the number of handling steps of the delicate diamond membranes. Furthermore, the thorough removal of developed HSQ is only possible with \ce{HF} acid or Buffered oxide etchant (BOE) that is dangerous to handle.
 
 \begin{figure}[h]
     \includegraphics[width=\linewidth]{../figures/hsq_scum.pdf}
@@ -61,7 +75,7 @@ A dose test is performed to determine the dose at which the maximum thickness is
     \label{fig:dose_profile}
 \end{figure}
 
-Using this dose dependant thickness, the shape of the mask is adjusted based on an arbitray function as shown in \cref{fig:dose_profile}. The transfer of the function to the mask can be improved by performing proximity effect correction for the design. For this work, the taper function is chosen as suitable since it reproducibly gives a mask profile with a close to parabolic shape. The design dimensions and dose factors for the ring segments are shown in \cref{fig:final_dose_profile}. The design is exposed with a global dose of \qty{280}{\micro\coulomb\per\centi\meter^2}.
+Using this dose dependant thickness, the shape of the mask is adjusted based on an arbitrary function as shown in \cref{fig:dose_profile}. The transfer of the function to the mask can be improved by performing proximity effect correction for the design. For this work, the taper function is chosen as suitable since it reproducibly gives a mask profile with a close to parabolic shape. The design dimensions and dose factors for the ring segments are shown in \cref{fig:final_dose_profile}. The design is exposed with a global dose of \qty{280}{\micro\coulomb\per\centi\meter^2}.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{../figures/final_dose_profile2.pdf}
@@ -84,16 +98,16 @@ Another approach is selected as the basis for the waveguides developed here due 
 PMMA is typically used in a lift-off process wherein the exposed region is removed during development. A metal mask is then deposited, which acts as a hard mask for etching. To achieve easy lift-off of the metal mask a two layer PMMA spin coating is performed with the lower molecular weight PMMA as the first layer and the higher molecular weight as the second layer. This results in the creation of an overhang after exposure providing a discontinuity in the deposited metal, aiding lift-off.  
 
 % Place this block IMMEDIATELY before the paragraph text you want to wrap.
-\begin{wrapfigure}{R}{0.48\textwidth} % 'R' = Right float, 'L' = Left
+% \begin{wrapfigure}{R}{0.48\textwidth} % 'R' = Right float, 'L' = Left
+\begin{figure}
     \centering 
-    \vspace{-10pt} 
-    \includegraphics[width=0.48\textwidth]{../figures/multicone_ref.pdf}
-    \raggedright
+    \includegraphics[width=0.5\textwidth]{../figures/multicone_ref.pdf}
+    % \raggedright
     \caption[(a) Single and (b) multicone waveguides]{(a) Single cone waveguide and (b) multicone waveguide\cite{zhuMulticoneDiamondWaveguides2023a}. Reused with permission from American Chemical Society.}
     \label{fig:multicone_ref}
-    \vspace{-10pt} % Optional: Save space at the bottom
-\end{wrapfigure}
-The deposited metal then protects the diamond underneath it due to its higher etch resistance to the plasma. However, due to lateral mask erosion during the plasma expsosure, the waveguide can take on shapes more complex than a cylinder. \textcite{zhuMulticoneDiamondWaveguides2023a} show the fabrication of a multicone waveguide by using the lateral erosion of the metal mask to their advantage. \cref{fig:multicone_ref} shows two waveguides achieved by lateral erosion of the mask. The single cone pillar achieves the tapering due to continuous etching while the mask is laterally eroded. The lateral erosion is not prominent initially, hence the truncated cone on top of cylinder strucutre. The multicone waveguide, improves on this by adding to the end of the process an etch chemistry with a different selectivity (greater lateral erosion). An overview of the recipes from \textcite{zhuMulticoneDiamondWaveguides2023a} is shown in \cref{tab:single_cone,tab:multi_cone}.
+\end{figure}
+% \end{wrapfigure}
+The deposited metal then protects the diamond underneath it due to its higher etch resistance to the plasma. However, due to lateral mask erosion during the plasma exposure, the waveguide can take on shapes more complex than a cylinder. \textcite{zhuMulticoneDiamondWaveguides2023a} show the fabrication of a multicone waveguide by using the lateral erosion of the metal mask to their advantage. \cref{fig:multicone_ref} shows two waveguides achieved by lateral erosion of the mask. The single cone pillar achieves the tapering due to continuous etching while the mask is laterally eroded. The lateral erosion is not prominent initially, hence the truncated cone on top of cylinder structure. The multicone waveguide, improves on this by adding to the end of the process an etch chemistry with a different selectivity (greater lateral erosion). An overview of the recipes from \textcite{zhuMulticoneDiamondWaveguides2023a} is shown in \cref{tab:single_cone,tab:multi_cone}.
 
 \begin{table}[h]
 \centering
@@ -147,13 +161,13 @@ To increase the lateral erosion, a combined etch chemistry of simultaneous \ce{S
 
 \section*{A fabrication friendly waveguide}
 
-A recipe to achieve in-house a similar sidewall angle control, with tall waveguides, while being fabrication friendly is the aim of this work. Fabrication friendliness can be understood with repeatibility, resilience to errors (user and machine), and proximity to design goal as the criteria. These criteria are also kept in mind when deciding on the processes used here. 
+A recipe to achieve in-house a similar sidewall angle control, with tall waveguides, while being fabrication friendly is the aim of this work. Fabrication friendliness can be understood with repeatability, resilience to errors (user and machine), and proximity to design goal as the criteria. These criteria are also kept in mind when deciding on the processes used here. 
 
-Initial attempts of the PMMA approach are performed using an \ce{Al} hard mask. \ce{Al} deposition is difficult in the available e-beam evaporator for a large thickness (\qty{320}{\nano\meter}). \ce{Al} shows strong wetting behaviour of the crucible and flows over onto the cooling adapter holding the crucible. For extended deposition times required for the large thickness, the \ce{Al} deposition is unpredictable in thickness, deposition quality, and cause large current fluctuations in the evaporator. Furthermore, \ce{Al} also oxidizes quickly forming an oxide layer that makes the initial heating of the metal for deposition unpredictable as well.
+Initial attempts of the PMMA approach are performed using an \ce{Al} hard mask. \ce{Al} deposition is difficult in the available e-beam evaporator for a large thickness (\qty{320}{\nano\meter}). \ce{Al} shows strong wetting behavior of the crucible and flows over onto the cooling adapter holding the crucible. For extended deposition times required for the large thickness, the \ce{Al} deposition is unpredictable in thickness, deposition quality, and cause large current fluctuations in the evaporator. Furthermore, \ce{Al} also oxidizes quickly forming an oxide layer that makes the initial heating of the metal for deposition unpredictable as well.
 
 This low quality deposition leads large granularity in the mask. Over the course of the etching, this roughness is transferred to the diamond leading to rough structures. Due to these concerns, \ce{Al} is not further developed as a mask material for waveguides.
 
-Titanium (\ce{Ti}), due its known high selectivity to diamond with \ce{O2} plasma, low selectivity with \ce{F} based plasma, and the availability in-house for e-beam evaporation is chosen for further development. \ce{Ti} too depsoits granularly for large thicknesses, but it is observed that with the current plasma chemistry the \ce{Ti} undergoes smoothening of its walls. This leads to little transfer of roughness to the waveguide. \cref{tab:MC_etch_overview} shows the abstract etch recipe to fabricate a waveguide structure. The standard etch is used for a primarily straight etch that increases the height of the pillar and therefore adiabatic expansion of the mode. The secondary etch creates a slightly more tapered etch. The tertiary etch gives control over the taper angle, and top diameter of the waveguide. The waveguide is observed over the tertiary etch to determine the necessary number of repetitions. The duration of the individual steps in the tertiary etch can be tune to achieve various sidewall angles.
+Titanium (\ce{Ti}), due its known high selectivity to diamond with \ce{O2} plasma, low selectivity with \ce{F} based plasma, and the availability in-house for e-beam evaporation is chosen for further development. \ce{Ti} also deposits granularly for large thicknesses, but it is observed that with the current plasma chemistry the \ce{Ti} undergoes smoothening of its walls. This leads to little transfer of roughness to the waveguide. \cref{tab:MC_etch_overview} shows the abstract etch recipe to fabricate a waveguide structure. The standard etch is used for a primarily straight etch that increases the height of the pillar and therefore adiabatic expansion of the mode. The secondary etch creates a slightly more tapered etch. The tertiary etch gives control over the taper angle, and top diameter of the waveguide. The waveguide is observed over the tertiary etch to determine the necessary number of repetitions. The duration of the individual steps in the tertiary etch can be tune to achieve various sidewall angles.
 
 \cref{tab:MC_etch_chemistry} details the plasma chemistry used for the individual etching steps. It is noted that a \ce{CF4} based mask etch is more suitable than one \ce{SF6} based due to the lower and more controlled etch with \ce{CF4}. This may be due to protective polymerization due to the presence of free carbon atoms\cite{eiseleSF6Preferable1981} and the lower fluorine concentrations in the \ce{CF4} plasma\cite{tangTungstenEtchingCF1984}.
 
@@ -164,7 +178,7 @@ Titanium (\ce{Ti}), due its known high selectivity to diamond with \ce{O2} plasm
     \centering 
     \includegraphics[width=0.75\textwidth]{../figures/squtipA_large.pdf}
     % \raggedleft
-    \caption{(a) \ce{Ti} mask of \qty{370}{\nano\meter} set deposition. (b) Base of the waveguide after step no. 2 in \cref{tab:MC_etch_overview}. (c) Waveguide fabricated using this process. Note the visible step edges on the tapering end. }
+    \caption{(a) \ce{Ti} mask of design thickness \qty{370}{\nano\meter}. (b) Base of the waveguide after step no. 2 in \cref{tab:MC_etch_overview}. (c) Waveguide fabricated using this process. Note the visible step edges on the tapering end. }
     \label{fig:squtip}
     \refstepcounter{subfigure}\label{fig:squtip_a}
     \refstepcounter{subfigure}\label{fig:squtip_b}
@@ -174,4 +188,54 @@ Titanium (\ce{Ti}), due its known high selectivity to diamond with \ce{O2} plasm
 
 % \raggedright
 By employing a stepped tertiary etch recipe, the titanium mask can be eroded radially in a controlled manner. This process is used to fabricate the high-aspect ratio a waveguide shown in \cref{fig:squtip}. This waveguide has a sidewall angle of $\sim\ang{71}$, with a height of $\sim\qty{4}{\micro\meter}$. These parameters can be tuned with little effort within a range determined by the thickness of the initial \ce{Ti} mask. \cref{fig:squtip_b} also demonstrates the observed smoothening of the \ce{Ti} mask during the etching.
+
+\emph{A reproducible and high yield process to fabricate high aspect ratio waveguides is establised.}
+
+\section*{Waveguide with nano-island}
+
+The main objective of this chapter is to use these waveguides with multiple NV centers without largely compromising on the probe's spatial resolution. To achieve this, a $<111>$ orientation diamond substrate is used with a thin CVD growth layer of an ensemble of preferentially aligned NVs\cite{michlPerfectAlignmentPreferential2014}. 
+
+The spatial extent of the NV centers and therefore the effective spatial resolution of the probe is controlled by thickness of the NV layer and the diameter of the apex of the waveguide. The thickness can be well controlled during growth and determined by confocal microscopy and SIMS (Secondary Ion Mass Spectroscopy), and can be reduced to a desired thickness after the growth by RIE-ICP etching of the surface uniformly. 
+
+\begin{figure}[h]
+    \centering 
+    \includegraphics[width=\textwidth]{../figures/sim.pdf}
+    % \raggedleft
+    \caption{Simulation (Tidy3D, FDTD solver) of electric field intensity with a single $<111>$ oriented NV center, \qty{50}{\nano\meter} below the surface, for (a) truncated cone, (b) parabolic pillar, and (c) parabolic pillar with island waveguide design.}
+    \label{fig:sim_all}
+    \refstepcounter{subfigure}\label{fig:sim_a}
+    \refstepcounter{subfigure}\label{fig:sim_b}
+    \refstepcounter{subfigure}\label{fig:sim_c}
+\end{figure}
+
+Reducing the apex diameter of the waveguide leads to a reduced collection efficiency\cite{zhuMulticoneDiamondWaveguides2023a}. Instead, the apex diameter is left unchanged, and an additional etching step is included in the process. This step etches into the apex an additional cylinder (referred to as an island) which isolates the NV centers in given the island volume. 
+
+FDTD (Finite-Difference Time Domain) simulation is performed to determine whether the collection efficiency is decreased by isolating the emitter in such a manner. \cref{fig:sim_all} represents the electric field intensity of the emission from a dipole placed \qty{50}{\nano\meter} below the end surface of the waveguide apex. The truncated cone waveguide shows directed emission, but into a higher NA. Both the parabolic waveguides, which are good approximations of the waveguides fabricated in this work, show emission into lower NA, increasing collection efficiency\cite{zhuMulticoneDiamondWaveguides2023a}. Notably, the island design still functions as a waveguide, and is suitable for use as a scanning probe.
+
+\begin{figure}[h]
+    \centering 
+    \includegraphics[width=\textwidth]{../figures/fab_island.pdf}
+    % \raggedleft
+    \caption{Island waveguides fabricated with a \ce{Ni}-\ce{Ti} metal mask sandwich. (b) A magnified image of the island before wet chemical removal of the \ce{Ni} mask, visible as the brighter region at the apex.}
+    \label{fig:island}
+    \refstepcounter{subfigure}\label{fig:island_big}
+    \refstepcounter{subfigure}\label{fig:island_small}
+\end{figure}
+
+To achieve such an island structure via nanofabrication, a metal mask sandwich is created. The \ce{Ti} mask deposition is performed over another \ce{Ni} metal mask. The goal is to simplify the etching process and reduces the number of processing steps. 
+
+The \ce{Ni} mask is in the shape of a disc whose diameter corresponds to the diameter of the island. A \ce{Ni} mask presents a good choice since it is resistant to \ce{SF6} plasma. First, the waveguide shape is etched to design with required repetitions of \cref{tab:MC_etch_overview}, \hyperref[tab:MC_etch_overview]{Step 3} in combination with the \ce{Ti} mask, which is the top layer. The further removal of \ce{Ti} is with \hyperref[tab:MC_etch_overview]{Step 4}. The \ce{Ni} mask is unaffected by the \ce{SF6} plasma in \hyperref[tab:MC_etch_overview]{Step 4}. The island is etched with the now exposed \ce{Ni} mask and repetitions of Step \hyperref[tab:MC_etch_chemistry]{'Diamond slow etch'}, to the desired height. \cref{fig:island} shows a fabricated island waveguide, with the \ce{Ni} mask left over. The protruding island structure contains an NV ensemble, whereas the rest of the structure is for the purpose of waveguiding. 
+
+\section{Waveguide on a cantilever}
+\emph{Cantilever} (n.) \textipa{/"kantIli:v@/}: A long projecting beam or girder fixed at only one end, used chiefly in bridge construction—or, to probe the nanoscale properties of matter.
+
+A complete diamond based scanning probe requires a freestanding waveguide that can come in proximity to a sample of interest. To achieve this, the diamond surrounding the waveguide is removed, with only a small bridge attaching the waveguide slab to a larger support structure. 
+
+The process is split into two parts. The first part defines the shape of the cantilevers, attaching bridge, and support structure using a metal mask lift-off process. This mask is then etched into the diamond. The waveguide remains protected during this step by the same metal mask.
+
+In part two, the diamond is flipped such that the waveguides face down and is then thinned down by etching. After etching through most of the diamond, the cantilevers are released since the surrounding diamond has been etched away in the previous step. 
+
+
+
+
 \clearpage
