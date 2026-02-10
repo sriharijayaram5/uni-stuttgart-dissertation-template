@@ -23,22 +23,7 @@
   - measurement of S2 sample - melting - single vortex
   - step junction sample
 
+File locations
 
-
-% \begin{wrapfigure}{}{0.5\textwidth}
-
-%     % \begin{figure}[h]
-
-%     \begin{center}
-
-%         \includegraphics[width=0.45\textwidth]{../figures/final_dose_profile.pdf}
-
-%     \end{center}
-
-%         \caption{Dose profile utilized to create pillar waveguides using Medusa mask. The dose factor (DF) corresponding to each ring is shown on it.}
-
-%         \label{fig:final_dose_profile}
-
-%     % \end{figure}
-
-% \end{wrapfigure}
+PECS: D002
+Cantilevers: NewProcess/D221-2  -  ALD001  -  CX755

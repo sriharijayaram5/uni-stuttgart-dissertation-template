@@ -95,7 +95,7 @@ The waveguide taper angle of $\sim\qty{13}{\degree}$ achieved in this process is
 
 Another approach is selected as the basis for the waveguides developed here due to the simplicity of using the positive tone resist PMMA with metal lift-off hard mask\cite{zhuMulticoneDiamondWaveguides2023a}. PMMA (Polymethyl methacrylate) is a robust resist that can achieve high resolution e-beam lithography. It is very forgiving to dose variations and has a long shelf life. It also exhibits good adhesion to the diamond surface during spin coating without the need for adhesion promoters. 
 
-PMMA is typically used in a lift-off process wherein the exposed region is removed during development. A metal mask is then deposited, which acts as a hard mask for etching. To achieve easy lift-off of the metal mask a two layer PMMA spin coating is performed with the lower molecular weight PMMA as the first layer and the higher molecular weight as the second layer. This results in the creation of an overhang after exposure providing a discontinuity in the deposited metal, aiding lift-off.  
+PMMA is typically used in a lift-off process wherein the exposed region is removed during development. A metal mask is then deposited, which acts as a hard mask for etching. To achieve easy lift-off of the metal mask a two layer PMMA spin coating is performed with the lower molecular weight PMMA as the first layer and the higher molecular weight as the second layer. This results in the creation of an overhang after exposure providing a discontinuity in the deposited metal, aiding lift-off. TODO Details in appendix. 
 
 % Place this block IMMEDIATELY before the paragraph text you want to wrap.
 % \begin{wrapfigure}{R}{0.48\textwidth} % 'R' = Right float, 'L' = Left
@@ -227,7 +227,7 @@ To achieve such an island structure via nanofabrication, a metal mask sandwich i
 The \ce{Ni} mask is in the shape of a disc whose diameter corresponds to the diameter of the island. A \ce{Ni} mask presents a good choice since it is resistant to \ce{SF6} plasma. First, the waveguide shape is etched to design with required repetitions of \cref{tab:MC_etch_overview}, \hyperref[tab:MC_etch_overview]{Step 3} in combination with the \ce{Ti} mask, which is the top layer. The further removal of \ce{Ti} is with \hyperref[tab:MC_etch_overview]{Step 4}. The \ce{Ni} mask is unaffected by the \ce{SF6} plasma in \hyperref[tab:MC_etch_overview]{Step 4}. The island is etched with the now exposed \ce{Ni} mask and repetitions of Step \hyperref[tab:MC_etch_chemistry]{'Diamond slow etch'}, to the desired height. \cref{fig:island} shows a fabricated island waveguide, with the \ce{Ni} mask left over. The protruding island structure contains an NV ensemble, whereas the rest of the structure is for the purpose of waveguiding. 
 
 \section{Waveguide on a cantilever}
-\emph{Cantilever} (n.) \textipa{/"kantIli:v@/}: A long projecting beam or girder fixed at only one end, used chiefly in bridge construction—or, to probe the nanoscale properties of matter.
+\emph{Cantilever} (n.) \textipa{/"kantIli:v@/}: A long projecting beam or girder fixed at only one end, used chiefly in bridge construction—or, to host an NV center that probes the nanoscale properties of matter.
 
 A complete diamond based scanning probe requires a freestanding waveguide that can come in proximity to a sample of interest. To achieve this, the diamond surrounding the waveguide is removed, with only a small bridge attaching the waveguide slab to a larger support structure. 
 
@@ -235,7 +235,19 @@ The process is split into two parts. The first part defines the shape of the can
 
 In part two, the diamond is flipped such that the waveguides face down and is then thinned down by etching. After etching through most of the diamond, the cantilevers are released since the surrounding diamond has been etched away in the previous step. 
 
+At this stage, the structures are true cantilevers and can be broken of at the bridge, for attachment onto a suitable structure. The bridge is designed for likely fracture at the junction between the support structure and start of the bridge. See \cref{fig:bridge_snap} for a simulated structure.
 
+\section*{Cantilever mask}
 
+The mask for defining the cantilever is created with a process similar to the previous sections. A two layer PMMA resist is used along with \qty{250}{\nano\meter} of \ce{Cr} as the hard mask. \ce{Cr} is chosen as the hard mask due to high selectivity with diamond under \ce{O2} plasma, and ease of removal via wet chemical etching. TODO Details in appendix.
+
+The cantilever is designed to be large enough for easy detachment and pick-up, small enough to have a high density of devices, and with a bridge structure that can be easily snapped. Since the support structures and cantilevers are relatively large scale structures ($\sim\qty{5}{\micro\meter}$), with significant proximity e-beam exposure, the dose for the smaller scale ($\sim\qty{100}{\nano\meter}$) bridge structure can be too low. To account for this proximity effect correction is performed to make an additional dose factor map for the bridge structure, ensuring reliable exposure. Nevertheless, PMMA is very forgiving in this regard, and transfers the structure over a large range of doses. On the other hand, negative tone resist Medusa, shows incorrect exposure without proximity effect correction (\cref{fig:medusa_cantiA}). 
+
+\begin{figure}[h]
+    \centering 
+    \includegraphics[width=\textwidth]{../figures/pmma_canti.pdf}
+    \caption{Caption.}
+    \label{fig:pmma_canti}
+\end{figure}
 
 \clearpage
