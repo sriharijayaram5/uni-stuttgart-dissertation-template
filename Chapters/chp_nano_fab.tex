@@ -50,7 +50,8 @@ Another commonly used process for the creation of diamond waveguides is to use a
 On the other hand, HSQ based resists are significantly expensive and have poor shelf life. On expiration, HSQ first shows increased dose and the appearance of scum between features\cite{yangUnderstandingHydrogenSilsesquioxane2009,rooksHSQStorage} as shown in \cref{fig:hsq_scum}. This leads to unexpected failure of the process and increases the number of handling steps of the delicate diamond membranes. Furthermore, the thorough removal of developed HSQ is only possible with \ce{HF} acid or Buffered oxide etchant (BOE) that is dangerous to handle.
 
 \begin{figure}[h]
-    \includegraphics[width=\linewidth]{../figures/hsq_scum.pdf}
+    \centering 
+    \includegraphics[width=0.95\linewidth]{../figures/hsq_scum.pdf}
     \caption[HSQ under different storage conditions]{(a) HSQ processed after frozen storage at \qty{77}{\degree\kelvin} for 12 months, and (b) liquid storage at \qty{-27}{\degreeCelsius} for 12 months. Liquid storage shows a drop in critical dose and scum between features\cite{rooksHSQStorage}.}
     \label{fig:hsq_scum}
 \end{figure}
@@ -60,7 +61,8 @@ On the other hand, HSQ based resists are significantly expensive and have poor s
 The HSQ based Medusa 84 SiH due to its promised longer shelf and continued availability, is a better alternative to FOx. The resist is developed with the same active polymer of HSQ, but the solvent used is butyl acetate instead of methyl isobutyl ketone (MIBK) which is possibly carcinogenic\cite{opaluchMedusa84SiH2025}.
 
 \begin{figure}[h]
-    \includegraphics[width=\linewidth]{../figures/height_profile.pdf}
+    \centering 
+    \includegraphics[width=0.95\linewidth]{../figures/height_profile.pdf}
     \caption{(a) Optical image of the dose test squares exposed at varying doses. The dose increases from the top-right to bottom-left with increase in columns first. The change in thickness is apparent in the colour of the resist. (b) A Dektak height profile is measured over the plateaus. }
     \label{fig:medusa_dose}
 \end{figure}
@@ -69,16 +71,18 @@ Due to the availability of know-how and established recipes in the institute sur
 
 A dose test is performed to determine the dose at which the maximum thickness is achieved and the range of doses over which grayscale lithography is possible. \cref{fig:medusa_dose} shows the obtained results. Doses between $\sim$\qty{150}{\micro\coulomb\per\centi\meter^2} and \qty{400}{\micro\coulomb\per\centi\meter^2} provide a resist thickness between $\sim$\qty{400}{\nano\meter} and \qty{900}{\nano\meter} respectively, for this particular process. 
 
-\begin{figure}[H]
-    \includegraphics[width=\linewidth]{../figures/dose_profile.pdf}
+\begin{figure}[h]
+    \centering 
+    \includegraphics[width=0.95\linewidth]{../figures/dose_profile.pdf}
     \caption{Examples of Medusa mask profiles obtained via grayscale lithography. (a) The exposure is done in a series of concentric rings of fixed linewidth. The dose factor (DF) of each ring is varied as a function of its radius, $f(r)$. (b) A conventional profile achieved by overxposure of a small circle. (c) Example of a mask profile achieved with a linear dose function and (d) an inverse exponential dose function.}
     \label{fig:dose_profile}
 \end{figure}
 
 Using this dose dependant thickness, the shape of the mask is adjusted based on an arbitrary function as shown in \cref{fig:dose_profile}. The transfer of the function to the mask can be improved by performing proximity effect correction for the design. For this work, the taper function is chosen as suitable since it reproducibly gives a mask profile with a close to parabolic shape. The design dimensions and dose factors for the ring segments are shown in \cref{fig:final_dose_profile}. The design is exposed with a global dose of \qty{280}{\micro\coulomb\per\centi\meter^2}.
 
-\begin{figure}[H]
-    \includegraphics[width=\linewidth]{../figures/final_dose_profile2.pdf}
+\begin{figure}[h]
+    \centering 
+    \includegraphics[width=0.95\linewidth]{../figures/final_dose_profile2.pdf}
     \caption{(a) Dose profile utilized to create pillar waveguides using Medusa mask. The dose factor (DF) corresponding to each ring is shown. Each ring has a linewidth of \qty{180}{\nano\meter}. (b) Diamond waveguide fabricated using the grayscale Medusa mask. Due to the larger lateral size, and thickness of the mask, a waveguide height of $\sim\qty{7}{\micro\meter}$ and is achieved. The sidewall angle is $\sim\ang{69}$.}
     \label{fig:final_dose_profile}
 \end{figure}
@@ -101,7 +105,7 @@ PMMA is typically used in a lift-off process wherein the exposed region is remov
 % \begin{wrapfigure}{R}{0.48\textwidth} % 'R' = Right float, 'L' = Left
 \begin{figure}
     \centering 
-    \includegraphics[width=0.5\textwidth]{../figures/multicone_ref.pdf}
+    \includegraphics[width=0.75\textwidth]{../figures/multicone_ref.pdf}
     % \raggedright
     \caption[(a) Single and (b) multicone waveguides]{(a) Single cone waveguide and (b) multicone waveguide\cite{zhuMulticoneDiamondWaveguides2023a}. Reused with permission from American Chemical Society.}
     \label{fig:multicone_ref}
@@ -176,6 +180,7 @@ Titanium (\ce{Ti}), due its known high selectivity to diamond with \ce{O2} plasm
 % \begin{wrapfigure}{R}{0.75\textwidth} % 'R' = Right float, 'L' = Left
 \begin{figure}[h]
     \centering 
+    \centering 
     \includegraphics[width=0.75\textwidth]{../figures/squtipA_large.pdf}
     % \raggedleft
     \caption{(a) \ce{Ti} mask of design thickness \qty{370}{\nano\meter}. (b) Base of the waveguide after step no. 2 in \cref{tab:MC_etch_overview}. (c) Waveguide fabricated using this process. Note the visible step edges on the tapering end. }
@@ -199,7 +204,8 @@ The spatial extent of the NV centers and therefore the effective spatial resolut
 
 \begin{figure}[h]
     \centering 
-    \includegraphics[width=\textwidth]{../figures/sim.pdf}
+    \centering 
+    \includegraphics[width=0.95\textwidth]{../figures/sim.pdf}
     % \raggedleft
     \caption{Simulation (Tidy3D, FDTD solver) of electric field intensity with a single $<111>$ oriented NV center, \qty{50}{\nano\meter} below the surface, for (a) truncated cone, (b) parabolic pillar, and (c) parabolic pillar with island waveguide design.}
     \label{fig:sim_all}
@@ -214,7 +220,8 @@ FDTD (Finite-Difference Time Domain) simulation is performed to determine whethe
 
 \begin{figure}[h]
     \centering 
-    \includegraphics[width=\textwidth]{../figures/fab_island.pdf}
+    \centering 
+    \includegraphics[width=0.95\textwidth]{../figures/fab_island.pdf}
     % \raggedleft
     \caption{Island waveguides fabricated with a \ce{Ni}-\ce{Ti} metal mask sandwich. (b) A magnified image of the island before wet chemical removal of the \ce{Ni} mask, visible as the brighter region at the apex.}
     \label{fig:island}
@@ -242,9 +249,10 @@ At this stage, the structures are true cantilevers and can be broken of at the b
 The mask for defining the cantilever is created with a process similar to the previous sections. A two layer PMMA resist is used along with \qty{250}{\nano\meter} of \ce{Cr} as the hard mask. \ce{Cr} is chosen as the hard mask due to high selectivity with diamond under \ce{O2} plasma, and ease of removal via wet chemical etching. TODO Details in appendix.
 
 The cantilever is designed to be large enough for easy detachment and pick-up, small enough to have a high density of devices, and with a bridge structure that can be easily snapped. Since the support structures and cantilevers are relatively large scale structures ($\sim\qty{5}{\micro\meter}$), with significant proximity e-beam exposure, the dose for the smaller scale ($\sim\qty{100}{\nano\meter}$) bridge structure can be too low. To account for this proximity effect correction is performed to make an additional dose factor map for the bridge structure, ensuring reliable exposure. Nevertheless, PMMA is very forgiving in this regard, and transfers the structure over a large range of doses. On the other hand, negative tone resist Medusa, shows incorrect exposure without proximity effect correction (\cref{fig:medusa_cantiA}).
-\begin{figure}[H]
+\begin{figure}[h]
     \centering 
-    \includegraphics[width=\textwidth]{../figures/pmma_canti.pdf}
+    \centering 
+    \includegraphics[width=0.95\textwidth]{../figures/pmma_canti.pdf}
     \caption{Cantilever mask design and fabricated structure. (a) The cantilever mask design showing the PECS dose cells overlaid on an SEM image of the \ce{Cr} hard mask created. (b) Detailed view of the generated PECS cells and their dose factors. PECS is performed for the entire design but only the cells at the bridge structure are used, to reduce patterning time. (c) SEM image of the cantilever etched into diamond using the \ce{Cr} hard mask. The waveguides are not present on this sample. (d) Image of a released, freestanding cantilever, than can be picked up.}
     \label{fig:pmma_canti}
 \end{figure}

@@ -17,6 +17,9 @@
   %               draft    % um zu sehen, wo noch nachgebessert werden muss - wichtig, da Bindungskorrektur mit drin
   draft=false
 ]{scrbook}
+\usepackage[utf8]{inputenc} % Allows UTF-8 input
+\usepackage[T1]{fontenc}    % Better font encoding for accents
+\usepackage{textcomp}       % Provides \textminus and other symbols
 
 \newcommand{\IfDraft}[1]{\ifx\@draft\@undefined \else #1 \fi}
 \usepackage{iftex}
@@ -475,6 +478,7 @@
   pdfstartview=Fit,
   breaklinks=true,       % Links ueberstehen Zeilenumbruch
   hypertexnames=false,   % Fix jumping to algorithm line - http://tex.stackexchange.com/a/156404/9075
+  pdfnewwindow=true
 }
 
 \usepackage[all]{hypcap}
