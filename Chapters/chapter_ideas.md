@@ -19,7 +19,7 @@
   * RIE-ICP recipes overview and explanation
 
 - NbSe2
-  - statement of problem - literature review - solutions
+  - statement of problem - literature review - solutions - pearl - bkt -
   - measurement of S2 sample - melting - single vortex
   - step junction sample
 
