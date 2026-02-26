@@ -38,14 +38,61 @@ The excitation system is designed as a standalone unit that can be easily separa
     \label{fig:exc_aom}
 \end{figure}
 
-The laser is an `Opus Gem' at \qty{532}{\nano\meter}. The linear polarized beam passes through the HWP, which is rotated for maximum transmission of the beam through the PBS. The beam is focused to a spot on the AOM, corresponding to the AOM crystal size specification. This ensures a rise/fall time of the modulated beam in specification, and a long lifetime of the AOM. The beams (0 and 1\textsuperscript{st} order) are collimated, and the 0 order beam is blocked. The 1\textsuperscript{st} order beam passes through a QWP twice, accumulating a rotation of \ang{180}, and passes back through the same path, through the AOM. The beam deflection acquired during the first pass is reversed during this second pass. This configuration is called the double-pass AOM configuration\cite{donleyDoublepassAcoustoopticModulator2005}. The beam is then reflected from the PBS due to the accumulated phase, and is coupled into a fiber. 
+The laser is an `Opus Gem' at \qty{532}{\nano\meter}. The linear polarized beam passes through the HWP, which is rotated for maximum transmission of the beam through the PBS. The beam is focused to a spot on the AOM (3350-199, Gooch \& Housego), corresponding to the AOM crystal size specification. This ensures a rise/fall time of the modulated beam in specification, and a long lifetime of the AOM. The beams (0 and 1\textsuperscript{st} order) are collimated, and the 0 order beam is blocked. The 1\textsuperscript{st} order beam passes through a QWP twice, accumulating a rotation of \ang{180}, and passes back through the same path, through the AOM. The beam deflection acquired during the first pass is reversed during this second pass. This configuration is called the double-pass AOM configuration\cite{donleyDoublepassAcoustoopticModulator2005}. The beam is then reflected from the PBS due to the accumulated phase, and is coupled into a fiber. 
 
-The advantage of using an AOM is a high extinction ratio and fast switching of the laser. This AOM driver also allows for easy control of the laser power with an analog voltage input, which allows for pulse sequences that require control of excitation power and relative control of power between different types of measurements.
-
-
+The advantage of using an AOM is a high extinction ratio and fast switching of the laser. This AOM driver also allows for easy control of the laser power with an analog voltage input, which allows for pulse sequences that require control of excitation power\cite{wirtitschExploitingIonizationDynamics2023b} and relative control of power between different types of measurements.
 
 \subsection*{Optical head}
 
+The optical head is the next system in line that is developed for the NV microscope. It is designed to be compact, easy to align and modify, and allows for complete control of the optics. It can also so be further extended to other wavelengths to allow for spin-to-charge conversion readout\cite{shieldsEfficientReadoutSingle2015}. The cage system construction also makes it an easy to remove single unit, with the possibility of adding in drop-in optical elements. A simplified illustration of the optical head is shown in \cref{fig:opt_head}.
+
+A description of the components of the optical head is as follows: the single mode (SM) polarization maintaining fiber from the excitation system is coupled to the optical head at the top. The collimation of the laser is done with an Olympus \qty{0.25}{NA} objective. The polarization is rotated with a HWP mounted on a motorized rotation stage. The laser is cleaned up with a \qty{532}{\nano\meter} band pass (BP) filter. The beam is directed downwards with two angled mirrors, and passes through a 90:10 beam splitter (BS), and a short pass dichroic mirror (DM). Two angled mirrors further align the beam to the high-NA low temperature objective at the end of the sample stick. The fluorescence collected by the objective is directed by the last two angled mirrors onto the DM, where it is reflected onto the collection path. The shorter wavelengths are directed onto the back reflection imaging camera. The collection path has a long pass (LP) \qty{650}{\nano\meter} filter, and an aspheric lens to focus the fluorescence on a multi-mode (MM) fiber.
+
+\begin{figure}[h]
+    \centering 
+    \centering 
+    \includegraphics[width=0.66\textwidth]{../figures/optical_head.pdf}
+    \caption{Simplified illustration of the optical head. The head has two main arms for excitation and collection, with mirror blocks connecting them together. An additional arm collects the laser back reflection onto a camera. The bottom two mirror blocks guide the beams to and from the objective at the end of the sample stick.}
+    \label{fig:opt_head}
+\end{figure}
+
+The construction allows for the permanent mounting of the optics head to the top of the sample stick, bringing the realignment time close to zero. Due to the rigid construction of the cage system and the use of flexure based linear stages wherever possible, the long term stability of the optics is also very suitable for SQM measurement that can often take weeks for large phase space sweeps. 
+
+\begin{figure}[h]
+    \centering 
+    \centering 
+    \includegraphics[width=0.66\textwidth]{../figures/confocal.pdf}
+    \caption{Confocal image of fluorescence from a commercial SQM tip (R01B-F6-D1, Qnami).}
+    \label{fig:confocal}
+\end{figure}
+
+The optics head achieves high counts from commercially available SQM tips. \cref{fig:confocal} shows an exemplary confocal scan take at $\sim\qty{100}{\micro\watt}$ of excitation power. The NV center is the fluorescent bright spot roughly at the center of the tip. The spatial profile of this spot is also indicative the well-designed and aligned confocal optics, owing to the gaussian like emission and good background suppression. The outline of the tip can be identified by scattering that occurs at the boundary. The larger area to the bottom that also exhibits enhanced scattering is the glue that is used to attach the diamond cantilever to the holder.
+
 \section{AFM modalities}
 
+The technique that enables the more accessible use of NV centers in diamond as a high spatial resolution measurement device is atomic force microscopy. Hence, it is important to understand and establish the correct method for its use, especially at low temperatures, vacuum environment and with fragile, expensive probes. 
+
+\subsection*{Control loops}
+
+AFM is a technique built on feedback loops. A setpoint quantity is observed, and an output changed based on a deviation from this setpoint, such that the setpoint is achieved again. This setpoint can be various quantities such as the intensity of laser beam reflected off the end of a probe, or the frequency of oscillation of such an intensity. SQM tips that are commercially available are built on top of a self-sensing and actuating probe system called the Akiyama probe\cite{akiyamaImplementationCharacterizationQuartz2010}. The Akiyama probe is an excellent host for an NV probe due to the AFM sensing being optics free. It uses instead, the charge build-up across a piezo-electric tuning fork that the sharp probe is attached to. This tuning fork is oscillated, either by electrically driving it or mechanically by a nearby oscillating piezo-element. In this system, mechanical driving is utilized, due to both simplicity of the system and to avoid potential cross talk that can occur with other lines. The charge build-up across the tuning fork is picked up by contacts connected to a charge amplifier, which gives a voltage signal that is read out. This voltage signal oscillates at the frequency of the tuning fork. The resonance frequency of one of the eigen-modes the combined tuning fork and probe assembly (Akiyama probe) is determined and driven.
+
+The oscillation of the Akiyama probe offers the various setpoint quantities that is maintained for its operation as an AFM probe. The oscillation amplitude ($HF_{amp}$), frequency and phase ($HF_{phase}$) of the high frequency (HF) oscillation with respect to the driving signal can act as a setpoint. In this system, the primarily utilized control loop utilizes a combination of the $HF_{amp}$, and a phase locked loop (PLL) of the $HF_{phase}$. First, a frequency sweep is performed to find the resonance of the tip, typically around \qty{32}{\kilo\hertz} for Akiyama like probes. The excitation amplitude ($A_{exc}$) and detection voltage range (determines the effective gain and voltage resolution of the HF amplitude) is set such that there is good SNR and true oscillation displacement is on the order of a few $\unit{\nano\meter}$ (determined via optical or scanning means). Typical values are $A_{exc}=\qty{100}{\milli\volt}$, $HF_{amp}=\qty{250}{\milli\volt}$, detection voltage range around \qty{1}{\volt}.
+
+The $HF_{phase}$ is set as zero at resonance condition. A PLL loop is activated with the $HF_{phase}=0$ as the setpoint with the PLL control variable being $dF$, the change in driving frequency from. The maximum range in $dF$ is set and noted (a good range is $\pm \qty{20}{\hertz}$), since this defines the available spectral resolution of the PLL loop. The PID loop parameters are tuned for the PLL loop to achieve an $HF_{phase}$ that closely follows $dF$. 
+
+The setpoint for the AFM is the z-control loop setpoint, which is set to the $HF_{amp}$ variable and typically to around 80\% of the free oscillation amplitude. Once contact is achieved, the PID parameters are also tuned to for the z-output to closely follow the $HF_{amp}$ setpoint.
+
+A common issue for low temperature operation with a control loop dependent on a mechanical oscillator is the very large  Q factors (>5000) that occur due to the temperature and atmosphere. Small perturbations to the oscillator, such as AFM contact, can cause a very large change in the $HF_{amp}$, making the control loop unstable for achievable PID parameters. The result is extremely slow AFM scans or in extreme cases makes AFM contact not possible. This challenge can be largely mitigated by effective understanding and use of Q control\cite{fairbairnResonantControlAtomic2012}, which is possible in the system's AFM controller.
+
+\subsection*{Q-Control}
+\begin{figure}[h]
+    \centering 
+    \centering 
+    \includegraphics[width=0.66\textwidth]{../figures/qcontrol.pdf}
+    \caption{Resonance curves measured with various q-control parameters.}
+    \label{fig:qcontrol}
+\end{figure}
+
 \section{SQM modalities}
+\subsection*{Two-point tracking}
+\subsection*{Gradiometry and lock-in}
