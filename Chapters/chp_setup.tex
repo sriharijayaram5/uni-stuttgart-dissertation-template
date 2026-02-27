@@ -34,7 +34,7 @@ The excitation system is designed as a standalone unit that can be easily separa
     \centering 
     \centering 
     \includegraphics[width=0.95\textwidth]{../figures/excitation_aom.pdf}
-    \caption{Simplified illustration of the excitation system, fiber coupled to the optical head. The labelled components are half-wave plate (HWP), quarter-wave plate (QWP), acousto optical modulator (AOM), polarizing beam splitter (PBS), beam block (BB), and fiber coupler (FC). The excitation begins at the laser module (blue), and passes twice through the AOM, and terminates at the fiber coupler.}
+    \caption[Illustration of NV optical excitation system]{Simplified illustration of the excitation system, fiber coupled to the optical head. The labelled components are half-wave plate (HWP), quarter-wave plate (QWP), acousto optical modulator (AOM), polarizing beam splitter (PBS), beam block (BB), and fiber coupler (FC). The excitation begins at the laser module (blue), and passes twice through the AOM, and terminates at the fiber coupler.}
     \label{fig:exc_aom}
 \end{figure}
 
@@ -52,7 +52,7 @@ A description of the components of the optical head is as follows: the single mo
     \centering 
     \centering 
     \includegraphics[width=0.66\textwidth]{../figures/optical_head.pdf}
-    \caption{Simplified illustration of the optical head. The head has two main arms for excitation and collection, with mirror blocks connecting them together. An additional arm collects the laser back reflection onto a camera. The bottom two mirror blocks guide the beams to and from the objective at the end of the sample stick.}
+    \caption[Illustration of microscope optical head]{Simplified illustration of the optical head. The head has two main arms for excitation and collection, with mirror blocks connecting them together. An additional arm collects the laser back reflection onto a camera. The bottom two mirror blocks guide the beams to and from the objective at the end of the sample stick.}
     \label{fig:opt_head}
 \end{figure}
 
@@ -62,7 +62,7 @@ The construction allows for the permanent mounting of the optics head to the top
     \centering 
     \centering 
     \includegraphics[width=0.66\textwidth]{../figures/confocal.pdf}
-    \caption{Confocal image of fluorescence from a commercial SQM tip (R01B-F6-D1, Qnami).}
+    \caption[Confocal image of SQM tip]{Confocal image of fluorescence from a commercial SQM tip (R01B-F6-D1, Qnami).}
     \label{fig:confocal}
 \end{figure}
 
@@ -70,7 +70,7 @@ The optics head achieves high counts from commercially available SQM tips. \cref
 
 \section{AFM modalities}
 
-The technique that enables the more accessible use of NV centers in diamond as a high spatial resolution measurement device is atomic force microscopy. Hence, it is important to understand and establish the correct method for its use, especially at low temperatures, vacuum environment and with fragile, expensive probes. 
+The technique that enables the more accessible use of NV centers in diamond as a high spatial resolution measurement device is atomic force microscopy. Hence, it is important to understand and establish the correct method for its use, especially at low temperatures, vacuum environment and with expensive, fragile probes. 
 
 \subsection*{Control loops}
 
@@ -82,16 +82,33 @@ The $HF_{phase}$ is set as zero at resonance condition. A PLL loop is activated 
 
 The setpoint for the AFM is the z-control loop setpoint, which is set to the $HF_{amp}$ variable and typically to around 80\% of the free oscillation amplitude. Once contact is achieved, the PID parameters are also tuned to for the z-output to closely follow the $HF_{amp}$ setpoint.
 
-A common issue for low temperature operation with a control loop dependent on a mechanical oscillator is the very large  Q factors (>5000) that occur due to the temperature and atmosphere. Small perturbations to the oscillator, such as AFM contact, can cause a very large change in the $HF_{amp}$, making the control loop unstable for achievable PID parameters. The result is extremely slow AFM scans or in extreme cases makes AFM contact not possible. This challenge can be largely mitigated by effective understanding and use of Q control\cite{fairbairnResonantControlAtomic2012}, which is possible in the system's AFM controller.
+A common issue for low temperature operation with a control loop dependent on a mechanical oscillator is the very large  Q factors (>5000) that occur due to the temperature and atmosphere. Small perturbations to the oscillator, such as AFM contact, can cause a very large change in the $HF_{amp}$, making the control loop unstable for achievable PID parameters. The result is extremely slow AFM scans or in extreme cases makes AFM contact not possible. This challenge can be largely mitigated by effective understanding and use of Q control\cite{fairbairnResonantControlAtomic2012}, which is possible in the system's AFM controller (ASC500, Attocube/N-Hands).
 
-\subsection*{Q-Control}
+\subsection*{Q control}
+An exemplary control loop used to reduce the effective Q factor of the probe is shown in \cref{fig:qcontrol_block}. It makes use of a negative feedback loop of the probe's velocity. This velocity can simply be estimated from the displacement amplitude signal. For commercial AFMs and likely the control implemented in this system, the feedback for a displacement $s$ is defined as
+\begin{equation}
+    \centering 
+    K(s)=Ge^{-T_d s},
+\end{equation}
+where $T_d$ is a time delay and $G$ the gain\cite{fairbairnResonantControlAtomic2012}. 
+
 \begin{figure}[h]
     \centering 
+    \includegraphics[width=0.95\textwidth]{../figures/qcontrol_block.pdf}
+    \caption[Block diagram of Q control loop]{Block diagram illustrating Q control. Reused with permission from AIP Publishing\cite{fairbairnResonantControlAtomic2012}.}
+    \label{fig:qcontrol_block}
+\end{figure}
+
+The implementation in this system requires a similar input of `phase' in degrees and `feedback' of arbitrary units. A value between 0 and 1 is allowed as feedback with 1 giving complete cancellation of $HF_{amp}$. The other important parameter for effective control of the Q factor is $A_{exc}$. Frequency sweeps are performed to estimate the phase for which the Q factor is at minimum. This phase need not be adjusted for further tuning of the Q factor since it is independent of the other two variables. The $A_{exc}$ parameter is now used to tune the Q factor to a desired value. Up to one order of magnitude reduction of the Q factor is possible. The feedback parameter is only used to achieve control over the final $HF_{amp}$, and does not directly affect the Q factor. It is noted that the loop becomes ineffective at high $A_{exc}$ and cannot be used to further reduce the Q factor.
+
+\begin{figure}[h]
     \centering 
     \includegraphics[width=0.66\textwidth]{../figures/qcontrol.pdf}
-    \caption{Resonance curves measured with various q-control parameters.}
+    \caption[Resonance curves under Q control]{Resonance curves measured with various Q control parameters.}
     \label{fig:qcontrol}
 \end{figure}
+
+\cref{fig:qcontrol} shows resonance curves obtained by implementing the above protocol. The phase parameter is fixed at \ang{160} and the feedback parameter is fixed at 0.956. For $A_{exc}$ values of \qty{50}{\milli\volt}, \qty{1}{\volt}, and \qty{4}{\volt}, Q factors of 2233, 1053, and 498 respectively are obtained. With these lower Q factors along with the previously described control loops, the probe is able to achieve good AFM even at low temperatures and \ce{He} environment.
 
 \section{SQM modalities}
 \subsection*{Two-point tracking}

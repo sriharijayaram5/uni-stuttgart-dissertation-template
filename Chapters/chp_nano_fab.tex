@@ -63,7 +63,7 @@ The HSQ based Medusa 84 SiH due to its promised longer shelf and continued avail
 \begin{figure}[h]
     \centering 
     \includegraphics[width=0.95\linewidth]{../figures/height_profile.pdf}
-    \caption{(a) Optical image of the dose test squares exposed at varying doses. The dose increases from the top-right to bottom-left with increase in columns first. The change in thickness is apparent in the colour of the resist. (b) A Dektak height profile is measured over the plateaus. }
+    \caption[Grayscale lithography of Medusa]{(a) Optical image of the dose test squares exposed at varying doses. The dose increases from the top-right to bottom-left with increase in columns first. The change in thickness is apparent in the colour of the resist. (b) A Dektak height profile is measured over the plateaus. }
     \label{fig:medusa_dose}
 \end{figure}
 
@@ -74,7 +74,7 @@ A dose test is performed to determine the dose at which the maximum thickness is
 \begin{figure}[h]
     \centering 
     \includegraphics[width=0.95\linewidth]{../figures/dose_profile.pdf}
-    \caption{Examples of Medusa mask profiles obtained via grayscale lithography. (a) The exposure is done in a series of concentric rings of fixed linewidth. The dose factor (DF) of each ring is varied as a function of its radius, $f(r)$. (b) A conventional profile achieved by overxposure of a small circle. (c) Example of a mask profile achieved with a linear dose function and (d) an inverse exponential dose function.}
+    \caption[Pillar masks with grayscale lithography]{Examples of Medusa mask profiles obtained via grayscale lithography. (a) The exposure is done in a series of concentric rings of fixed linewidth. The dose factor (DF) of each ring is varied as a function of its radius, $f(r)$. (b) A conventional profile achieved by overxposure of a small circle. (c) Example of a mask profile achieved with a linear dose function and (d) an inverse exponential dose function.}
     \label{fig:dose_profile}
 \end{figure}
 
@@ -83,7 +83,7 @@ Using this dose dependant thickness, the shape of the mask is adjusted based on 
 \begin{figure}[h]
     \centering 
     \includegraphics[width=0.95\linewidth]{../figures/final_dose_profile2.pdf}
-    \caption{(a) Dose profile utilized to create pillar waveguides using Medusa mask. The dose factor (DF) corresponding to each ring is shown. Each ring has a linewidth of \qty{180}{\nano\meter}. (b) Diamond waveguide fabricated using the grayscale Medusa mask. Due to the larger lateral size, and thickness of the mask, a waveguide height of $\sim\qty{7}{\micro\meter}$ and is achieved. The sidewall angle is $\sim\ang{69}$.}
+    \caption[Diamond pillar etched from grayscale mask]{(a) Dose profile utilized to create pillar waveguides using Medusa mask. The dose factor (DF) corresponding to each ring is shown. Each ring has a linewidth of \qty{180}{\nano\meter}. (b) Diamond waveguide fabricated using the grayscale Medusa mask. Due to the larger lateral size, and thickness of the mask, a waveguide height of $\sim\qty{7}{\micro\meter}$ and is achieved. The sidewall angle is $\sim\ang{69}$.}
     \label{fig:final_dose_profile}
 \end{figure}
 
@@ -101,16 +101,13 @@ Another approach is selected as the basis for the waveguides developed here due 
 
 PMMA is typically used in a lift-off process wherein the exposed region is removed during development. A metal mask is then deposited, which acts as a hard mask for etching. To achieve easy lift-off of the metal mask a two layer PMMA spin coating is performed with the lower molecular weight PMMA as the first layer and the higher molecular weight as the second layer. This results in the creation of an overhang after exposure providing a discontinuity in the deposited metal, aiding lift-off. TODO Details in appendix. 
 
-% Place this block IMMEDIATELY before the paragraph text you want to wrap.
-% \begin{wrapfigure}{R}{0.48\textwidth} % 'R' = Right float, 'L' = Left
 \begin{figure}
     \centering 
     \includegraphics[width=0.75\textwidth]{../figures/multicone_ref.pdf}
-    % \raggedright
-    \caption[(a) Single and (b) multicone waveguides]{(a) Single cone waveguide and (b) multicone waveguide\cite{zhuMulticoneDiamondWaveguides2023a}. Reused with permission from American Chemical Society.}
+    \caption[Single and multicone waveguides]{(a) Single cone waveguide and (b) multicone waveguide\cite{zhuMulticoneDiamondWaveguides2023a}. Reused with permission from American Chemical Society.}
     \label{fig:multicone_ref}
 \end{figure}
-% \end{wrapfigure}
+
 The deposited metal then protects the diamond underneath it due to its higher etch resistance to the plasma. However, due to lateral mask erosion during the plasma exposure, the waveguide can take on shapes more complex than a cylinder. \textcite{zhuMulticoneDiamondWaveguides2023a} show the fabrication of a multicone waveguide by using the lateral erosion of the metal mask to their advantage. \cref{fig:multicone_ref} shows two waveguides achieved by lateral erosion of the mask. The single cone pillar achieves the tapering due to continuous etching while the mask is laterally eroded. The lateral erosion is not prominent initially, hence the truncated cone on top of cylinder structure. The multicone waveguide, improves on this by adding to the end of the process an etch chemistry with a different selectivity (greater lateral erosion). An overview of the recipes from \textcite{zhuMulticoneDiamondWaveguides2023a} is shown in \cref{tab:single_cone,tab:multi_cone}.
 
 \begin{table}[h]
@@ -134,7 +131,7 @@ The deposited metal then protects the diamond underneath it due to its higher et
 
 \hline
 \end{tabular}
-\caption{Etch recipe for single cone waveguide.}
+\caption[Etch recipe for single cone waveguide]{Etch recipe for single cone waveguide.}
 \label{tab:single_cone}
 \end{table}
 
@@ -157,7 +154,7 @@ The deposited metal then protects the diamond underneath it due to its higher et
 
 \hline
 \end{tabular}
-\caption{Etch recipe for multicone waveguide.}
+\caption[Etch recipe for multicone waveguide]{Etch recipe for multicone waveguide.}
 \label{tab:multi_cone}
 \end{table}
 
@@ -176,22 +173,16 @@ Titanium (\ce{Ti}), due its known high selectivity to diamond with \ce{O2} plasm
 \cref{tab:MC_etch_chemistry} details the plasma chemistry used for the individual etching steps. It is noted that a \ce{CF4} based mask etch is more suitable than one \ce{SF6} based due to the lower and more controlled etch with \ce{CF4}. This may be due to protective polymerization due to the presence of free carbon atoms\cite{eiseleSF6Preferable1981} and the lower fluorine concentrations in the \ce{CF4} plasma\cite{tangTungstenEtchingCF1984}.
 
 \input{Chapters/etch_recipes_01}
-% Place this block IMMEDIATELY before the paragraph text you want to wrap.
-% \begin{wrapfigure}{R}{0.75\textwidth} % 'R' = Right float, 'L' = Left
 \begin{figure}[h]
     \centering 
-    \centering 
     \includegraphics[width=0.75\textwidth]{../figures/squtipA_large.pdf}
-    % \raggedleft
-    \caption{(a) \ce{Ti} mask of design thickness \qty{370}{\nano\meter}. (b) Base of the waveguide after step no. 2 in \cref{tab:MC_etch_overview}. (c) Waveguide fabricated using this process. Note the visible step edges on the tapering end. }
+    \caption[\ce{Ti} mask and etched waveguide]{(a) \ce{Ti} mask of design thickness \qty{370}{\nano\meter}. (b) Base of the waveguide after step no. 2 in \cref{tab:MC_etch_overview}. (c) Waveguide fabricated using this process. Note the visible step edges on the tapering end. }
     \label{fig:squtip}
     \refstepcounter{subfigure}\label{fig:squtip_a}
     \refstepcounter{subfigure}\label{fig:squtip_b}
     \refstepcounter{subfigure}\label{fig:squtip_c}
 \end{figure}
-% \end{wrapfigure}
 
-% \raggedright
 By employing a stepped tertiary etch recipe, the titanium mask can be eroded radially in a controlled manner. This process is used to fabricate the high-aspect ratio a waveguide shown in \cref{fig:squtip}. This waveguide has a sidewall angle of $\sim\ang{71}$, with a height of $\sim\qty{4}{\micro\meter}$. These parameters can be tuned with little effort within a range determined by the thickness of the initial \ce{Ti} mask. \cref{fig:squtip_b} also demonstrates the observed smoothening of the \ce{Ti} mask during the etching.
 
 \emph{A reproducible and high yield process to fabricate high aspect ratio waveguides is establised.}
@@ -207,7 +198,7 @@ The spatial extent of the NV centers and therefore the effective spatial resolut
     \centering 
     \includegraphics[width=0.95\textwidth]{../figures/sim.pdf}
     % \raggedleft
-    \caption{Simulation (Tidy3D, FDTD solver) of electric field intensity with a single $<111>$ oriented NV center, \qty{50}{\nano\meter} below the surface, for (a) truncated cone, (b) parabolic pillar, and (c) parabolic pillar with island waveguide design.}
+    \caption[Simulation of various waveguide designs]{Simulation (Tidy3D, FDTD solver) of electric field intensity with a single $<111>$ oriented NV center, \qty{50}{\nano\meter} below the surface, for (a) truncated cone, (b) parabolic pillar, and (c) parabolic pillar with island waveguide design.}
     \label{fig:sim_all}
     \refstepcounter{subfigure}\label{fig:sim_a}
     \refstepcounter{subfigure}\label{fig:sim_b}
@@ -223,7 +214,7 @@ FDTD (Finite-Difference Time Domain) simulation is performed to determine whethe
     \centering 
     \includegraphics[width=0.95\textwidth]{../figures/fab_island.pdf}
     % \raggedleft
-    \caption{Island waveguides fabricated with a \ce{Ni}-\ce{Ti} metal mask sandwich. (b) A magnified image of the island before wet chemical removal of the \ce{Ni} mask, visible as the brighter region at the apex.}
+    \caption[Island waveguides]{Island waveguides fabricated with a \ce{Ni}-\ce{Ti} metal mask sandwich. (b) A magnified image of the island before wet chemical removal of the \ce{Ni} mask, visible as the brighter region at the apex.}
     \label{fig:island}
     \refstepcounter{subfigure}\label{fig:island_big}
     \refstepcounter{subfigure}\label{fig:island_small}
@@ -253,7 +244,7 @@ The cantilever is designed to be large enough for easy detachment and pick-up, s
     \centering 
     \centering 
     \includegraphics[width=0.95\textwidth]{../figures/pmma_canti.pdf}
-    \caption{Cantilever mask design and fabricated structure. (a) The cantilever mask design showing the PECS dose cells overlaid on an SEM image of the \ce{Cr} hard mask created. (b) Detailed view of the generated PECS cells and their dose factors. PECS is performed for the entire design but only the cells at the bridge structure are used, to reduce patterning time. (c) SEM image of the cantilever etched into diamond using the \ce{Cr} hard mask. The waveguides are not present on this sample. (d) Image of a released, freestanding cantilever, than can be picked up.}
+    \caption[Cantilever mask and resulting freestanding cantilever]{Cantilever mask design and fabricated structure. (a) The cantilever mask design showing the PECS dose cells overlaid on an SEM image of the \ce{Cr} hard mask created. (b) Detailed view of the generated PECS cells and their dose factors. PECS is performed for the entire design but only the cells at the bridge structure are used, to reduce patterning time. (c) SEM image of the cantilever etched into diamond using the \ce{Cr} hard mask. The waveguides are not present on this sample. (d) Image of a released, freestanding cantilever, than can be picked up.}
     \label{fig:pmma_canti}
 \end{figure}
 The fabricated structures are shown in \cref{fig:pmma_canti}. The waveguides are not fabricated on this sample to reduce complexity of the process.
