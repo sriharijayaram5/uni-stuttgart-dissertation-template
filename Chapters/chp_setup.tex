@@ -68,11 +68,15 @@ The construction allows for the permanent mounting of the optics head to the top
 
 The optics head achieves high counts from commercially available SQM tips. \cref{fig:confocal} shows an exemplary confocal scan take at $\sim\qty{100}{\micro\watt}$ of excitation power. The NV center is the fluorescent bright spot roughly at the center of the tip. The spatial profile of this spot is also indicative the well-designed and aligned confocal optics, owing to the gaussian like emission and good background suppression. The outline of the tip can be identified by scattering that occurs at the boundary. The larger area to the bottom that also exhibits enhanced scattering is the glue that is used to attach the diamond cantilever to the holder.
 
+\subsection*{Spin control}
+
 \section{AFM modalities}
 
 The technique that enables the more accessible use of NV centers in diamond as a high spatial resolution measurement device is atomic force microscopy. Hence, it is important to understand and establish the correct method for its use, especially at low temperatures, vacuum environment and with expensive, fragile probes. 
 
 \subsection*{Control loops}
+\phantomsection
+\label{sub:control_loops}
 
 AFM is a technique built on feedback loops. A setpoint quantity is observed, and an output changed based on a deviation from this setpoint, such that the setpoint is achieved again. This setpoint can be various quantities such as the intensity of laser beam reflected off the end of a probe, or the frequency of oscillation of such an intensity. SQM tips that are commercially available are built on top of a self-sensing and actuating probe system called the Akiyama probe\cite{akiyamaImplementationCharacterizationQuartz2010}. The Akiyama probe is an excellent host for an NV probe due to the AFM sensing being optics free. It uses instead, the charge build-up across a piezo-electric tuning fork that the sharp probe is attached to. This tuning fork is oscillated, either by electrically driving it or mechanically by a nearby oscillating piezo-element. In this system, mechanical driving is utilized, due to both simplicity of the system and to avoid potential cross talk that can occur with other lines. The charge build-up across the tuning fork is picked up by contacts connected to a charge amplifier, which gives a voltage signal that is read out. This voltage signal oscillates at the frequency of the tuning fork. The resonance frequency of one of the eigen-modes the combined tuning fork and probe assembly (Akiyama probe) is determined and driven.
 
@@ -104,12 +108,127 @@ The implementation in this system requires a similar input of `phase' in degrees
 \begin{figure}[h]
     \centering 
     \includegraphics[width=0.66\textwidth]{../figures/qcontrol.pdf}
-    \caption[Resonance curves under Q control]{Resonance curves measured with various Q control parameters.}
+    \caption[Resonance curves under Q control]{Resonance curves measured with various Q control parameters. Increasing $A_{exc}$ and feedback parameter decreases the Q factor while maintaining the $HF_{amp}$.}
     \label{fig:qcontrol}
 \end{figure}
 
-\cref{fig:qcontrol} shows resonance curves obtained by implementing the above protocol. The phase parameter is fixed at \ang{160} and the feedback parameter is fixed at 0.956. For $A_{exc}$ values of \qty{50}{\milli\volt}, \qty{1}{\volt}, and \qty{4}{\volt}, Q factors of 2233, 1053, and 498 respectively are obtained. With these lower Q factors along with the previously described control loops, the probe is able to achieve good AFM even at low temperatures and \ce{He} environment.
+\cref{fig:qcontrol} shows resonance curves obtained by implementing the above protocol. The phase parameter is fixed at \ang{160}. For ($A_{exc}$, feedback) values of (\qty{50}{\milli\volt}, 0.591), (\qty{1}{\volt}, 0.943), and (\qty{4}{\volt}, 0.956), Q factors of 2233, 1053, and 498 respectively are obtained. With these lower Q factors along with the previously described control loops, the probe achieves good AFM contact and scans even at low temperatures and \ce{He} environment. This protocol is also extended to use in a room temperature SQM system and works similarly well, although the native Q factors are not high.
 
 \section{SQM modalities}
+
+The simultaneous operation of NV microscopy and AFM enables SQM. The previously described sections establish the necessary elements for spin spate readout of an NV center at in an AFM probe, while performing a scan across a sample of interest. The AFM scan is performed mainly in two ways: lift-off and contact. 
+
+In contact mode tip continuously maintains contact with the sample while the measurement takes place. The stand-off of the NV center depends on the depth of the NV in the diamond, and the setpoint of the AFM contact\cite{xuMinimizingSensorSampleDistances2025}. 
+
+To measure stand-off dependant magnetic properties or to protect the NV from strong sample induced decoherence, the lift-off mode is used instead. Here, the topography is measured at the current position before retracting the sample by a set amount. The measurement is then done with the sample retracted away (typically \qty{20}{\nano\meter}), the z-control loop is reactivated, and the sample is in contact again, proceeding to the next position.
+
+In either of these contact modes, magnetometry is done in multiple ways. CW-ODMR is the basic measurement that provides information on the magnetic fields present on the sample\cite{barrySensitivityOptimizationNVdiamond2020}. This measurement although suffers from lower sensitivity due to partial polarization, no decoupling between spin initialization and polarization mechanisms, and often heating of the sample and surroundings which is critical in low temperature operations, sometimes with low cooling power. To mitigate this pulsed laser and MW measurements are performed, which increases sensitivity and allows for spectrally tailored sensitivity/decoupling.
+
+PODMR provides maximal contrast similar to Ramsey like measurement and unlike CW-ODMR, while avoiding power broadening due to laser and MW, approaching $T_2^*$ sensitivity\cite{dreauAvoidingPowerBroadening2011,barrySensitivityOptimizationNVdiamond2020}. A scan employing PODMR although is sensitive to spatial and temporal changes in Rabi frequency, but this typically not the case for samples investigated in this system as well for small scan ranges with the MW antenna nearby. 
+
+For high spatial resolution scans, a measurement time speedup is desirable. Modest reductions in measurement time is made possible by employing smart Bayesian sampling of measurement points, such that the measurements time/frequency positions are alloted such that a cost function corresponding to information regarding the ODMR spectrum is minimized\cite{dushenkoSequentialBayesianExperiment2020}. 
+
+On the other hand, a complete PODMR measurement contains multiple points of information (number of peaks, contrast, line center, shape, symmetry), all of which is not necessary for every measurement, to map the magnetic field of a sample. Much of the measurement time is spent collecting the lineshape, which, under the assumption that it stays constant over the sample and for the duration of the measurement, can be disregarded. This assumption holds true for many samples. Even under the change of the linewidth, the line center can be estimated only with the measurement of two points, as long the change of line center is not more than the linewidth over the course of the consecutive measurements. A demonstration of such a measurement with lock-in detection, allowing for real time magnetic field detection is shown by \textcite{schoenfeldRealTimeMagnetic2011}. An adaptation of this lock-in method for PODMR is used in this system to achieve fast measurement times.
+
 \subsection*{Two-point tracking}
+
+The two-point tracking mode, as the name suggest, reduces the measurement to only two frequency points. The frequency points to measure, $f_{\pm}$, are chosen on either side of the last measured resonance, such that $f_{\pm}=f_0\pm\Delta$, for a resonance frequency $f_0$. The $\Delta$ is chosen at the first spatial scan point, based on a measured PODMR spectrum that captures the complete line shape of the resonance. This is done manually by determining the range of linear change in the slope of the measured Lorentzian, or by setting it to be at the points of maximum inflection. The slope, $s$, of the linear part around the resonance in the first derivative of the measured Lorentzian is also calculated. 
+
+\begin{figure}[h]
+    \centering 
+    \includegraphics[width=0.95\textwidth]{../figures/tracking.pdf}
+    \caption[ODMR with tracking mode]{Illustration of the two-point tracking mode. Black ODMR spectrum is under resonance condition, and the red spectrum is off resonant by $\delta\nu$. }
+    \label{fig:tracking}
+\end{figure}
+
+The implementation of pulsed readout with changing MW frequency also helps make this a fast measurement with very little hardware based delays that can slow the measurement down. The MW/local oscillator (LO) source maintains a fixed output frequency which then is modulated by the combination of an IQ mixer (built into the LO), and an arbitrary waveform generator (AWG). This allows the fast switching of frequency by playing the corresponding modulating waveform on the AWG. A pulsed readout is performed with the AWG modulating the fixed LO at $f_0$, setting the output MW to $f_{-}$, and then subsequently for $f_{-}$. This pair of pulsed readout is repeated $N$ times to achieved good SNR.
+
+The necessary quantities to estimate the shift in resonance frequency $\delta_{\nu}$, are counts $c_{\pm}$ at $f_{\pm}$, $s$, and the last known resonance frequency $f_0$, which are measured. The amount of change in counts is proportional to shift in the resonance frequency, as shown in \cref{fig:tracking}. This amount of change in counts is quantified as,
+
+\begin{equation}
+    \centering
+    visibility = \frac{(c_- - c_+)}{(c_+ + c_-)}.
+\end{equation}
+
+The shift in resonance frequency is calculated as,
+
+\begin{equation}
+    \centering
+    \delta_{\nu} = \frac{visibility}{s}.
+\end{equation}
+
+The new $f_0$ is then set to be $f_0 + \delta_{\nu}$, and the measurement is repeated at the next spatial scan point. The estimation can also be repeated multiple times at one position to achieve lower errors, since the range of frequency where the slope is valid is limited by the linewidth of the resonance, albeit at the cost of measurement time.
+
 \subsection*{Gradiometry and lock-in}
+
+A coincidental feature of the SQM is the mechanical oscillation of the probe, which is used to maintain and control AFM contact with the sample. This oscillation is typically in plane for commercially available tips. In conventional SQM modes, this small oscillation is averaged over during the measurement, with little impact on resolution for typical operation. Even in this configuration, state-of-the-art SQMs achieve sensitivities of a few \unit{\micro\tesla/\sqrthertz}\cite{sunMagneticDomainsDomain2021,songDirectVisualizationMagnetic2021}. In probes on an oscillating tip such as SQUID-on-tip (SOT), increased sensitivity has been demonstrated by utilizing the mechanical oscillation convert a static gradient signal into an effective time varying signal, as seen by the sensor. This technique of 'gradiometry' is demonstrated by \textcite{huxterScanningGradiometrySingle2022} resolving magnetic stray fields with a sensitivity of $\sim\qty{120}{\nano\tesla/\sqrthertz}$. To improve the resolution, sensitivity and to make the mechanical oscillation of the probe accessible for future measurements, gradiometry is implemented in the RT SQM system. An overview of the technique and results with gradiometry is presented in this section.
+
+\begin{figure}[h]
+    \centering 
+    \includegraphics[width=0.95\textwidth]{../figures/gradiometry.pdf}
+    \caption[Illustration of gradiometry]{Illustration of gradiometry. The variables in red are used to maximize the collected phase. The AWG requires a fixed time $t_s$ until the first sample is played from the recognition of the trigger, which is accounted for in $t_0$.}
+    \label{fig:gradiometry}
+\end{figure}
+
+The principle of gradiometry is illustrated in \cref{fig:gradiometry}. The tip oscillates in a coherent manner over a sample with a static gradient of magnetic field; the same principles also largely apply for a sample with a driven oscillating magnetic field, but the description here is restricted assuming the former case. The mechanical oscillation is driven by the SPM controller that sends a high frequency (HF) driving signal to a piezo element attached near the probe. This is the actuator for the mechanical oscillations. A reference signal of the same frequency and phase, HF sync., is sent to the trigger inputs of the AWG. This allows the AWG to trigger pulse sequences synchronized with the mechanical oscillations of the probe. It is also possible to collect the readout signal of the true probe oscillation, instead of the driving signal, but this being a noisy signal is difficult to trigger on. The driving signal, along with the active PLL loop (page \pageref{sub:control_loops}), enables precise triggering of the AWG. This is also confirmed to be operational at cryogenic conditions. Nevertheless, gradiometry is performed at lift-off mode since the contact operation can induce strain driven fluctuations in the NV\cite{huxterScanningGradiometrySingle2022,ovartchaiyapongDynamicStrainmediatedCoupling2014} or introduces additional mechanical oscillation modes. The mechanical oscillation of the probe is described by position of the probe $x(t)=x_0 + x_{osc} \sin(2\pi f_{TF}t)$, for an oscillation amplitude $x_{osc}\sim\qty{10}{\nano\meter}$, and $f_{TF}\sim\qtylist{32;195}{\kilo\hertz}$.
+
+The stray field experienced by the NV center is given by
+\begin{equation}
+    \begin{split}
+        B(x(t)) &= B(x_0) + \left. \frac{\partial B}{\partial x} \right\rvert_{x=x_0} x_{osc} \sin(2\pi f_{TF}t) \\
+        &\quad + \frac{1}{2} \left. \frac{\partial^2 B}{\partial x^2} \right\rvert_{x=x_0} x^2_{osc} \sin^2(2\pi f_{TF}t) + \ldots,
+    \end{split}
+\end{equation}
+where B is the magnetic field along the NV axis.
+The significant amplitudes corresponding to $0f_{TF}$, $1f_{TF}$, and $2f_{TF}$ are given by
+\begin{equation}
+    \begin{split}
+        B_0 &= B(x_0) \\
+        B_1 &= x_{osc} \left. \frac{\partial B}{\partial x} \right\rvert_{x=x_0} \\
+        B_2 &= \frac{1}{2} x^2_{osc} \left. \frac{\partial^2 B}{\partial x^2} \right\rvert_{x=x_0} 
+    \end{split}
+\end{equation}
+proportional to the static, gradient and second derivative of the magnetic field, respectively\cite{huxterScanningGradiometrySingle2022}.
+Experimentally, this is realized by measuring the quantum phase accumulated during an AC magnetic field sensing sequence that is synchronized with the mechanical oscillations of the probe. The $nf_{TF}$ harmonic is measured by CPMG-$n$ (Carr-Purcell-Meiboom-Gill) sequences having $n$ spin inverting $\pi-$pulses during the interrogation time\cite{degenQuantumSensing2017}. For $1f_{TF}$, the Hahn-echo sequence is identical to CPMG-1 (except for the phase of the inverting pulse). The pulse sequence is shown in \cref{fig:gradiometry}. The phase (azimuthal angle of the state vector in the equatorial plane) accumulated for CPMG-1 corresponding to the first harmonic or $B_1$ is given by
+
+\begin{equation}
+    \begin{split}
+        \phi &= \int_{t=t_0-\tau/2}^{t_0} \gamma_e B(t)dt - \int_{t_0}^{t=t_0+\tau/2} \gamma_e B(t)dt \\
+            &= -\gamma_e B_1 \frac{2 sin^2(\pi f_{TF} \tau/2 )}{\pi f_{TF}},
+    \end{split}
+\end{equation}
+
+when the pulse sequence is centered with respect to the tuning fork oscillation. This phase can be calculated using a four-phase readout. In the CPMG-1 sequence, the final $(\pi/2)_\Phi$ has $\Phi = X,-X,Y-Y$ (orthogonal axes), corresponding to a fluorescence of $C_{X,-X,Y,-Y}$ on readout. 
+
+Let the state before the final pulse be $|\psi_{eq}\rangle = \frac{1}{\sqrt{2}} \left( |0\rangle + e^{i\Phi} |1\rangle \right)$. A $+X$ pulse rotates the $y$ component to the $+z$ axis. The projection is $\sin\Phi$. A $-X$ pulse rotates the $y$ component to the $-z$ axis. The projection is $-\sin\Phi$. A $+Y$ pulse rotates the $x$-component to the $-z$-axis. The projection is $-\cos\Phi$. A $-Y$ pulse rotates the $x$-component to the $+z$-axis. The projection is $\cos\Phi$. Taking the ratio of the differential signals yields the tangent of the phase:
+
+\begin{equation}
+    \begin{split}
+        \frac{C_{X}-C_{-X}}{C_{-Y}-C_{Y}} = \frac{2\sin\Phi}{2\cos\Phi} = \tan\Phi \\
+        \Phi = \text{arctan}\left (\frac{C_{X}-C_{-X}}{C_{-Y}-C_{Y}} \right ).
+    \end{split}
+\end{equation}
+
+This four-phase readout is represented on the Bloch sphere in \cref{fig:bloch_grad}. The spin is initialized in state $|0\rangle$, and experiences a small time varying detuning field along $z$. A Hahn-Echo pulse sequence is performed, synchronized with the detuning field, as in the ideal gradiometry case. Before the final $(\pi/2)_\Phi$ pulse, the state vector points at the depicted red star. From this point on, the state is rotated around the $y$ axis (blue), or the $x$ axis (red). The Bloch sphere on the right shows the final state vectors and their corresponding $z$ projections ($C_{X,-X,Y,-Y}$). The calculated phase $\phi$ and the corresponding vector is shown in black.
+
+\begin{figure}[h]
+    \centering 
+    \includegraphics[width=0.95\textwidth]{../figures/grad_bloch.pdf}
+    \caption[Four phase readout for gradiometry]{Four phase readout for gradiometry. The Bloch sphere on the left shows a $|0\rangle$ initialized state evolving under an AC detuning and Hahn-Echo sequence, with a final $(\pi/2)_\Phi$ pulse. The Bloch sphere on the right shows the $z$ projections of the final sates and the calculated phase $\phi$.}
+    \label{fig:bloch_grad}
+\end{figure}
+
+
+\begin{figure}[h]
+    \centering 
+    \includegraphics[width=0.95\textwidth]{../figures/pl_osc.pdf}
+    \caption[Time resolved fluorescence from an oscillating probe]{Time resolved fluorescence from an oscillating probe.}
+    \label{fig:pl_osc}
+\end{figure}
+
+\begin{figure}[h]
+    \centering 
+    \includegraphics[width=0.95\textwidth]{../figures/phase_osc.pdf}
+    \caption[Phase acquired oscillating above a static field]{Phase acquired oscillating above static field.}
+    \label{fig:phase_osc}
+\end{figure}
