@@ -189,7 +189,7 @@ The significant amplitudes corresponding to $0f_{TF}$, $1f_{TF}$, and $2f_{TF}$ 
     \end{split}
 \end{equation}
 proportional to the static, gradient and second derivative of the magnetic field, respectively\cite{huxterScanningGradiometrySingle2022}.
-Experimentally, this is realized by measuring the quantum phase accumulated during an AC magnetic field sensing sequence that is synchronized with the mechanical oscillations of the probe. The $nf_{TF}$ harmonic is measured by CPMG-$n$ (Carr-Purcell-Meiboom-Gill) sequences having $n$ spin inverting $\pi-$pulses during the interrogation time\cite{degenQuantumSensing2017}. For $1f_{TF}$, the Hahn-echo sequence is identical to CPMG-1 (except for the phase of the inverting pulse). The pulse sequence is shown in \cref{fig:gradiometry}. The phase (azimuthal angle of the state vector in the equatorial plane) accumulated for CPMG-1 corresponding to the first harmonic or $B_1$ is given by
+Experimentally, this is realized by measuring the quantum phase accumulated during an AC magnetic field sensing sequence that is synchronized with the mechanical oscillations of the probe. The $n\text-f_{TF}$ harmonic is measured by CPMG-$n$ (Carr-Purcell-Meiboom-Gill) sequences having $n$ spin inverting $\pi-$pulses during the interrogation time\cite{degenQuantumSensing2017}. For $1f_{TF}$, the Hahn-echo sequence is identical to CPMG-1 (except for the phase of the inverting pulse). The pulse sequence is shown in \cref{fig:gradiometry}. The phase (azimuthal angle of the state vector in the equatorial plane) accumulated for CPMG-1 corresponding to the first harmonic or $B_1$ is given by
 
 \begin{equation}
     \begin{split}
@@ -200,31 +200,36 @@ Experimentally, this is realized by measuring the quantum phase accumulated duri
 
 when the pulse sequence is centered with respect to the tuning fork oscillation. This phase can be calculated using a four-phase readout. In the CPMG-1 sequence, the final $(\pi/2)_\Phi$ has $\Phi = X,-X,Y-Y$ (orthogonal axes), corresponding to a fluorescence of $C_{X,-X,Y,-Y}$ on readout. 
 
-Let the state before the final pulse be $|\psi_{eq}\rangle = \frac{1}{\sqrt{2}} \left( |0\rangle + e^{i\Phi} |1\rangle \right)$. A $+X$ pulse rotates the $y$ component to the $+z$ axis. The projection is $\sin\Phi$. A $-X$ pulse rotates the $y$ component to the $-z$ axis. The projection is $-\sin\Phi$. A $+Y$ pulse rotates the $x$-component to the $-z$-axis. The projection is $-\cos\Phi$. A $-Y$ pulse rotates the $x$-component to the $+z$-axis. The projection is $\cos\Phi$. Taking the ratio of the differential signals yields the tangent of the phase:
+Let the state before the final pulse be $|\psi_{eq}\rangle = \frac{1}{\sqrt{2}} \left( |0\rangle + e^{i\phi} |1\rangle \right)$. A $\pm X$ pulse rotates the $y$ component to the $\pm z$ axis. The projection is $\pm \sin\phi$. A $\pm Y$ pulse rotates the $x$-component to the $\mp z$-axis. The projection is $\mp \cos\phi$. Taking the ratio of the differential signals yields the tangent of the phase:
 
 \begin{equation}
     \begin{split}
-        \frac{C_{X}-C_{-X}}{C_{-Y}-C_{Y}} = \frac{2\sin\Phi}{2\cos\Phi} = \tan\Phi \\
-        \Phi = \text{arctan}\left (\frac{C_{X}-C_{-X}}{C_{-Y}-C_{Y}} \right ).
+        \frac{C_{X}-C_{-X}}{C_{-Y}-C_{Y}} = \frac{2\sin\phi}{2\cos\phi} = \tan\phi \\
+        \phi = \text{arctan}\left (\frac{C_{X}-C_{-X}}{C_{-Y}-C_{Y}} \right ).
     \end{split}
 \end{equation}
 
-This four-phase readout is represented on the Bloch sphere in \cref{fig:bloch_grad}. The spin is initialized in state $|0\rangle$, and experiences a small time varying detuning field along $z$. A Hahn-Echo pulse sequence is performed, synchronized with the detuning field, as in the ideal gradiometry case. Before the final $(\pi/2)_\Phi$ pulse, the state vector points at the depicted red star. From this point on, the state is rotated around the $y$ axis (blue), or the $x$ axis (red). The Bloch sphere on the right shows the final state vectors and their corresponding $z$ projections ($C_{X,-X,Y,-Y}$). The calculated phase $\phi$ and the corresponding vector is shown in black.
+This four-phase readout is represented on the Bloch sphere in \cref{fig:bloch_grad}. The spin is initialized in state $|0\rangle$, and experiences a small time varying detuning, $B_{ac}$, field along $z$. A Hahn-Echo pulse sequence is performed, synchronized with the detuning field, as in the ideal gradiometry case. Before the final $(\pi/2)_\Phi$ pulse, the state vector points at the depicted red star. From this point on, the state is rotated around the $\pm y$ axis (blue), or the $\pm x$ axis (red). The Bloch sphere on the right shows the final state vectors and their corresponding $z$ projections ($C_{X,-X,Y,-Y}$). The calculated phase $\phi$ and the corresponding vector is shown in black. The measured phase is in the range $[-\pi, \pi)$\cite{palmImagingSubmicroampereCurrents2022} and requires phase unwrapping for signals outside of this range. The amplitude of $\phi$ is determined by the strength of gradient field, interrogation time $\tau$, and oscillation amplitude $x_{osc}$.
 
 \begin{figure}[h]
     \centering 
     \includegraphics[width=0.95\textwidth]{../figures/grad_bloch.pdf}
-    \caption[Four phase readout for gradiometry]{Four phase readout for gradiometry. The Bloch sphere on the left shows a $|0\rangle$ initialized state evolving under an AC detuning and Hahn-Echo sequence, with a final $(\pi/2)_\Phi$ pulse. The Bloch sphere on the right shows the $z$ projections of the final sates and the calculated phase $\phi$.}
+    \caption[Four phase readout for gradiometry]{Four phase readout for gradiometry. The Bloch sphere on the left shows a $|0\rangle$ initialized state evolving under an AC detuning and Hahn-Echo sequence, with a final $(\pi/2)_\Phi$ pulse. The two accumulated phases of $\phi/2$ are shown. The Bloch sphere on the right shows the $z$ projections of the final sates and the calculated phase $\phi$.}
     \label{fig:bloch_grad}
 \end{figure}
 
+As a first step in performing gradiometry measurements, the synchronization of the tip oscillation and spin readout is established. The synchronization time $t_0$ determines the arrival of any sequence after the trigger by the mechanical oscillation. This is depicted in \cref{fig:gradiometry}. To verify correct synchronization, the fluorescence is measured as a function of the $t_0$ time. The fluorescence from a short \qty{200}{\nano\second} window is integrated from the total \qty{3}{\micro\second} readout pulse. The probe is oscillating at a fixed frequency of $\sim\qty{32}{\kilo\hertz}$. For a fixed excitation beam and an emitter oscillating in and out of the beam, a periodic fluorescence signal is expected. The measurement for various probe excitation amplitudes $A_{exc}$ is shown in \cref{fig:pl_osc}. The oscillation is fit to a function for an oscillating emitter in a Gaussian beam (see \cref{app:pl_osc}). The extracted oscillation amplitudes from the fit are shown in the figure, showing a maximum of $\qty{30(2)}{\nano\meter}$. The oscillation amplitudes can also be extracted by performing time resolved and locked in readout while doing an AFM scan over a magnetic/fluorescence quenching feature of known dimensions\cite{huxterScanningGradiometrySingle2022}.
 
 \begin{figure}[h]
     \centering 
     \includegraphics[width=0.95\textwidth]{../figures/pl_osc.pdf}
-    \caption[Time resolved fluorescence from an oscillating probe]{Time resolved fluorescence from an oscillating probe.}
+    \caption[Time resolved fluorescence from an oscillating probe]{Time resolved fluorescence from an oscillating probe driven at various excitation amplitudes and a fixed frequency of $\sim\qty{32}{\kilo\hertz}$. The fluorescence increases when the readout occurs with the emitter is directly under the maximum of the Gaussian excitation beam.}
     \label{fig:pl_osc}
 \end{figure}
+
+With the synchronization between mechanical oscillation of the probe and control pulse sequence established, the gradiometry phase can be measured. To this end, the probe is approached with a current carrying wire that can be easily localized and the {{\O}}rsted field controlled with the applied voltage. This also allows for testing on the same sample a lock-in measurement, which is simply gradiometry but with synchronization to the applied voltage instead.
+
+A conventional magnetometry scan is performed to localize the probe over a region with strong magnetic gradient. The measurements are then done in lift-off mode. A conventional CPMG-1 sequence is performed and the $T_2$ time estimated. This is used to define a reasonable interrogation time $\tau$ for the gradiometry sequence. It is assumed that the voltage trigger levels are set such that successful triggering takes place. These values are optimized as well to minimize time $t_0$, such that measurement dead time is reduced (see \cref{app:phase_volt}). 
 
 \begin{figure}[h]
     \centering 

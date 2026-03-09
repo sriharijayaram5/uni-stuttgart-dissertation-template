@@ -18,7 +18,8 @@
   draft=false
 ]{scrbook}
 \usepackage[utf8]{inputenc} % Allows UTF-8 input
-\usepackage[T1]{fontenc}    % Better font encoding for accents
+\usepackage[T1]{fontenc}
+\usepackage{lmodern} % Highly recommended alongside T1 to prevent pixelation,
 \usepackage{textcomp}       % Provides \textminus and other symbols
 
 \newcommand{\IfDraft}[1]{\ifx\@draft\@undefined \else #1 \fi}
@@ -334,7 +335,8 @@
 
 \usepackage[
   backend=biber,
-  style=nature,    % Loads the standard Nature formatting
+  style=nature,    % Loads the standard Nature formatting,
+  maxbibnames = 99, % List all authors in bibliography
   % sorting=none,  % Nature style implies 'none' (sorted by appearance), so this is optional
   isbn=false,      % Nature doesn't use ISBNs
   url=false,       % Nature doesn't print URLs for articles
@@ -430,7 +432,7 @@
 % \usepackage[group-minimum-digits=4,per-mode=fraction]{siunitx}
 \usepackage[group-minimum-digits=4,per-mode=fraction]{siunitx}
 \sisetup{
-    mode = match,             % Match the font of the surrounding text
+    mode = text,              % Use the surrounding text font
     propagate-math-font = true,
     reset-math-version = false,
     reset-text-family = false,
@@ -682,11 +684,9 @@
     % textfont=small          % Makes caption text slightly smaller than body text
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 1. Stop subcaption from adding its own parens (to avoid double parens like ((a)))
-\usepackage[labelformat=simple]{subcaption}
-
-% 2. Bake the parens into the counter itself so \cref and \ref see them
-\renewcommand\thesubfigure{(\alph{subfigure})}
+% Configure subcaptions to have the format "(a): Caption"
+\usepackage{subcaption}
+\captionsetup[subfigure]{labelformat=parens, labelsep=colon}
 \usepackage{makecell}
 \usepackage{etoolbox}
 % \AtBeginEnvironment{table}{\footnotesize}
