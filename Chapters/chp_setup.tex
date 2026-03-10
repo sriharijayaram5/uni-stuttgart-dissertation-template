@@ -51,7 +51,7 @@ A description of the components of the optical head is as follows: the single mo
 \begin{figure}[h]
     \centering 
     \centering 
-    \includegraphics[width=0.66\textwidth]{../figures/optical_head.pdf}
+    \includegraphics[width=0.95\textwidth]{../figures/optical_head.pdf}
     \caption[Illustration of microscope optical head]{Simplified illustration of the optical head. The head has two main arms for excitation and collection, with mirror blocks connecting them together. An additional arm collects the laser back reflection onto a camera. The bottom two mirror blocks guide the beams to and from the objective at the end of the sample stick.}
     \label{fig:opt_head}
 \end{figure}
@@ -61,7 +61,7 @@ The construction allows for the permanent mounting of the optics head to the top
 \begin{figure}[h]
     \centering 
     \centering 
-    \includegraphics[width=0.66\textwidth]{../figures/confocal.pdf}
+    \includegraphics[width=0.75\textwidth]{../figures/confocal.pdf}
     \caption[Confocal image of SQM tip]{Confocal image of fluorescence from a commercial SQM tip (R01B-F6-D1, Qnami).}
     \label{fig:confocal}
 \end{figure}
@@ -107,7 +107,7 @@ The implementation in this system requires a similar input of `phase' in degrees
 
 \begin{figure}[h]
     \centering 
-    \includegraphics[width=0.66\textwidth]{../figures/qcontrol.pdf}
+    \includegraphics[width=0.95\textwidth]{../figures/qcontrol.pdf}
     \caption[Resonance curves under Q control]{Resonance curves measured with various Q control parameters. Increasing $A_{exc}$ and feedback parameter decreases the Q factor while maintaining the $HF_{amp}$.}
     \label{fig:qcontrol}
 \end{figure}
@@ -202,7 +202,7 @@ when the pulse sequence is centered with respect to the tuning fork oscillation.
 
 Let the state before the final pulse be $|\psi_{eq}\rangle = \frac{1}{\sqrt{2}} \left( |0\rangle + e^{i\phi} |1\rangle \right)$. A $\pm X$ pulse rotates the $y$ component to the $\pm z$ axis. The projection is $\pm \sin\phi$. A $\pm Y$ pulse rotates the $x$-component to the $\mp z$-axis. The projection is $\mp \cos\phi$. Taking the ratio of the differential signals yields the tangent of the phase:
 
-\begin{equation}
+\begin{equation}\label{eq:four_phase}
     \begin{split}
         \frac{C_{X}-C_{-X}}{C_{-Y}-C_{Y}} = \frac{2\sin\phi}{2\cos\phi} = \tan\phi \\
         \phi = \text{arctan}\left (\frac{C_{X}-C_{-X}}{C_{-Y}-C_{Y}} \right ).
@@ -229,11 +229,24 @@ As a first step in performing gradiometry measurements, the synchronization of t
 
 With the synchronization between mechanical oscillation of the probe and control pulse sequence established, the gradiometry phase can be measured. To this end, the probe is approached with a current carrying wire that can be easily localized and the {{\O}}rsted field controlled with the applied voltage. This also allows for testing on the same sample a lock-in measurement, which is simply gradiometry but with synchronization to the applied voltage instead.
 
-A conventional magnetometry scan is performed to localize the probe over a region with strong magnetic gradient. The measurements are then done in lift-off mode. A conventional CPMG-1 sequence is performed and the $T_2$ time estimated. This is used to define a reasonable interrogation time $\tau$ for the gradiometry sequence. It is assumed that the voltage trigger levels are set such that successful triggering takes place. These values are optimized as well to minimize time $t_0$, such that measurement dead time is reduced (see \cref{app:phase_volt}). 
+A conventional magnetometry scan is performed to localize the probe over a region with strong magnetic gradient. The measurements are then done in lift-off mode. A conventional CPMG-1 sequence is performed and the $T_2$ time estimated. This is used to define a reasonable interrogation time $\tau$ for the gradiometry sequence. It is assumed that the voltage trigger levels are set such that successful triggering takes place. These trigger values are optimized as well, to minimize time $t_0$ such that measurement dead time is reduced (see \cref{app:phase_volt}). 
 
 \begin{figure}[h]
     \centering 
     \includegraphics[width=0.95\textwidth]{../figures/phase_osc.pdf}
-    \caption[Phase acquired oscillating above a static field]{Phase acquired oscillating above static field.}
+    \caption[Phase acquired oscillating above a static field]{Phase acquired oscillating above static field. The mechanical oscillation is at $\sim\qty{195}{\kilo\hertz}$. The phase is collected by a four-phase CPMG-1 measurement and readout. }
     \label{fig:phase_osc}
+\end{figure}
+
+The phase measurement with a sweep over $t_0$ is performed to determine the shortest $t_0$ value that gives a strong phase signal. This indicates that the CPMG-1 sequence is performed centered with the mechanical oscillation and therefore centered with the pseudo-oscillating magnetic field. Such a measurement is shown in \cref{fig:phase_osc}. The CPMG-1 sequence with the four-phase readout is loaded onto the AWG as four sequences to be individually triggered. The phase is calculated as in \cref{eq:four_phase}.\footnotemark Note that this measurement is performed for a higher resonance mode of $\sim\qty{195}{\kilo\hertz}$. Here the ideal $t_0$ time is found to be \qty{3}{\micro\second}. 
+\footnotetext{The fluorescence signal is calculated only with a summation method (see \cref{app:pl_osc}).}
+
+The $t_0$ is set to the determined value and a spatial scan of the phase is performed. The measurement is performed at a mechanical oscillation frequency of $\sim\qty{195}{\kilo\hertz}$, voltage of \qty{250}{\milli\volt} with a NV probe showing $T_2=\qty{3.4(5)}{\micro\second}$. The gradiometric phase is then collected at every point in a lift-off manner, along with the topography. The measurement is shown in \cref{fig:grad_xy}. The gradiometry scan achieves high sensitivity, rejection of low frequency noise, and captures the expected gradient of the magnetic field. The voltage across the wire can be reduced to \qty{0.2}{\milli\volt}, such that a signal is not captured anymore by a conventional fast scan. A weak signal of amplitude $\sim B_1=\qty{0.5}{\micro\tesla}$ is still persistent in the gradiometry scan.
+
+This technique is also extended to a lock-in like scheme where the current is oscillated instead at a fixed frequency and the spin control is synchronized with this. This measurement then directly measures the $B_0$ field with high sensitivity\cite{palmImagingSubmicroampereCurrents2022}.
+\begin{figure}[h]
+    \centering 
+    \includegraphics[width=0.95\textwidth]{../figures/grad_xy.pdf}
+    \caption[Gradiometry spatial scan]{Gradiometry spatial scan. The mechanical oscillation is at $\sim\qty{195}{\kilo\hertz}$. (a) AFM micrograph of the region, collected during the measurement. The gold wire made with metal deposition is seen as the higher topographic feature. (b) NV fluorescence collected by averaging over the four-phase readout counts. (c) Conventional magnetometry scan over the same region showing the static magnetic {{\O}}rsted field of the current carrying wire. (d) Gradiometry scan showing the local gradient of magnetic field $B_1$, measured using the techniques described above. The measured phase is unwrapped to create the image shown. Both the scans are performed over comparable time scales. No spatial filtering/smoothing is performed on the data.}
+    \label{fig:grad_xy}
 \end{figure}
