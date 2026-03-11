@@ -64,16 +64,37 @@ Substituting this approximation into the amplitude equation yields the final for
 This derivation assumes strictly one-dimensional motion across the center of the beam spot and neglects axial ($z$-axis) variations in the point spread function. Furthermore, the constant $0.42$ is an ideal diffraction-limited approximation. Aberrations, incomplete pupil filling, wrong estimation of NA, beam shaping due to a emitter in a waveguide, etc. will expand $w_0$, meaning the calculated $\Delta x$ using the ideal formula represents a theoretical lower bound for the true physical amplitude.
 
 \subsection*{Trigger level sweep for gradiometry triggering}\label{app:phase_volt}
-In this system the $V0$ and $V1$ are set to have a constant difference of \qty{200}{\milli\volt}, such that $V0 = V1 + \qty{200}{\milli\volt}$ (see \cref{fig:gradiometry}). In \cref{fig:phase_volt}, $V0$ is swept and the gradiometry phase collected for a fixed $t_0$. This is similar to a $t_0$ sweep but with limited range and only serves the purpose to ensure that the full measurement is optimized by reducing dead time. Setting the trigger level close to the value that gives maximum phase ensures a small $t_0$ time and therefore an oscillation period is not wasted.
+In this system the $V_0$ and $V_1$ are set to have a constant difference of \qty{200}{\milli\volt}, such that $V_0 = V_1 + \qty{200}{\milli\volt}$ (see \cref{fig:gradiometry}). In \cref{fig:phase_volt}, $V_0$ is swept and the gradiometry phase collected for a fixed $t_0$. This is similar to a $t_0$ sweep but with limited range and only serves the purpose to ensure that the full measurement is optimized by reducing dead time. Setting the trigger level close to the value that gives maximum phase ensures a small $t_0$ time and therefore an oscillation period is not wasted.
 \begin{figure}[h]
     \centering 
     \includegraphics[width=0.95\textwidth]{../figures/phase_volt.pdf}
-    \caption[Trigger level sweep for gradiometry]{Trigger level sweep for gradiometry. Triggering by the mechanical oscillation is done with a rearm ($trig0$ or $V0$) and trigger ($trig1$ or $V1$) levels which are independently controlled. Fit done using \cref{eq:grad_fit}. }
+    \caption[Trigger level sweep for gradiometry]{Trigger level sweep for gradiometry. Triggering by the mechanical oscillation is done with a rearm ($trig0$ or $V_0$) and trigger ($trig1$ or $V_1$) levels which are independently controlled. Fit done using \cref{eq:grad_fit}. }
     \label{fig:phase_volt}
 \end{figure}
 
 \subsection*{Gradiometric fluorescence readout}\label{app:grad_pl_readout}
 A technical detail that is important to the realization of all measurements with synchronization of the mechanical oscillation with readout (gradiometric), is the choice of analysis method for the readout. Typically, a normalized mean over the many readout repetitions is performed. The signal window ($\sim\qty{200}{\nano\second}$) is at the beginning of the readout and gives the spin contrast and the reference window of the same width is to the tail of the readout once the steady state population is achieved. The signal is normalized to this reference (mean-norm method). In the case of gradiometric readout, since the fluorescence varies depending on the position of the emitter under the excitation beam (see \cref{fig:pl_osc}), the mean-norm method is invalid. The analysis is therefore only done with a summation over the signal window.
+
+\subsection*{Gradiometric scans}\label{app:grad_xy}
+
+Gradiometric scans are performed with a very low applied voltage of \qty{1}{\milli\volt} across a current carrying wire, the same device as described in the main text. The phase map in \cref{fig:grad_xy_1mV} shows a faintly visible signal corresponding to the edge of the wire. Applying a spatial smoothing filter (symmetric Gaussian kernel of \qty{5}{px} and \qty{11}{px}), the signal can be recovered. The acquisition settings remain the same as described in the main text.
+
+\begin{figure}[h]
+    \centering 
+    \includegraphics[width=0.95\textwidth]{../figures/grad_xy_1mV.pdf}
+    \caption[Gradiometric scans at applied voltage of \qty{1}{\milli\volt}]{Gradiometric scans at applied voltage of \qty{1}{\milli\volt}. (a) Measured fluorescence and phase maps with spatial filtering using symmetric Gaussian kernel of (b) \qty{5}{px}, (c) \qty{5}{px} and (d) \qty{11}{px}.}
+    \label{fig:grad_xy_1mV}
+\end{figure}
+
+The gradiometry technique is easily adapted to function as a lock-in detection method when the sample signal originating from the sample can be modulated and synced with the pulse sequence. Here, the voltage applied across the wire is modulated at $\qty{195}{\kilo\hertz}$ and the pulse sequence is synchronized with the modulation similar to gradiometry. Note, the modulation frequency can be arbitrarily set since there is no limitations due to the probes mechanical oscillation. Nevertheless, the gradiometry settings are retained for easier comparison between measurements. \cref{fig:grad_xy_lockin} shows a lock-in measurement with an applied peak-to-peak voltage of \qty{100}{\milli\volt} and CPMG-1 sequence with four-phase readout. The measured quantity corresponds now to the static magnetic filed $B_0$.
+
+\begin{figure}[h]
+    \centering 
+    \includegraphics[width=0.95\textwidth]{../figures/grad_xy_lockin.pdf}
+    \caption[Lock-in detection method]{Lock-in detection method using a modulated driving voltage of \qty{100}{\milli\volt} at $\qty{195}{\kilo\hertz}$, and corresponding synchronized pulse sequence CPMG-1. (a) Measured fluorescence and (b) phase map.}
+    \label{fig:grad_xy_lockin}
+\end{figure}
+
 
 \section{Nanofabrication}
 
