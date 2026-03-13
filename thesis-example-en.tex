@@ -19,8 +19,14 @@
 ]{scrbook}
 \usepackage[utf8]{inputenc} % Allows UTF-8 input
 \usepackage[T1]{fontenc}
+\usepackage{fix-cm}
 \usepackage{lmodern} % Highly recommended alongside T1 to prevent pixelation,
 \usepackage{textcomp}       % Provides \textminus and other symbols
+
+\RequirePackage{silence}
+\WarningsOff[latexfont] % Suppresses all 'latexfont' category warnings
+\WarningFilter{latex}{Font shape} % Specifically filters remaining font shape substitutions
+\WarningFilter{latex}{Some font shapes}
 
 \newcommand{\IfDraft}[1]{\ifx\@draft\@undefined \else #1 \fi}
 \usepackage{iftex}
@@ -692,7 +698,7 @@
 % \AtBeginEnvironment{table}{\footnotesize}
 % \AtBeginEnvironment{tabular}{\footnotesize}
 \usepackage{tipa}
-
+% \usepackage{physics}
 \DeclareCiteCommand{\preamblecite}
   {\usebibmacro{prenote}%
    \clearfield{doi}%
