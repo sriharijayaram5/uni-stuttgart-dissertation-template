@@ -73,27 +73,56 @@ with the hyperfine terms being $a_{\parallel} = \qty{-2.14(7)}{\mega\hertz}$ and
 
 For ultrapure CVD grown sample of type IIa diamond with $<\qty{5}{ppb}$ \ce{N}, the ground state spin coherence can extend from a few \qty{100}{\micro\second} to a few \unit{\milli\second} using dynamic decoupling\cite{childressCoherentDynamicsCoupled2006}, isotope engineering\cite{balasubramanianUltralongSpinCoherence2009}, or by n-type doping\cite{herbschlebUltralongCoherenceTimes2019}.
 
-These mechanisms of spin state dependant fluorescence and optical spin polarization, along with coherent spin state control, establish the NV center as an excellent optically addressable qubit. A simple gated illumination and readout experiment shows these properties. \cref{fig:nv_odmr} shows such a measurement. The first $\sim\qty{300}{\nano\second}$ shows a significant differenct
+These mechanisms of spin state dependant fluorescence and optical spin polarization, along with coherent spin state control, establish the NV center as an excellent optically addressable qubit. This can be easily seen in an CW-ODMR (continuous wave optically detected magnetic resonance) measurement as shown in \cref{fig:nv_odmr}. The NV center is constantly illuminated by a laser as the applied MW frequency is swept, while the fluorescence is recorded.  As the microwave is resonant with GS ZFS of $\qty{2.87}{\giga\hertz}$, a fluorescence dip is observed.
 
 \begin{wrapfigure}{}{0.5\textwidth}
     \begin{center}
         \includegraphics[width=0.5\textwidth]{../figures/odmr_line.pdf}
     \end{center}
-        \caption[]{Reused with permission from John Wiley and Sons\cite{jelezkoSingleDefectCentres2006}.}
+        \caption[CW-ODMR measurement of NV center]{CW-ODMR measurement of NV center. Reused with permission from John Wiley and Sons\cite{jelezkoSingleDefectCentres2006}.}
         \label{fig:nv_odmr}
 \end{wrapfigure}
+
+A simple gated illumination and readout experiment further explains these properties. \cref{fig:pulsed_readout} shows such a measurement. The first $\sim\qty{300}{\nano\second}$ shows a significant difference in fluorescence due to the spin dependant transition to the shelving states and the lifetime of the shelving states. When the initial state is $\ket{0}$, then more optical cycles of excitation and emission takes places compared to the $\ket{\pm}$ state, due to the higher ISC rate for $\ket{\pm}$. The fluorescence shows a contrast for the duration of the lifetime of the shelving states. The steady state is then achieved between the deshelving rates, excitation, and shelving rates. Due to the higher deshelving rate for $\ket{0}$, an overall polarization into $\ket{0}$ is realized. The initial $\ket{\pm}$ state in this measurement is achieved using a short MW pulse in resonance with the $\ket{0}\leftrightarrow\ket{\pm}$ that achieves a coherent population transfer to $\ket{\pm}$.
 
 \begin{figure}[h]
     \centering 
     \includegraphics[width=0.95\textwidth]{../figures/odmrA.pdf}
-    \caption[]{Reused with permission from American Physical Society\cite{dreauAvoidingPowerBroadening2011}.}
+    \caption[Gated excitation and readout of NV center]{Gated excitation and readout of NV center. Inset shows effective ODMR contrast for various integration times. Reused with permission from American Physical Society\cite{dreauAvoidingPowerBroadening2011}.}
     \label{fig:pulsed_readout}
 \end{figure}
+
+Microwave pulses of arbitrary length are used to create a superposition of the $\ket{0}$ and $\ket{\pm}$ states with arbitrary coefficients. For a Rabi frequency $\Omega_{MW}$, and a MW pulse of duration $t$, can create a state $\psi(t) = sin(\Omega_{MW} t)\ket{0} + cos(\Omega_{MW} t)\ket{\pm}$. The fluorescence changes depending on the magnitude of $cos^2(\Omega_{MW} t)\ket{\pm}$. This results in a periodical variation in the fluorescence intensity as function of the MW pulse length\cite{jelezkoSingleDefectCentres2006}. These oscillations are Rabi nutations and their frequency scales linearly with the MW field amplitude\cite{jelezkoObservationCoherentOscillations2004}. \cref{fig:rabi_osc} shows Rabi oscillations of a single NV center for two different MW powers, showing an increase in oscillation frequency for increased MW power. A gated excitation and readout is performed for such a measurement. 
+
+The MW duration that corresponds to the first maximal decrease in fluorescence or $t = \frac{\pi}{\Omega_{MW}}$ is a $\pi$-pulse. The initialization of the NV center into $\ket{0}$ is done optically as previously detailed, and the coherent transfer of population to $\ket{\pm}$ is done with a $\pi$-pulse. A coherent superposition state $\psi_0 = \frac{1}{\sqrt{2}}(\ket{0}+\ket{\pm})$ is prepared with a $\frac{\pi}{2}$-pulse. The initial rotation of the state can be said to be a rotation around the $x$-axis (orthogonal to $z$) and the following MW rotations that are in phase are denoted as a $(\frac{\pi}{n})_x$ pulse and  a pulse with \ang{90} phase difference to the initial pulse is denoted as a $(\frac{\pi}{n})_y$, corresponding to a rotation around the $y$-axis, orthogonal to the $xz$-plane.
 
 \begin{wrapfigure}{}{0.5\textwidth}
     \begin{center}
         \includegraphics[width=0.5\textwidth]{../figures/rabi_osc.pdf}
     \end{center}
-        \caption[]{Reused with permission from John Wiley and Sons\cite{jelezkoSingleDefectCentres2006}.}
+        \caption[Rabi oscillation of single NV center]{Rabi oscillation of single NV center. The solid circles corresponds to a drive with higher MW power compared to the open circles. The fit is with a $cos^2(\Omega_{MW} t)$ function. Reused with permission from John Wiley and Sons\cite{jelezkoSingleDefectCentres2006}.}
         \label{fig:rabi_osc}
 \end{wrapfigure}
+
+A Ramsey measurement can be used a sensitive measurement of detuning of the driving  MW field or conversely the change in external magnetic field from a field $B_{sense}$. Using the previously described pulses, starting from an initial state of $\ket{0}$, a superposition state is prepared with a $\frac{\pi}{2}$-pulse. The detuning due to $B_{sense}$ during the preparation $\frac{\pi}{2}$-pulse is neglected (nevertheless this can be used for sensing\cite{herbQuantumMagnetometryTransient2025}). In the superposition state, during a free-precession time $\tau$, the spin evolves with the frequency of the detuning and accumulates a phase $\phi$. A final $\frac{\pi}{2}$-pulse is used to rotate the spin back to the $z$ axis to map the signal as a population difference in $\ket{0}$. This measures the phase $\phi$ acquired during the free evolution time due to the detuning. The value of $B_{sense}$ is determined by relating this population difference to $\phi$. The state after interaction is given by
+
+\begin{equation}
+    \psi = \cos \left( \frac{\phi-\theta}{2} \right) \ket{+} + i e^{i\theta} \sin \left( \frac{\phi-\theta}{2} \right) \ket{0},
+\end{equation}
+
+for a global phase $\theta$. For spin projection operator $S_z$, we obtain,
+
+\begin{equation}
+    \begin{split}
+        \langle S_z \rangle &= \frac{\hbar}{2} \langle \psi \rvert \sigma_z \lvert \psi \rangle \\
+    &= \frac{\hbar}{2} \left[ \cos^2\left( \frac{\phi - \theta}{2} \right) - \sin^2\left( \frac{\phi - \theta}{2} \right) \right] \\
+    &= \frac{\hbar}{2} \cos(\phi - \theta) \\
+    &= \frac{\hbar}{2} \cos(\gamma_e B_{\text{sense}} \tau - \theta)
+    \end{split}
+\end{equation}
+The cosinusoidal fluctuations of the $\langle S_z \rangle$ observable are called Ramsey fringes. This analogous to a free-induction decay (FID) measurement in NMR, and denotes the decay time as $T_2^*$, which is a convention carried over to quantum sensing.
+
+The Ramsey pulse sequence can be modified by an additional $\pi$-pulse in between the $\frac{\pi}{2}$-pulses, during the free evolution time $\tau$. The phase $\phi$ that is accumulated during $\tau/2$ from a constant detuning, is perfectly cancelled out during the second half of the free evolution, by accumulating $-\phi$. This can also be understood using the commutation property $\{\hat{\sigma}_x, \hat{\sigma}_z\} = 0$ of the spin operators. For the evolution of the superposition state, with detuning $\Delta$, the evolution operator is 
+$\hat{U}_{\frac{\tau}{2}} = \exp(-i\Delta \hat{S}_z \tau/2)$. This state is refocused with a $\pi$-pulse, $\hat{U}_\pi = \hat{\sigma}_x$. The refocusing then looks like
+$$\hat{U} = \hat{U}_{\frac{\tau}{2}} \hat{U}_\pi \hat{U}_{\frac{\tau}{2}}$$
+$$\hat{U} = \hat{\sigma}_x$$, which is simply the $\pi$-pulse, without any dependence on $\Delta$. This is the Hahn-echo sequence which can extend the $T_2^*$ lifetime of Ramsey to the $T_2$ lifetime, by cancelling out the slow varying magnetic fluctuations, setting the stage for dynamical decoupling sequences\cite{barrySensitivityOptimizationNVdiamond2020}.
