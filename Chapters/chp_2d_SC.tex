@@ -1,5 +1,5 @@
 % !TEX root = ../thesis-example-en.tex
-\chapter{Probing 2d superconductivity}\label{sec:fabrication}
+\chapter{Probing 2D superconductivity}\label{sec:fabrication}
 \begin{flushright}
     \begin{minipage}{0.85\textwidth}
         \small
@@ -10,7 +10,7 @@
 
 \section{Introduction}
 
-\section{2d superconductivity}
+\section{2D superconductivity}
 
 \section{Scanning quantum microscopy}
 
@@ -144,4 +144,43 @@ Nanoscale spatiotemporal imaging of vortices in few-layer 2D superconductors is 
 
 The dynamics of the superconductor spatially and over temperature is investigated, revealing unexpected noise. Both the spatial arrangement and dynamic behavior of vortices at low magnetic fields have significant implications for the collective macroscopic response of the system, as measured by transport, nuclear magnetic resonance, and other indirect techniques. This work establishes direct imaging of superconductors, particularly with SQM to be an essential tool for the study of solid state physics.
 
-\subsection{Step junctions in 2D superconductors}
+\section{Step junctions in 2D superconductors}
+
+The study of 2D superconductors frequently encounters structural inhomogeneities inherent to the mechanical exfoliation process. This is detailed in the previous section. These inhomogeneities are largely ignored for investigator using non-local and spatially averaging probes, but it can be seen that the local arrangement of vortices and the superconducting order parameter is strong influenced by the inhomogeneities and finite spatial extent of the flake\cite{jayaramProbingVortexDynamics2025}.  Unlike epitaxial films, exfoliated flakes often present a terraced morphology characterized by step junctions. These junctions are interfaces where the layer count, and thus the physical thickness, changes abruptly over a sub-nanometer vertical scale\cite{fridmanAnomalousThicknessDependence2025}. These junctions pose a challenge for non-local probes as the measured properties have their organ over two sample thickness and their transition region. Nevertheless, with spatial resolution these junctions provide a unique experimental platform. They allow for the simultaneous interrogation of two distinct superconducting regions within a single exfoliated crystal, facilitating a direct comparison of their magnetic and electronic responses under identical conditions. The transition region between the two regions can also present unique phenomena. 
+
+In 2D superconductors where the film thickness $d$ is significantly smaller than the bulk London penetration depth $\lambda$, magnetic field screening becomes markedly less efficient. In this regime, the characteristic length scale for magnetic field distribution is governed by the Pearl length $\Lambda = \frac{2\lambda^2}{d}$. The Pearl length is inversely proportional to the film thickness, meaning that variations in the number of atomic layers result in changes to the vortex magnetic profile. Consequently, a step junction represents a spatial discontinuity in the superfluid density. SQM imaging reveals that vortices in thinner regions exhibit broader, more diffuse magnetic field distributions compared to those in thicker terraces, where screening is more robust\cite{jayaramProbingVortexDynamics2025,fridmanAnomalousThicknessDependence2025}. 
+
+Step junctions act as geometric barriers or pinning centers for magnetic vortices. As a vortex approaches a step, it encounters a gradient in its self-energy due to the change in $\Lambda$ and the associated magnetic flux distribution\cite{agassiThicknessdependentPinningSuperconductor2007}. This interaction can lead to the accumulation of vortices along the step edge, where the energetic cost of crossing the thickness discontinuity is maximized. Furthermore, the asymmetry at these junctions can induce non-reciprocal vortex motion, a phenomenon recently identified as the superconducting vortex diode effect\cite{gutfreundDirectObservationSuperconducting2023}. This asymmetry could alter the reciprocity of the critical current required to depin a vortex and become dependent on the direction of the Lorentz force relative to the step geometry\cite{suriNonreciprocityVortexlimitedCritical2022,leeReducingVortexDensity1999}.
+
+At the interface of a step junction, the superconducting wavefunction from the adjacent regions must satisfy boundary conditions that enforce phase coherence. If the transition between thicknesses is sufficiently sharp, the junction may behave as a weak link, hosting Josephson-like dynamics\cite{yabukiSupercurrentVanWaals2016}. Magnetic imaging provides insights into the proximity effects between layers of varying thickness at and away from the junctions. SQM provides an excellent tool to map the static and dynamic magnetic signatures with high spatial resolution and over a wide range of temperatures and magnetic fields. The probe is not affected by large step sizes or residue and bubbles that are a consequence of exfoliation processes.
+
+\subsection{SQM imaging of a step junction in \ce{NbSe2}}
+
+Steps junctions in \ce{NbSe2} are created during the exfoliation process, and they typically exhibit a step height of a few \unit{\nano\meter}, corresponding to a few layers. The step junction is initially identified using a confocal scan of the sample. The optical microscope image of the sample can identify under DIC contrast the difference in layer count. Identifying markers such as bubbles and residue is used to compare with the confocal image, since these markers often show as bright features. Once the step edge is located the, the SQM scan is performed. An SQM scan on relatively thick \ce{NbSe2} flake is shown in \cref{fig:step_s6}. A slow field cooling procedure from above $T_c$ is performed to ensure a relaxed vortex lattice and reproducible measurement conditions. The temperature is also set to be above the base temperature of the measurement cryostat to ensure sufficient cooling power to the sample and probe, and therefore a reliable and accurate temperature throughout the measurement.
+
+\begin{figure}[h]
+    \centering 
+    \includegraphics[width=0.95\textwidth]{../figures/step_s6.pdf}
+    \caption[SQM scan on a \ce{NbSe2} step junction]{(a) SQM topography scan on a \ce{NbSe2} flake of thickness $\sim\qty{30}{\nano\meter}$ in the thicker region and step to the thinner region of thickness $\sim\qty{29}{\nano\meter}$. The thicker region of the flake is to the left side. (b) SQM magnetometry of the same region. The measurements are performed at \qty{3}{\kelvin} with a magnetic field of \qty{70}{\milli\tesla} applied along the axis of the probe's NV center with a slow cooldown procedure. }
+    \label{fig:step_s6}
+\end{figure}
+
+The topography SQM image shows a few features, although the height resolution and noise is quite high due to some difficulty in maintaining tip sample contact. To the top left, the \ce{NbSe2}-\ce{hBN} step edge is visible, allowing the confirmation of the meissner effect of the superconductor. From the left to the right of the flake a very faint step edge is visible. This step edge corresponds to a height difference of $\sim\qty{0.7}{\nano\meter}$ or one layer. There is also a small bubble visible in the topography, which can be used for repeated identification of the region. The SQM magnetometry reveals many interesting details. 
+
+The two thickness regions are clearly visible in their different partial screening of the bias magnetic field. The thinner region to the right of the flake exhibits weaker screening of the field visible as reduced intensity of the blue (negative) regions. The vortices also appear to be more irregular and merging into each other as compared to the other region. Nevertheless, due to the relatively large thickness ($\sim\qty{30}{\nano\meter}$) of the entire flake the vortex arrangement is more uniform than the previously investigated samples, which only a few layers. 
+
+Approaching the thicker region to the left, a seemingly merged line of vortices is visible. These vortices appear to be elongated, and merging into one another in the direction defined by the step edge. The accumulation is seemingly only on the thinner flake side. On thicker side, the Meissner effect at the boundaries show interesting behavior. The width of the boundary Meissner region at the step edge is $\sim\qty{100}{\nano\meter}$ more as compared to the sample edge. The field repulsion is also stronger at the step edge, showing a field reduction of $\sim\qty{30}{\micro\tesla}$ more than the sample edge. These render the  edge's magnetic signature significantly more visible than in the topography. 
+
+To the left of the edge, expected behavior is visible again. The partial Meissner screening is stronger on the thicker region and a more negative magnetic field value is seen, with the vortices seemingly better separated. The vortices still exhibit irregular shapes and arrangement. 
+
+\subsection*{Magnetic field dependence - step junction in thin \ce{NbSe2}}
+
+The difference in the magnetic field response between thin and thick \ce{NbSe2} can be strong (see \cref{fig:thick_thin}). The vortices appear in a more irregular pattern and the Meissner response is weaker. The magnetic signature of such a flake along with a step edge is interesting. \cref{fig:step_fields} show the SQM magnetometry of a flake of thickness $\qty{12.55}{\nano\meter}$ corresponding to 17 layers in the thick region and $\qty{5.03}{\nano\meter}$ corresponding to 5 layers in the thin region.
+
+\begin{figure}[h]
+    \centering 
+    \includegraphics[width=0.95\textwidth]{../figures/step_fields.pdf}
+    \caption[Magnetic field dependence - SQM scan on a \ce{NbSe2} step junction]{ SQM magnetometry of a \ce{NbSe2} flake of thickness $\qty{12.55}{\nano\meter}$ in the thicker region and step to the thinner region of thickness $\qty{5.03}{\nano\meter}$. The measurements are all performed at approximately the same region (see \cref{fig:step_app}) at \qty{3.1}{\kelvin}. The applied magnetic field are (a) \qty{24}{\milli\tesla}, (b) \qty{70}{\milli\tesla}, (c) \qty{165}{\milli\tesla}, and (d) \qty{200}{\milli\tesla} along the axis of the probe's NV center with a slow cooldown procedure.}
+    \label{fig:step_fields}
+\end{figure}
+

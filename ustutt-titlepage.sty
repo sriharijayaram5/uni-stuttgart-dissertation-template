@@ -14,6 +14,7 @@
 \def\@secondexaminer{
 	\@latex@warning@no@line{Package `ustutt-titlepage': No \noexpand\secondexaminer given}}
 \newcommand*{\dateofexamination}[1]{\def\@dateofexamination{#1\xspace}}
+\newcommand*{\examchair}[1]{\def\@examchair{#1\xspace}}
 \def\@dateofexamination{
 	\@latex@warning@no@line{Package `ustutt-titlepage': No \noexpand\dateofexamination given}}
 \newcommand*{\placeofbirth}[1]{\def\@placeofbirth{#1\xspace}}
@@ -62,7 +63,7 @@
        genehmigte Abhandlung \par}
       %\bigskip
       \vspace{25pt}
-      {Vorgelegt von \par}
+      {vorgelegt von \par}
       \vspace{.8ex}
       {\large \@author \par}
       \vspace{.8ex}
@@ -71,6 +72,7 @@
       \begin{tabular}{ll}
       	\textbf{Hauptberichter:} & \@firstexaminer \\
       	\textbf{Mitberichter:} & \@secondexaminer \\
+      	\textbf{Prüfungsvorsitzender:} & \@examchair \\
       	&\\
       	\textbf{Tag der m\"undlichen Pr\"ufung:} & \@dateofexamination
       \end{tabular}
