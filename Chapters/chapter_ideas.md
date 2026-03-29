@@ -27,12 +27,12 @@
   * 2D superconductivity motivation
   * SQM for 2DSC motivation
   * add info of Jayich and Meriles paper
-  * info on contrast loss on contact with NbSe2
+  * ~~info on contrast loss on contact with NbSe2~~
   * info on applied field hysteris of magnetic and how to ramp it to zero
   * add in dynamics theory - expand on Pipim's work - attribute
   * setup chapter - information on magnet specs - base temperature - operable frequency ranges and ele. limits
-  * step edge - effect of the proximity to the sample edge - finite sample effect - vortices seemingly nucleated and entering from edge
-
+  * ~~step edge - effect of the proximity to the sample edge - finite sample effect - vortices seemingly nucleated and entering from edge~~
+  * ~~nice picture from sample S6~~
 
 File locations
 

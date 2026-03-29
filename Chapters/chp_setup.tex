@@ -26,7 +26,7 @@ The optical head is a standalone confocal microscope excitation and collection s
 
 The use of the cage system allows for permanent mounting of the optics head onto the sample stick due to its integrated design and light weight. The lasing and detection system is built on small mobile optical table that allows with only two fiber connections between the optics head and itself. To enable easier handling, the optics head and sample stick (amounting to $\sim\qty{8}{\kilo\gram}$) are inserted/retracted from the cryostat using a crane built onto the cryostat frame. This also ensures that the relatively low rigidity sample stick is not bent and maintains optical alignment. 
 
-\subsection*{Excitation system}
+\subsection{Excitation system}
 
 The excitation system is designed as a standalone unit that can be easily separated from the optical head where it is connected to with one single mode fiber. The system itself is built on a mobile optical table, allowing easy access around the cryostat when necessary. This also allows easy alignment of the optical system independent of the optical head. 
 
@@ -42,14 +42,13 @@ The laser is an `Opus Gem' at \qty{532}{\nano\meter}. The linear polarized beam 
 
 The advantage of using an AOM is a high extinction ratio and fast switching of the laser. This AOM driver also allows for easy control of the laser power with an analog voltage input, which allows for pulse sequences that require control of excitation power\cite{wirtitschExploitingIonizationDynamics2023b} and relative control of power between different types of measurements.
 
-\subsection*{Optical head}
+\subsection{Optical head}
 
-The optical head is the next system in line that is developed for the NV microscope. It is designed to be compact, easy to align and modify, and allows for complete control of the optics. It can also so be further extended to other wavelengths to allow for spin-to-charge conversion readout\cite{shieldsEfficientReadoutSingle2015}. The cage system construction also makes it an easy to remove single unit, with the possibility of adding in drop-in optical elements. A simplified illustration of the optical head is shown in \cref{fig:opt_head}.
+The optical head is the next system in line that is developed for the NV microscope. It is designed to be compact, easy to align and modify, and allows for complete control of the optics. It can also so be further extended to other wavelengths to allow for multi-wavelength readout schemes like spin-to-charge conversion readout\cite{shieldsEfficientReadoutSingle2015} or to be used to address other color centers. The cage system construction also makes it an easy to remove single unit, with the possibility of adding in drop-in optical elements. A simplified illustration of the optical head is shown in \cref{fig:opt_head}.
 
 A description of the components of the optical head is as follows: the single mode (SM) polarization maintaining fiber from the excitation system is coupled to the optical head at the top. The collimation of the laser is done with an Olympus \qty{0.25}{NA} objective. The polarization is rotated with a HWP mounted on a motorized rotation stage. The laser is cleaned up with a \qty{532}{\nano\meter} band pass (BP) filter. The beam is directed downwards with two angled mirrors, and passes through a 90:10 beam splitter (BS), and a short pass dichroic mirror (DM). Two angled mirrors further align the beam to the high-NA low temperature objective at the end of the sample stick. The fluorescence collected by the objective is directed by the last two angled mirrors onto the DM, where it is reflected onto the collection path. The shorter wavelengths are directed onto the back reflection imaging camera. The collection path has a long pass (LP) \qty{650}{\nano\meter} filter, and an aspheric lens to focus the fluorescence on a multi-mode (MM) fiber.
 
-\begin{figure}[h]
-    \centering 
+\begin{figure}[htbp]
     \centering 
     \includegraphics[width=0.95\textwidth]{../figures/optical_head.pdf}
     \caption[Illustration of microscope optical head]{Simplified illustration of the optical head. The head has two main arms for excitation and collection, with mirror blocks connecting them together. An additional arm collects the laser back reflection onto a camera. The bottom two mirror blocks guide the beams to and from the objective at the end of the sample stick.}
@@ -60,15 +59,29 @@ The construction allows for the permanent mounting of the optics head to the top
 
 \begin{figure}[h]
     \centering 
-    \centering 
     \includegraphics[width=0.75\textwidth]{../figures/confocal.pdf}
     \caption[Confocal image of SQM tip]{Confocal image of fluorescence from a commercial SQM tip (R01B-F6-D1, Qnami).}
     \label{fig:confocal}
 \end{figure}
 
+There are some technical and finer details that make this a robust construction. Due to the long path length and frequent realignment involved when optimizing for different probes, it is favorable to use quartz based wave plates. This is because polymer based wave plates have a much larger beam deflection angle compared to quartz based, which along with the long beam path, can result in a wandering beam at the objective. To achieve a rigid construction it is important to reduce the number of components used and also to spatially arrange them such that the torque on the cage rods are minimal. The lengths of the cage rods are also kept to a minimum when possible. This also offers a low weight design as a result. Further, wherever possible, there are foam pads inserted in between the cage plates to reduce any scattering of light in and out of the optics head. A further improvement that could be made but was not available at the time is the use of elliptical mirrors instead of circular. These increase the effective mirror area at a \ang{45} making alignment easier. It is also noted that there are offerings of optical filter and dichroic housing cubes that are swappable in place, which also make a promising improvement in flexibility.
+
 The optics head achieves high counts from commercially available SQM tips. \cref{fig:confocal} shows an exemplary confocal scan take at $\sim\qty{100}{\micro\watt}$ of excitation power. The NV center is the fluorescent bright spot roughly at the center of the tip. The spatial profile of this spot is also indicative the well-designed and aligned confocal optics, owing to the gaussian like emission and good background suppression. The outline of the tip can be identified by scattering that occurs at the boundary. The larger area to the bottom that also exhibits enhanced scattering is the glue that is used to attach the diamond cantilever to the holder.
 
-\subsection*{Spin control}
+\subsection{Spin control - MW system}
+ Spin control in SQM is the next essential system. The NV center's electron spin is coherently controlled by applying an external MW field. To precisely control the state of the electron spin, the phase and duration of the control pulses must be well-defined and capable of being arbitrarily controlled. This system involves various hardware components and considerations that are detailed in the following section.
+
+ MW driving off the spin is typically done with some combination of a MW generator, a fast switching device for the MW signal, and an amplifier. The MW device provides a coherent signal at one frequency, and an external device mixes and sweeps this frequency, or the MW device itself is capable of frequency sweeps. The speed at which these configurations can switch between frequencies is important to reduce measurement overhead. Multiple combination of these approaches have been used in this system before settling on the current approach. The key consideration is to achieve maximum measurement flexibility along with low time overhead.
+
+ The system uses an SGS100a MW vector signal generator (Rohde \& Schwarz) with in built IQ-modulation and frequency range of \qty{30}{\mega\hertz} to  \qty{12.75}{\giga\hertz}. The IQ modulator is driven by the AWG DN2.663-04 16-bit system (Spectrum Instrumentation) with 4 analog outputs of up to 1.25 \qty{1.25}{\giga S\per\second} and 6 synchronous digital marker outputs. The AWG acts as the master control of the experiments, using the digital outputs as triggers for the other devices as the Pulse Streamer and Time Tagger (Swabian Instruments) which are the digital pulsing and fast counting devices. These two devices are used mainly for controlling the optical readout, i.e., the laser power and pulse duration and the counting of the pulses from the APD. This master to slave layout of AWG to readout devices is also beneficial for complex and large pulse sequences that can then make use of the AWG's sequence replay features\cite{spectrumAWG} that would otherwise run into memory issues. It can also make use of the many digital ports available on the Pulse Streamer with a simple trigger pulse. A MW amplifier (ZHL-25W-63+, Mini-Circuits) is used to increase the delivered MW power.
+
+ The MW pulses are generated in the following manner. The signal generator or local oscillator (LO) is set to output a CW frequency $\qty{100}{\mega\hertz}$ away from the targeted transition frequency, with IQ modulation on. The AWG plays on two analog outputs (AO) sinusoids with a frequency corresponding to the same offset of $\qty{100}{\mega\hertz}$. The AOs are connected to the IQ ports of the LO. The output of the LO is then modulated to output at the targeted transition frequency\cite{markiIQ}. This frequency can be easily swept, and the output pulsed simply by sweeping and pulsing the AWG outputs. The phase of the output is set by the AWG output as well. The large frequency offset away from transition frequency for the LO CW setting is to ensure that an unsuppressed LO signal cannot weakly drive the transition. This modulated MW output is then amplified by the MW amplifier.
+ 
+ The MW pulses are guided to into the cryostat with coaxially cables. Semi-rigid coaxial cables are used from the top of the sample stick until final stage of the sample stick cage system. Here, highly-flexible and magnetic field compatible cryogenic cables (elSpec, GmBH) are used for the final connection to the PCB. Care is taken that the cables are not too stiff, and are routed with little tension such that the full range of motion of the fragile nano-positioners and scanners are achieved. If the cables are routed under tension at this stage, the common symptoms are high voltage or frequency required to move and early end of travel range warnings for the nano-positioners, and unexpectedly high amount of sample tilt seen during AFM scans. In the worst case, the z-scanner stage piezo can be dislodged.
+
+ The MW coaxial cable ends with a mini-SMP interface connector that is mated with a surface mounted partner on a custom PCB. The tracks on the PCB are impedance matched to \qty{50}{\ohm} at \qty{3}{\giga\hertz}\cite{CGIWcalc} and laid out with smooth bends. The ground and signal lines terminate on wire bonding pads with an ENIG (Electroless Nickel Gold) finish. The MW signal can then be brought into proximity of the SQM probe using either a thin copper wire across the sample, or a coplanar waveguide that is lithographically created on the sample. A coplanar waveguide is preferred when lithography on the sample is allowed, since the wire being of significant diameter (\qty{30}{\micro\meter}) poses a risk for the fragile SQM probe during sample navigation. The coplanar waveguide is typically created with a \ce{Cr} adhesion layer of \qty{10}{\nano\meter} and \ce{Au} conduction layer of \qty{10}{\nano\meter}. For samples that can be exfoliated this waveguide chip is pre-fabricated and the exfoliation can be done directly on the chip, although the finite thickness of the waveguide can pose issues, such as introduction of bubbles during the transfer of material. 
+
+ The hardware of the spin control system mainly set the limits on the magnetic field ranges accessible to SQM probing. Typically, for large magnetic fields ($\sim\qty{250}{\milli\tesla}$) a field polarization and cooling, and measurement of the remnant effects are performed. 
 
 \section{AFM modalities}
 
@@ -88,7 +101,7 @@ The setpoint for the AFM is the z-control loop setpoint, which is set to the $HF
 
 A common issue for low temperature operation with a control loop dependent on a mechanical oscillator is the very large  Q factors (>5000) that occur due to the temperature and atmosphere. Small perturbations to the oscillator, such as AFM contact, can cause a very large change in the $HF_{amp}$, making the control loop unstable for achievable PID parameters. The result is extremely slow AFM scans or in extreme cases makes AFM contact not possible. This challenge can be largely mitigated by effective understanding and use of Q control\cite{fairbairnResonantControlAtomic2012}, which is possible in the system's AFM controller (ASC500, Attocube/N-Hands).
 
-\subsection*{Q control}
+\subsection{Q factor control}
 An exemplary control loop used to reduce the effective Q factor of the probe is shown in \cref{fig:qcontrol_block}. It makes use of a negative feedback loop of the probe's velocity. This velocity can simply be estimated from the displacement amplitude signal. For commercial AFMs and likely the control implemented in this system, the feedback for a displacement $s$ is defined as
 \begin{equation}
     \centering 
@@ -130,7 +143,7 @@ For high spatial resolution scans, a measurement time speedup is desirable. Mode
 
 On the other hand, a complete PODMR measurement contains multiple points of information (number of peaks, contrast, line center, shape, symmetry), all of which is not necessary for every measurement, to map the magnetic field of a sample. Much of the measurement time is spent collecting the lineshape, which, under the assumption that it stays constant over the sample and for the duration of the measurement, can be disregarded. This assumption holds true for many samples. Even under the change of the linewidth, the line center can be estimated only with the measurement of two points, as long the change of line center is not more than the linewidth over the course of the consecutive measurements. A demonstration of such a measurement with lock-in detection, allowing for real time magnetic field detection is shown by \textcite{schoenfeldRealTimeMagnetic2011}. An adaptation of this lock-in method for PODMR is used in this system to achieve fast measurement times.
 
-\subsection*{Two-point tracking}
+\subsection{Two-point tracking}
 
 The two-point tracking mode, as the name suggest, reduces the measurement to only two frequency points. The frequency points to measure, $f_{\pm}$, are chosen on either side of the last measured resonance, such that $f_{\pm}=f_0\pm\Delta$, for a resonance frequency $f_0$. The $\Delta$ is chosen at the first spatial scan point, based on a measured PODMR spectrum that captures the complete line shape of the resonance. This is done manually by determining the range of linear change in the slope of the measured Lorentzian, or by setting it to be at the points of maximum inflection. The slope, $s$, of the linear part around the resonance in the first derivative of the measured Lorentzian is also calculated. 
 
@@ -159,7 +172,7 @@ The shift in resonance frequency is calculated as,
 
 The new $f_0$ is then set to be $f_0 + \delta_{\nu}$, and the measurement is repeated at the next spatial scan point. The estimation can also be repeated multiple times at one position to achieve lower errors, since the range of frequency where the slope is valid is limited by the linewidth of the resonance, albeit at the cost of measurement time.
 
-\subsection*{Gradiometry and lock-in}
+\subsection{Gradiometry and lock-in}
 
 A coincidental feature of the SQM is the mechanical oscillation of the probe, which is used to maintain and control AFM contact with the sample. This oscillation is typically in plane for commercially available tips. In conventional SQM modes, this small oscillation is averaged over during the measurement, with little impact on resolution for typical operation. Even in this configuration, state-of-the-art SQMs achieve sensitivities of a few \unit{\micro\tesla/\sqrthertz}\cite{sunMagneticDomainsDomain2021,songDirectVisualizationMagnetic2021}. In probes on an oscillating tip such as SQUID-on-tip (SOT), increased sensitivity has been demonstrated by utilizing the mechanical oscillation convert a static gradient signal into an effective time varying signal, as seen by the sensor. This technique of 'gradiometry' is demonstrated by \textcite{huxterScanningGradiometrySingle2022} resolving magnetic stray fields with a sensitivity of $\sim\qty{120}{\nano\tesla/\sqrthertz}$. To improve the resolution, sensitivity and to make the mechanical oscillation of the probe accessible for future measurements, gradiometry is implemented in the RT SQM system. An overview of the technique and results with gradiometry is presented in this section.
 
@@ -239,7 +252,7 @@ A conventional magnetometry scan is performed to localize the probe over a regio
 \end{figure}
 
 The phase measurement with a sweep over $t_0$ is performed to determine the shortest $t_0$ value that gives a strong phase signal. This indicates that the CPMG-1 sequence is performed centered with the mechanical oscillation and therefore centered with the pseudo-oscillating magnetic field. Such a measurement is shown in \cref{fig:phase_osc}. The CPMG-1 sequence with the four-phase readout is loaded onto the AWG as four sequences to be individually triggered. The phase is calculated as in \cref{eq:four_phase}.\footnotemark Note that this measurement is performed for a higher resonance mode of $\sim\qty{195}{\kilo\hertz}$. Here the ideal $t_0$ time is found to be \qty{3}{\micro\second}. 
-\footnotetext{The fluorescence signal is calculated only with a summation method (see \cref{app:pl_osc}).}
+\footnotetext{The fluorescence signal is calculated only with a summation method (see \cref{app:grad_pl_readout}).}
 
 The $t_0$ is set to the determined value and a spatial scan of the phase is performed. The measurement is performed at a mechanical oscillation frequency of $\sim\qty{195}{\kilo\hertz}$, voltage of \qty{250}{\milli\volt} with a NV probe showing $T_2=\qty{3.4(5)}{\micro\second}$. The gradiometric phase is then collected at every point in a lift-off manner, along with the topography. The measurement is shown in \cref{fig:grad_xy}. The gradiometry scan achieves high sensitivity, rejection of low frequency noise, and captures the expected gradient of the magnetic field. The voltage across the wire can be reduced to \qty{1}{\milli\volt}, such that a signal is not captured anymore by a conventional fast scan. A weak signal of amplitude $\sim B_1=\qty{0.5}{\micro\tesla}$ is still persistent in the gradiometry scan (see \cref{app:grad_xy}).
 
@@ -250,3 +263,5 @@ This technique is also extended to a lock-in like scheme where the current is os
     \caption[Gradiometry spatial scan]{Gradiometry spatial scan. The mechanical oscillation is at $\sim\qty{195}{\kilo\hertz}$. (a) AFM micrograph of the region, collected during the measurement. The gold wire made with metal deposition is seen as the higher topographic feature. (b) NV fluorescence collected by averaging over the four-phase readout counts. (c) Conventional magnetometry scan over the same region showing the static magnetic {{\O}}rsted field of the current carrying wire. (d) Gradiometry scan showing the local gradient of magnetic field $B_1$, measured using the techniques described above. The measured phase is unwrapped to create the image shown. Both the scans are performed over comparable time scales. No spatial filtering/smoothing is performed on the data.}
     \label{fig:grad_xy}
 \end{figure}
+
+\section{Outlook}

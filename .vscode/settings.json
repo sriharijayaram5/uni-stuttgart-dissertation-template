@@ -17,10 +17,12 @@
     "eigenstates",
     "gradiometric",
     "gradiometry",
+    "heterostructures",
     "Jablonski",
     "Langevin",
     "quasiparticles",
     "qubit",
-    "rsted"
+    "rsted",
+    "stripline"
 ]
 }

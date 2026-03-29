@@ -100,11 +100,34 @@ The gradiometry technique is easily adapted to function as a lock-in detection m
 \section{2D superconductivity}
 
 \subsection{Scanning quantum microscopy}
-\begin{figure}[h]
+
+\subsubsection*{SQM at step junction}
+SQM scans measure topography, NV fluorescence and stray field along NV axis at the same time. \cref{fig:step_app} shows the topography and fluorescence map of the region investigated in \cref{fig:step_fields}. The topographic and fluorescence features from exfoliation residue allow for repeated measurements in the same area. Note that the thicker region shows reduced fluorescence, but this is most likely due to the difference in effective distance to the \ce{SiO2} underneath, which acts a mirror.
+
+\begin{figure}[htbp]
     \centering 
     \includegraphics[width=0.95\textwidth]{../figures/step_app.pdf}
     \caption[SQM topography and NV fluorescence over a \ce{NbSe2} step junction]{(a) SQM topography and (b) NV fluorescence over a \ce{NbSe2} step junction. The SQM magnetometry of this region is shown in \cref{fig:step_fields}.}
     \label{fig:step_app}
+\end{figure}
+
+Step edge SQM scans are performed over a thicker \ce{NbSe2} sample with two step edges of \qty{14}{\nano\meter} on the right and \qty{7}{\nano\meter} on the left. This difference in thickness is visible in the AFM topography shown in \cref{fig:large_step_app} as well as in the reduced Meissner effect in the thinner region. Many similarities are seen with the thinner sample show in \cref{fig:step_fields} such as the accumulation of vortices along the steps and the enhanced Meissner region at the steps. Although, subtle difference arise between these two samples. The irregularity and elongation of vortices, at and away from the steps, is seemingly reduced compared to the thinner sample. A more regular lattice is also seen as expected due to the thicker nature of the sample. 
+
+\begin{figure}[htbp]
+    \centering 
+    \includegraphics[width=0.95\textwidth]{../figures/large_step_app.pdf}
+    \caption[SQM topography and NV fluorescence over two \ce{NbSe2} step junctions]{(a) SQM topography and (b) magnetometry over two \ce{NbSe2} step junctions.}
+    \label{fig:large_step_app}
+\end{figure}
+
+\subsubsection*{Contrast measurement over \ce{NbSe2}}\label{app:contrast}
+On investigating few layer \ce{NbSe2} it is observed that the ODMR contrast measured is strongly affected by the proximity to the sample. To understand this effect pulsed-ODMR spectrum is collect on top of the \ce{NbSe2}, \ce{hBN}, \ce{SiO2}, and \ce{Au} stripline antenna with increasing sample-probe distance. The \ce{SiO2} measurements show no change in the measured contrast, while the \ce{hBN} and \ce{Au} measurements show $\sim5\%$ contrast reduction on approach. The strongest contrast reduction is seen at the site of \ce{NbSe2} where a strong contrast reduction of $\sim20\%$ is seen. The measurement is shown in \cref{fig:contrast_lift_app}.
+
+\begin{figure}[htbp]
+    \centering 
+    \includegraphics[width=0.75\textwidth]{../figures/contrast_lift.pdf}
+    \caption[ODMR contrast measured over \ce{NbSe2} as a function of sample-probe distance]{ODMR contrast measured over \ce{NbSe2} as a function of sample-probe distance}
+    \label{fig:contrast_lift_app}
 \end{figure}
 
 \section{Nanofabrication}

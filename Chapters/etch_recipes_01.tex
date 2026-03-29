@@ -23,103 +23,101 @@
 
 \begin{table}[H]
     \centering
-    % --- Table 1 (Left) ---
-    \begin{subtable}{0.45\textwidth}
-        \centering
-        % \footnotesize
-        \begin{tabular}{|c|l|c|}
+    \renewcommand{\arraystretch}{1.2} % Improves vertical spacing within cells
 
+    % --- Table 1 ---
+    \begin{subtable}{\textwidth}
+        \centering
+        \footnotesize
+        \begin{tabular}{|c|l|c|}
             \hline
-            \bfseries No.&\multicolumn{1}{c|}{\bfseries Step name}& \bfseries Duration (s)\\
+            \bfseries No. & \multicolumn{1}{c|}{\bfseries Step name} & \bfseries Duration (s) \\
             \hline
-            1&Diamond etch & 120\\
-            2&Cooling & 60\\
-            3&Mask etch& 7\\
-            4&Cooling & 60\\
-        \hline
+            1 & Diamond etch & 120 \\
+            2 & Cooling      & 60  \\
+            3 & Mask etch    & 7   \\
+            4 & Cooling      & 60  \\
+            \hline
         \end{tabular}
-        \caption{Standard etch.} % Optional: becomes (a)
+        \caption{Standard etch.}
         \label{tab:exp1}
     \end{subtable}
-    \hfill % Pushes the tables apart
-    % --- Table 2 (Middle) ---
-    \begin{subtable}{0.45\textwidth}
+
+    % \vspace{1.5em} % Controlled vertical separation
+
+    % --- Table 2 ---
+    \begin{subtable}{\textwidth}
         \centering
-        % \footnotesize
+        \footnotesize
         \begin{tabular}{|c|l|c|}
-
             \hline
-            \bfseries No.&\multicolumn{1}{c|}{\bfseries Step name}& \bfseries Duration (s)\\
+            \bfseries No. & \multicolumn{1}{c|}{\bfseries Step name} & \bfseries Duration (s) \\
             \hline
-            1&Mask etch& 7\\
-            2&Cooling & 60\\
-            3&Diamond etch & 120\\
-            4&Cooling & 60\\
-
-        \hline
+            1 & Mask etch    & 7   \\
+            2 & Cooling      & 60  \\
+            3 & Diamond etch & 120 \\
+            4 & Cooling      & 60  \\
+            \hline
         \end{tabular}
-        \caption{Secondary etch.} % Optional: becomes (b)
+        \caption{Secondary etch.}
         \label{tab:exp2}
     \end{subtable}
-    % --- BREAK THE ROW ---
-    \vspace{1em} % Adds vertical space between rows
 
-    % --- Table 3 (Right) ---
+    % \vspace{1.5em}
 
-    \begin{subtable}{0.45\textwidth}
+    % --- Table 3 ---
+    \begin{subtable}{\textwidth}
         \centering
-        % \footnotesize
+        \footnotesize
         \begin{tabular}{|c|l|c|}
-
             \hline
-            \bfseries No.&\multicolumn{1}{c|}{\bfseries Step name}& \bfseries Duration (s)\\
+            \bfseries No. & \multicolumn{1}{c|}{\bfseries Step name} & \bfseries Duration (s) \\
             \hline
-            1&Mask etch& 30\\
-            2&Cooling & 30\\
-            3&Diamond etch & 30\\
-            4&Cooling & 30\\
-
-        \hline
+            1 & Mask etch    & 30 \\
+            2 & Cooling      & 30 \\
+            3 & Diamond etch & 30 \\
+            4 & Cooling      & 30 \\
+            \hline
         \end{tabular}
-        \caption{Tertiary etch.} % Optional: becomes (c)
+        \caption{Tertiary etch.}
         \label{tab:exp3}
     \end{subtable}
-    \hfill % Pushes the tables apart
+
+    % \vspace{1.5em}
+
     % --- Table 4 ---
-    \begin{subtable}{0.45\textwidth}
+    \begin{subtable}{\textwidth}
         \centering
-        % \footnotesize
+        \footnotesize
          \begin{tabular}{|c|l|c|}
-
             \hline
-            \bfseries No.&\multicolumn{1}{c|}{\bfseries Step name}& \bfseries Duration (s)\\
+            \bfseries No. & \multicolumn{1}{c|}{\bfseries Step name} & \bfseries Duration (s) \\
             \hline
-            1&Soft ICP A& 7\\
-            2&Soft ICP B & 60\\
-            3&\ce{SF6} only & 60\\
-            4&Cooling & 60\\
-
-        \hline
+            1 & Soft ICP A   & 7  \\
+            2 & Soft ICP B   & 60 \\
+            3 & \ce{SF6} only & 60 \\
+            4 & Cooling      & 60 \\
+            \hline
         \end{tabular}
-        \caption{Titanium clean.} % Optional: becomes (b)
+        \caption{Titanium clean.}
         \label{tab:exp4}
     \end{subtable}
     
-    % --- Main Caption ---
-    \caption[Description of the recipes used for the waveguide etching]{Description of the recipes used for the waveguide etching. All recipes from atmosphere start with a cooling step of \qty{15}{\minute} with a temperature setpoint of \qty{20}{\degreeCelsius} to achieve good vacuum, omitted here for readability.}
+    % \vspace{1em}
+    \caption[Recipes for waveguide etching]{Description of the recipes used for the waveguide etching. All recipes from atmosphere start with a cooling step of \qty{15}{\minute} with a temperature setpoint of \qty{20}{\degreeCelsius} to achieve good vacuum, omitted here for readability.}
     \label{tab:MC_etch_detailed}
 \end{table}
 
 \begin{table}[H]
 \centering
-% \footnotesize
+\footnotesize
 \begin{tabular}{ |l|c|c|c|  }
   
     \hline
     
-    \multicolumn{1}{|c|}{\bfseries Step name}& \bfseries Chemistry & \bfseries Pressure (mTorr)& \bfseries Power (W)\\
+    \multicolumn{1}{|c|}{\bfseries Step name}& \bfseries Chemistry & \bfseries Press. (mTorr)& \bfseries Power (W)\\
     \hline
-    Diamond etch & \ce{O2} (\qty{30}{sccm}) & 10 & HF: 100, ICP: 400\\
+    Dia. etch & \ce{O2} (\qty{30}{sccm}) & 10 & HF: 100, ICP: 400\\
     \hline
     Mask etch & \makecell{\ce{O2} (\qty{30}{sccm}) \\ \ce{CF4} (\qty{2}{sccm})} & 10 & HF: 30, ICP: 150\\
     \hline
@@ -127,7 +125,7 @@
     \hline
     Cooling & - & 0 & -\\
     \hline
-    \makecell{Diamond slow etch \\ (\qty{5}{\nano\meter/\minute})}& \ce{O2} (\qty{30}{sccm}) & 10 & HF: 30, ICP: 0\\
+    \makecell{Dia. slow etch \\ (\qty{5}{\nano\meter/\minute})}& \ce{O2} (\qty{30}{sccm}) & 10 & HF: 30, ICP: 0\\
 
 \hline
 \end{tabular}

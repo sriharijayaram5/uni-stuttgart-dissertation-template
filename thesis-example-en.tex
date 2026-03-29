@@ -5,7 +5,8 @@
   english,  % English as main language; this parameter is passed to other packages (e.g., selnolig in the case of lualatex)
   paper=a5,
   twoside,  % we are optimizing for both screen and two-side printing. So the page numbers will jump, but the content is configured to stay in the middle (by using the geometry package)
-  DIV=calc,
+  DIV=10,
+  BCOR=5mm,
   headings=small,
   bibliography=totoc,
   % idxtotoc,   % Index ins Inhaltsverzeichnis
@@ -549,8 +550,8 @@
 }{}
 \DeclareMathSymbol{\powerset}{\mathord}{MnSyC}{180}
 \usepackage{ustutt-titlepage}
-\setlength{\evensidemargin}{-24pt}
-\setlength{\oddsidemargin}{-24pt}
+% \setlength{\evensidemargin}{-24pt}
+% \setlength{\oddsidemargin}{-24pt}
 \usepackage[
   translate=babel,
   abbreviations,         % create "abbreviations" glossary
@@ -580,8 +581,8 @@
   \input{glyphtounicode}
   \pdfgentounicode=1
 \fi
-\setlength{\evensidemargin}{-24pt}
-\setlength{\oddsidemargin}{-24pt}
+% \setlength{\evensidemargin}{-24pt}
+% \setlength{\oddsidemargin}{-24pt}
 \setcounter{secnumdepth}{3}    % Abbildungsnummerierung mit groesserer Tiefe
 \setcounter{tocdepth}{2}       % Inhaltsverzeichnis mit groesserer Tiefe
 
@@ -731,7 +732,7 @@
 \maketitle
 
 \pagestyle{scrheadings}
-
+\frontmatter
 \chapter*{Kurzfassung}
 \begin{otherlanguage}{ngerman}
   Kurzfassung der Arbeit.
@@ -766,7 +767,7 @@ I would like to thank everyone.
 
 \renewcommand*{\chapterpagestyle}{scrplain}
 \pagestyle{scrheadings}
-
+\mainmatter
 \include{Chapters/nvc_diamond.tex}
 \include{Chapters/chp_setup.tex}
 \include{Chapters/chp_2d_SC.tex}
