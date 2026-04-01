@@ -136,7 +136,78 @@ An advantage of SQM is the convenient control of sensor-sample distance. To conf
 
 A further counterintuitive result is obtained studying the temperature dependence of the magnetic noise. The initial expectations are the superconducting state to be a low-magnetic noise phase when compared to a conductor\cite{ariyaratneNanoscaleElectricalConductivity2018}. \cref{fig:noiseTemp} shows the decoherence caused by proximity to the superconductor as a function of temperature. The data show that the noise-induced decoherence is largest at low temperatures and diminishes as the temperature approaches $T_c$. It is expected that order parameter fluctuations peak near $T_c$\cite{curtisProbingBerezinskiiKosterlitzThoulessVortex2024}, and quasiparticle excitations should reduce with decreasing temperature\cite{dolgirevCharacterizingTwodimensionalSuperconductivity2022b}. However, the Hahn-echo $T_2$ sequence is primarily sensitive to frequencies in the megahertz range, unlike the typically investigated $T_1$. Then, it is likely that the dominant factor limiting $T_2$ is the thermally activated motion of the vortex glass. The vortex motion itself reduce as the temperature lowers, showing also the transition from vortex liquid to glass state.
 
-Instead, this noise is driven by the temperature dependence of the penetration depth, $\lambda$. Although vortex motion slows down at lower temperatures, $\lambda$ decreases, causing the magnetic field distribution around individual vortices to become more localized. Consequently, the local magnetic field at the NV center becomes increasingly sensitive to even small changes in vortex position. This is validated using a Langevin equation, as a simple model for vortex motion at finite temperature. The resulting magnetic field fluctuations at the NV center is computed to obtain a temperature dependent decoherence rate, show in \cref{fig:noiseTemp}\cite{jayaramProbingVortexDynamics2025}. This simple model successfully reproduces the inverse temperature dependence observed in the experimental data, confirming the origin of the noise.
+Instead, this noise is driven by the temperature dependence of the penetration depth, $\lambda$. Although vortex motion slows down at lower temperatures, $\lambda$ decreases, causing the magnetic field distribution around individual vortices to become more localized. Consequently, the local magnetic field at the NV center becomes increasingly sensitive to even small changes in vortex position. This is validated using a Langevin equation, as a simple model for vortex motion at finite temperature.
+
+\subsection*{Theoretical model\footnotemark}
+\footnotetext{The theoretical work is done by Lucas Vieira Pupim (Insitute for Theoretical Physics III, Universität Stuttgart)}
+The idea of the model is to introduce a single vortex as a source of magnetic noise to the NV center a finite standoff distance away. Although multiple vortices are present in the vicinity of the NV center, only a single vortex is described here and along with spatial resolution considerations, this is sufficient to understand the underlying mechanism. This gives the tools to understand whether the experimentally observed noise signature is commensurate with the current interpretation. To set the stage, first the NV center is described. The position of the NV center is at $\mathbf{r}_0 = (0,0,z_0)^{\mathrm{T}}$. The spin state splitting is $\Omega$, quantization axis is $\mathbf{n}_q$, with coupling to a magnetic field $\mathbf{B(r)}$. The NV center Hamiltonian is then given by
+\begin{equation}
+    H = \frac{\Omega}{2} \boldsymbol{\sigma} \cdot \mathbf{n}_q + \frac{\gamma}{2} \mathbf{B}(\mathbf{r}_0, t) \cdot \boldsymbol{\sigma}.
+\end{equation}
+
+Now, the magnetic field distribution around a single vortex is described as by \citeauthor{kosslerMagneticFieldsVortices2012}. A cylindrical coordinate system is used with coordinates $\rho, \theta, z$. The vortex is located at $\rho = 0$ in a thin superconductor of thickness $d$, between two infinite air regions. The vector potential satisfies the following equation 
+
+\begin{equation}
+    \nabla \times (\nabla \times \mathbf{A}) + \frac{\mathbf{A}}{\lambda^2} = \frac{\phi_0 \hat{\theta}}{2\pi \lambda^2 r},
+\end{equation}
+for $\phi_0 = \qty{2.07e3}{G\kilo\angstrom\squared}$.
+
+For superconducting penetration depth $\lambda$, Bessel function $J_1(\gamma\rho)$, and $s = (\gamma^2 + 1/\gamma^2)^{1/2}$, the magnetic field can then be obtained from the vector potential $\mathbf{A} = f\hat{\theta}$ with
+\begin{equation}
+    f(\rho, z) = \frac{\phi_0}{2\pi\lambda^2} \int_{0}^{\infty} \frac{J_1(\gamma\rho)}{s^2} \frac{ (1 - e^{-sd}) e^{\gamma(z + d/2)}s}{s(1 - e^{-sd}) + \gamma(1 + e^{-sd})} d\gamma ,
+\end{equation}
+
+which is a solution for this functional form of the vector potential when outside the superconductor at $z>d/2$. All length scales will be measured in terms of $\lambda_0 = \qty{325}{\nano\meter}$, giving thickness $d = 0.025\lambda_0$, tip standoff $z_0 = 0.16\lambda_0$. This value of $\lambda_0$ best fits the measurements and is in good agreement with \citeauthor{fridmanAnomalousThicknessDependence2025}. To introduce temperature dependence, the temperature dependant penetration depth $\lambda(T) = \frac{\lambda_0}{\sqrt{1-(T/T_C)^4}}$\cite{prozorovMagneticPenetrationDepth2006}. The time dependence of the magnetic field, due to the vortex motion is introduced now. For a vortex confined to the $z=0$ plane, we have $\mathbf{x}_v(t) \in \mathbb{R}^2$. To include the neighboring vortices and their effect, a harmonic potential is considered. The restoring force is given by $\mathbf{F} = -k(\mathbf{x}_v - \mathbf{x}_{v,0})$. The thermal fluctuations of the vortices are introduces as a time-dependent, uncorrelated random force $\boldsymbol{\eta}(t)$. These fluctuations perturb the vortex and the dynamics is described by the corrector $\langle \boldsymbol{\eta}(t) \boldsymbol{\eta}(t') \rangle = 2D \delta(t - t')$, with diffusion constant $D$. Combining all these contributions in the form of the Langevin equation\cite{holmlundLangevinSimulationsTwodimensional1996}, we have
+
+\begin{equation}
+    \begin{split}
+        \frac{d\mathbf{x}_v(t)}{dt} &= D \mathbf{F}_{\text{tot}}(t) + \boldsymbol{\eta}(t) \\
+         &= -\frac{Dk}{T} \left( \mathbf{x}_v(t) - \mathbf{x}_{v,0} \right) + \boldsymbol{\eta}(t).
+    \end{split}
+\end{equation}
+This equation described the strong friction limit for in plane motion of vortices and is a good approximation of a 2D superconductor\cite{holmlundLangevinSimulationsTwodimensional1996}. This then solved using the Euler-Maruyama method\cite{bayerDiscretizationSDEsEuler}. From fitting to measurements the constants are found to be $D\cdot k = \qty{0.11}{\kelvin\micro\second}^{-1}$, and $|\mathbf{x}_{v,0}| \approx \qty{260}{\nano\meter}$. This equation gives the trajectory of a vortex in the superconductor and consequently the trajectory of the magnetic field source. Since the trajectory takes $\boldsymbol{\eta}(t)$ as a variable, $\mathbf{B}(\mathbf{r}_0, t)$ becomes a stochastic variable.
+
+With the vortex dynamics and resulting magnetic field established, the effect on the NV center can be calculated. This is done by calculating the coherence function under a spin-echo protocol. This follows the description by \citeauthor{cywinskiHowEnhanceDephasing2008}, and the same conventions are used here.
+
+The interaction between a superconducting qubit and its environment is modeled using a Hamiltonian where the energy relaxation time ($T_1$) is assumed to be much longer than the dephasing time ($T_2$). This is expressed as
+\begin{equation}
+    H = \frac{1}{2} (\Omega + \beta(t)) \sigma_z,
+\end{equation}
+with $\Omega$ being the spin state splitting , $\beta(t)$ a random variable representing the temporal fluctuations in that splitting caused by environmental noise, and $\sigma_z$ a Pauli matrix. $\beta(t)$ represents a stochastic process.
+
+To measure dephasing, the qubit is initially prepared in a coherent superposition of $\ket{\uparrow}$ and $\ket{\downarrow}$ states:
+\begin{equation}
+    |\psi(0)\rangle = a\ket{\uparrow} + b\ket{\downarrow}.
+\end{equation}
+
+This state is typically created by applying a $\pi/2$ rotation to an eigenstate of $\sigma_z$, placing the Bloch vector in the $xy$ plane. In an FID experiment, the off-diagonal element of the qubit's density matrix ($\rho_{+-}$) evolves as:
+\begin{equation}
+    \rho_{+-}^{\text{FID}}(t) = e^{-i\Omega t} e^{\left(-i\int_{0}^{t} \beta(t') \, dt'\right)} \rho_{+-}(0).
+\end{equation}
+
+The second exponential term represents the random phase accumulation caused by the noise $\beta(t)$. 
+
+The coherence function $W(t)$ is then defined by taking the average of the off-diagonal elements:
+
+\begin{equation}
+    W(t) = \frac{\lvert \langle \rho_{+-}(t) \rangle \rvert}{\lvert \langle \rho_{+-}(0) \rangle \rvert}.
+\end{equation}
+
+ When ideal $\pi$ pulses are applied at specific times $(t_1, \dots, t_n)$, they flip the amplitudes of the $\ket{\uparrow}$ and $\ket{\downarrow}$ states. This modifies the coherence function into:
+\begin{equation}
+    W(t) = \left\lvert\left\langle \exp\left[-i \int_{0}^{t} \xi(t') f(t; t') \, dt' \right] \right\rangle\right\rvert.
+\end{equation}
+
+The function $f(t; t')$ is the time-domain filter function that alternates between $+1$ and $-1$ at each $\pi$ pulse, effectively refocusing the phase accumulation. 
+
+Using this function with the previously described fluctuating vortex gives us 
+\begin{equation}
+    W(t) = \left\lvert\left\langle \exp\left[-i \int_{0}^{t} B_z(\mathbf{r}_0,t') f(t; t') \, dt' \right] \right\rangle\right\rvert.
+\end{equation}
+
+With the coherence function at hand, the characteristic decay time $T_2$ defined as the time when $W(T_2) = 1/e$, is calculated. The coherence considerations so far only account for the component of the magnetic field along the NV axis, which is along $z$. In plane components of the magnetic field is considered to be averaging to zero due to the many neighboring vortices. The simulation is performed for time $t$ up to $\qty{20}{\micro\second}$. When approaching $T_c$, the $T_2$ time increases beyond the simulation time and therefore is calculated from a fit. The expression is averaged over \qty{60000}{samples}.
+
+Although the individual considerations are simple, they provide a sufficient description of the experiment and successfully reproduces the inverse temperature dependence observed in the experimental data, confirming the origin of the noise.
 
 \subsection*{Conclusion}
 
