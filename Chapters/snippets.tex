@@ -38,3 +38,23 @@
 \begin{equation}
     H_{\mathrm{hf\ ^{14}N}+^{14}N_{Zeeman}} = a_{\parallel} S_{z} I_{z} + a_{\perp} (S_{x} I_{x} + S_{y} I_{y}) + P I_{z}^{2} - \gamma_{\mathrm{^{14}N}} \mathbf{B} \cdot \mathbf{I},
 \end{equation}
+
+% \newsavebox{\tempcaptionbox} % Define this in your preamble
+
+\begin{figure}[p]
+    \centering 
+    \sbox{\tempcaptionbox}{
+        \parbox{\textwidth}{
+            \caption[SQM topography and NV fluorescence over thin \ce{NbSe2}]{%
+                (a) SQM topography and (b) NV fluorescence over thin \ce{NbSe2} 
+                corresponding to \cref{fig:large_corr}.}
+            \label{fig:large_corr_app}
+                        }
+                        }
+    \includegraphics[
+        width=\textwidth,
+        height=\dimexpr\textheight-\ht\tempcaptionbox-\dp\tempcaptionbox-4ex\relax,
+        keepaspectratio
+    ]{../figures/large_corr_app.pdf}
+    \usebox{\tempcaptionbox}
+\end{figure}

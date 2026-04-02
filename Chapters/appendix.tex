@@ -101,8 +101,33 @@ The gradiometry technique is easily adapted to function as a lock-in detection m
 
 \subsection{Scanning quantum microscopy}
 
+\subsubsection*{SQM on thin \ce{NbSe2} - large scan}
+
+The SQM topography and fluorescence corresponding to \cref{fig:large_corr} in the main text is shown in \cref{fig:large_corr_app}. Note the amount of residue that is left over on the sample from the exfoliation process. This information is important since it is attributed to the reduced resolution and measured field of the SQM magnetometry in the corresponding areas, although this is not always the cause for a similar effect. The reduced resolution is especially noticeable due to the large feature in the center of the scan. The features are also visible in the fluorescence scan, but this is most likely due to the difference in effective distance to the \ce{SiO2} underneath, which acts a mirror.
+
+The small step edge, shown also in \cref{fig:step_app,fig:step_fields}, is seen at the top of the scans, visible in the topography and fluorescence signal. At the very top and bottom the edge of the sample onto the \ce{hBN} is also visible.
+
+
+\begin{figure}[p]
+    \centering 
+    \sbox{\tempcaptionbox}{
+        \parbox{\textwidth}{
+            \caption[SQM topography and NV fluorescence over thin \ce{NbSe2}]{%
+                (a) SQM topography and (b) NV fluorescence over thin \ce{NbSe2} 
+                corresponding to \cref{fig:large_corr}.}
+            \label{fig:large_corr_app}
+                        }
+                        }
+    \includegraphics[
+        width=\textwidth,
+        height=\dimexpr\textheight-\ht\tempcaptionbox-\dp\tempcaptionbox-4ex\relax,
+        keepaspectratio
+    ]{../figures/large_corr_app.pdf}
+    \usebox{\tempcaptionbox}
+\end{figure}
+
 \subsubsection*{SQM at step junction}
-SQM scans measure topography, NV fluorescence and stray field along NV axis at the same time. \cref{fig:step_app} shows the topography and fluorescence map of the region investigated in \cref{fig:step_fields}. The topographic and fluorescence features from exfoliation residue allow for repeated measurements in the same area. Note that the thicker region shows reduced fluorescence, but this is most likely due to the difference in effective distance to the \ce{SiO2} underneath, which acts a mirror.
+SQM scans measure topography, NV fluorescence and stray field along NV axis at the same time. \cref{fig:step_app} shows the topography and fluorescence map of the region investigated in \cref{fig:step_fields}. The topographic and fluorescence features from exfoliation residue allow for repeated measurements in the same area. Note that the thicker region shows reduced fluorescence, but this is again most likely due to the difference in effective distance to the \ce{SiO2} underneath.
 
 \begin{figure}[htbp]
     \centering 
@@ -155,7 +180,7 @@ Cantilever hard masks are created with Medusa to determine suitability in the pr
 
 To compensate for this a proximity effect correction is necessary such that a uniform thickness of the resist is present in all exposed regions as designed. This can be performed by simulation of the electron beam exposure trajectory knowing a few resist behavior parameters\cite{opaluchMedusa84SiH2025}. The Voyager (Raith Systems) software offers a module called nano-PECS which performs this simulation for a given design. The design is then broken up into smaller exposure blocks that are assigned individual dose factors, to account for the proximity effect. Note that this is computationally intensive during the simulation as well as during patterning, with an increase of $5\times$ of patterning times seen. 
 
-Much of the pattern can sometimes have very small dose factor changes, as well as changes where nano-PECS is not necessary. The initial design could then be done in parts to reduce the overhead. Another workaround used is to simply copy parts of the output nano-PECS design which are critical and overlay it with the initial design. This achieves a similar result but with much shorter patterning times. This approach is used for patterning using PMMA. \cref{fig:medusa_cantiAb} shows patterning done with a fully nano-PECS design. Note the patterns and heigh variation in the in interior of the structure. This is due to imperfect estimation of nano-PECS parameters along with variation in resist sensitivity. 
+Much of the pattern can sometimes have very small dose factor changes, as well as changes where nano-PECS is not necessary. The initial design could then be done in parts to reduce the overhead. Another workaround used is to simply copy parts of the output nano-PECS design which are critical and overlay it with the initial design. This achieves a similar result but with much shorter patterning times. This approach is used for patterning using PMMA (see \cref{fig:pmma_canti}). \cref{fig:medusa_cantiAb} shows patterning done with a fully nano-PECS design. Note the patterns and heigh variation in the in interior of the structure. This is due to imperfect estimation of nano-PECS parameters along with variation in resist sensitivity. 
 
 \begin{figure}[h]
     \centering 

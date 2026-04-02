@@ -34,7 +34,7 @@ The phase diagram for the thinner \ce{NbSe2} region, illustrated in \cref{fig:ph
 \begin{figure}[H]
     \centering 
     \includegraphics[width=0.95\textwidth]{../figures/sample_s2_ovw.pdf}
-    \caption[Optical micrograph and AFM scan of \ce{NbSe2} sample S2]{(a) Optical micrograph of 2H-\ce{NbSe2} sample S2. The brighter regions are thicker than the rest of the flake. 
+    \caption[Optical micrograph and AFM scan of \ce{NbSe2} sample]{(a) Optical micrograph of 2H-\ce{NbSe2} sample S2. The brighter regions are thicker than the rest of the flake. 
     (b) An AFM scan of the flake. The large flake area is $\qty{5.03}{\nano\meter}$ thick, and the 
     thicker region on the right side of the flake is $\qty{12.55}{\nano\meter}$ thick.}
     \label{fig:s2_ovw}
@@ -49,11 +49,13 @@ This premature vortex formation is a consequence of the sample's few-layer thick
 \begin{figure}[H]
     \centering 
     \includegraphics[width=0.95\textwidth]{../figures/vortices_s2.pdf}
-    \caption[Magnetometry of \ce{NbSe2} sample S2]{(a) Magnetometry of the corner of sample S2, at a temperature of \qty{10}{\kelvin}, and a 
+    \caption[Magnetometry of \ce{NbSe2} sample]{(a) Magnetometry of the corner of sample S2, at a temperature of \qty{10}{\kelvin}, and a 
     magnetic field of \qty{6}{\milli\tesla} applied out of the plane of the sample. 
     (b) Magnetometry performed at \qty{2.5}{\kelvin}, and identical magnetic field as (a).}
     \label{fig:vortices_s2}
 \end{figure}
+
+\subsection*{Single vortex mapping}
 
 The vertical confinement inherent to the thin \ce{NbSe2} layers induces a radial expansion of the vortices, consistent with the Pearl vortex model\cite{pearlCURRENTDISTRIBUTIONSUPERCONDUCTING1964}. High-resolution scanning of a single vortex (\cref{fig:s2_single}) confirms this profile; the vortex exhibits a spatial extent exceeding that of bulk vortices, aligning with the scaling behavior predicted for Pearl vortices in thin-film superconductors\cite{fridmanAnomalousThicknessDependence2025}. 
 
@@ -65,6 +67,8 @@ Post-fabrication characterization via AFM (\cref{fig:s2_ovw}) indicates the pres
     \caption[High-resolution scan of a single vortex]{High-resolution scan resolving a single vortex in the 2H-\ce{NbSe2} flake.}
     \label{fig:s2_single}
 \end{figure}
+
+\subsection*{Thickness dependence}
 
 In the regime of few-layer \ce{NbSe2}, the superconducting response is strongly influenced by substrate roughness, structural disorder, and finite-size effects. These local perturbations induce significant deviations from the canonical vortex profile and arrangements typically observed in pristine superconductors, resulting in distorted and anisotropic vortex cores. Furthermore, the multi-band nature of superconductivity in \ce{NbSe2}\cite{noatQuasiparticleSpectra22015,zehetmayerExperimentalEvidenceTwoband2010} allows for the potential stabilization of multi-flux-quanta vortices\cite{gozlinskiBandresolvedCaroliGennes2023}.
 
@@ -83,9 +87,40 @@ In the regime of few-layer \ce{NbSe2}, the superconducting response is strongly 
     \refstepcounter{subfigure}\label{fig:thickB}
 \end{figure}
 
-\cref{fig:thinA} presents a representative magnetic field distribution for the thin sample, where a pristine hexagonal vortex lattice is notably absent. This lack of long-range order is revealed via autocorrelation analysis in \cref{fig:thinB}, which exhibits elongated and irregular correlation peaks. While a nascent hexagonal symmetry is discernible, the arrangement is disordered. The vortex lattice topology is also strongly influenced by the sample and step edge boundaries, with autocorrelation features aligning along the edges. Although hexagonal ordering becomes more pronounced toward the sample center, local disorder remains dominant, preventing the formation of a perfect Abrikosov lattice. \cref{fig:thickA,fig:thickB} shows the same for a thicker, doubly encapsulated flake revealing a more ordered hexagonal lattice and distinct autocorrelation peaks. The reduced influence of the substrate roughness, and increased thickness is attributed to this behavior. Although it remains distorted due to the competition with geometric confinement and spatial disorder. 
+\cref{fig:thinA} presents a representative magnetic field distribution for the thin sample, where a pristine hexagonal vortex lattice is notably absent. This lack of long-range order is revealed via autocorrelation analysis in \cref{fig:thinB}, which exhibits elongated and irregular correlation peaks. While a nascent hexagonal symmetry is discernible, the arrangement is disordered. The vortex lattice is also strongly influenced by the sample and step edge boundaries, with autocorrelation features aligning along the edges. Although hexagonal ordering becomes more pronounced toward the sample center, local disorder remains dominant, preventing the formation of a perfect Abrikosov lattice. \cref{fig:thickA,fig:thickB} shows the same for a thicker, doubly encapsulated flake revealing a more ordered hexagonal lattice and distinct autocorrelation peaks. The reduced influence of the substrate roughness, and increased thickness is attributed to this behavior. Although it remains distorted due to the competition with geometric confinement and spatial disorder. 
+
+\subsection*{Vortex arrangement over the sample}
+
+To further explore the influence of the sample boundaries, thickness without change in encapsulation, and distribution of disorder in the sample, a large SQM scan is performed on sample S2. The sample is cooled following a slow field cooling procedure from above $T_C$ to \qty{3.1}{\kelvin} with an applied field of \qty{165}{\milli\tesla} along the NV axis. The result is shown in \cref{fig:large_corr} with the corresponding topography and fluorescence in \cref{fig:large_corr_app}. The knowledge of the topography is especially important in this case due to the amount of residue present that affects the magnetometry. The fast axis of the scan in in the vertical direction. The boundary of the sample with \ce{hBN} is clearly visible at the top and bottom the scan. The concentration of magnetic flux is seen here but interestingly is reduced at the bottom boundary. The boundaries also show an enhanced Meissner region which is larger and with more repelled field. The thicker region of $\qty{12.55}{\nano\meter}$ is seen at the top, also showing enhanced Meissner repulsion. Eight regions of $\qty{1}{\micro\meter}\times\qty{1}{\micro\meter}$ are masked out and the 2D autocorrelation function calculated. This helps visualize underlying periodicity\cite{songDirectVisualizationMagnetic2021}. The mask from the thicker region shows a relatively clean hexagonal lattice. This again confirm the influence of thickness in vortex arrangement, also seen in the previous section. Going along the sample different patterns are visible in the autocorrelation.
+
+\begin{figure}[p]
+    \centering
+    \sbox{\tempcaptionbox}{
+        \parbox{\textwidth}{
+            \caption[Vortex arrangement over the sample]{(a) Large SQM magnetometry scan showing vortex arrangment and (i-viii) autocorrelation corresponding to masked areas.}
+            \label{fig:large_corr}
+                            }
+    }
+    \includegraphics[
+        width=\textwidth,
+        height=\dimexpr\textheight-\ht\tempcaptionbox-\dp\tempcaptionbox-4ex\relax,
+        keepaspectratio
+    ]{../figures/large_corr.pdf}
+    \usebox{\tempcaptionbox}
+    
+\end{figure}
 
 It is noted that the lack of knowledge about the specific and non-hexagonal vortex arrangement in thinner samples may be important for the interpretation of transport experiments, among others. This is frequently overlooked yet may be important for a proper deduction of the symmetry of the superconducting ground state from such experimental data. Consequently, characterizing the specific, non-hexagonal vortex arrangement is essential for the accurate deduction of the superconducting ground state symmetry\cite{zhangNonreciprocalSuperconductingNbSe22020,noatQuasiparticleSpectra22015}.
+
+\subsection*{Vortex melting phase}
+
+Transport studies on thin \ce{NbSe2} samples have provided indirect evidence regarding the vortex glass melting transition. These studies suggest that melting occurs more easily in thin layers than in bulk systems. In two-dimensional superconductors, thermal fluctuations have a greater effect; these fluctuations can de-pin vortices from their fixed positions and drive the transition into a liquid state\cite{zhangNonreciprocalSuperconductingNbSe22020}. Experimentally, this is observed as a non-zero resistivity appearing across a broad temperature window well below the critical temperature. This resistive signal indicates that vortices have detached from their pinning sites and entered a mobile, vortex liquid phase, contributing to electrical resistance. Furthermore, structural defects such as dislocations play a critical role in this process\cite{guillamonDirectObservationMelting2009}. Due to this very mobility in this phase, the final state of the vortex glass is highly dependent on the speed at which the sample is cooled through the vortex liquid phase\cite{jayaramProbingVortexDynamics2025}.
+
+To investigate this dependence, a systematic study using two cooling rates is performed. For each sequence, we first raised the sample temperature to \qty{6.3}{\kelvin}. While this temperature is below the superconducting transition, the magnetic field response is very weak, and large-area scans confirm that isolated vortices are no longer visible. This acts as a reset for the vortex configuration by entering into the end of the liquid phase
+
+From this reset state, the sample is cooled down to the base temperature of \qty{2}{\kelvin}. This procedure is repeated for two cooling rates, namely, a rapid \qty{1}{\minute} cooling to a slow \qty{10}{\hour} cooling.
+
+The SQM results for the two cooling rates are presented in \cref{fig:fast_slow}. Although these measurements focus on the exact same location of the few-layer sample, the resulting magnetic maps differ significantly. We observe distinct differences in the vortex arrangement and intensity. The difference in the final vortex state can be explained by the competition between thermal fluctuations and disorder pinning.
 
 \begin{figure}[H]
     \centering 
@@ -98,17 +133,13 @@ It is noted that the lack of knowledge about the specific and non-hexagonal vort
     \label{fig:fast_slow}
 \end{figure}
 
-Transport studies on thin \ce{NbSe2} samples have provided indirect evidence regarding the vortex glass melting transition. These studies suggest that melting occurs more easily in thin layers than in bulk systems. In two-dimensional superconductors, thermal fluctuations have a greater effect; these fluctuations can de-pin vortices from their fixed positions and drive the transition into a liquid state\cite{zhangNonreciprocalSuperconductingNbSe22020}. Experimentally, this is observed as a non-zero resistivity appearing across a broad temperature window well below the critical temperature. This resistive signal indicates that vortices have detached from their pinning sites and entered a mobile, vortex liquid phase, contributing to electrical resistance. Furthermore, structural defects such as dislocations play a critical role in this process\cite{guillamonDirectObservationMelting2009}. Due to this very mobility in this phase, the final state of the vortex glass is highly dependent on the speed at which the sample is cooled through the vortex liquid phase\cite{jayaramProbingVortexDynamics2025}.
-
-To investigate this dependence, a systematic study using two cooling rates is performed. For each sequence, we first raised the sample temperature to \qty{6.3}{\kelvin}. While this temperature is below the superconducting transition, the magnetic field response is very weak, and large-area scans confirm that isolated vortices are no longer visible. This acts as a reset for the vortex configuration by entering into the end of the liquid phase
-
-From this reset state, the sample is cooled down to the base temperature of \qty{2}{\kelvin}. This procedure is repeated for two cooling rates, namely, a rapid \qty{1}{\minute} cooling to a slow \qty{10}{\hour} cooling.
-
-The SQM results for the two cooling rates are presented in \cref{fig:fast_slow}. Although these measurements focus on the exact same location of the few-layer sample, the resulting magnetic maps differ significantly. We observe distinct differences in the vortex arrangement and intensity. The difference in the final vortex state can be explained by the competition between thermal fluctuations and disorder pinning.
-
 In the case of a rapid cooling (quenching) from the melted state, the vortices do not have time to settle into an equilibrium configuration. The abrupt drop in temperature causes them to be immediately pinned by random disorder sites present in the material. These randomly pinned vortices remain volatile and are more susceptible to local thermal fluctuations. This results in a configuration where vortices are delocalized on a small length scale, leading to the observed weaker overall magnetic response.
 
 In contrast, the slow cooling acts as an annealing process. It allows the system to remain in thermal equilibrium for longer. This gives thermal fluctuations enough time to overcome local disorder pinning, allowing the vortices to gradually arrange themselves into a more stable, energetically favorable lattice configuration\cite{jayaramProbingVortexDynamics2025}.
+
+\subsection{Vortex state - dynamics}
+
+Beyond DC magnetometry, the NV center enables dynamic sensing across a broad frequency range\cite{barrySensitivityOptimizationNVdiamond2020}. By employing tailored spin control pulse sequences, specific noise sources affecting the spin can be spectrally isolated or decoupled. This capability renders NV-based techniques essential for investigating fluctuations in 2D superconductors, ranging from DC to gigahertz frequencies.
 
 \begin{figure}[H]
     \centering 
@@ -116,10 +147,6 @@ In contrast, the slow cooling acts as an annealing process. It allows the system
     \caption[Detection of magnetic fluctuations]{(a) Schematic of the NV probe detecting magnetic fluctuations. Magnetic fields are only partially screened in the thin superconducting layer. (b) Hahn echo $T_2$ measurements with the NV probe in AFM contact with the sample and retracted $\sim\qty{2}{\micro\meter}$ from the sample. The NV center shows faster decoherence in proximity to the superconductor.}
     \label{fig:noiseA}
 \end{figure}
-
-\subsection{Vortex state - dynamics}
-
-Beyond DC magnetometry, the NV center enables dynamic sensing across a broad frequency range\cite{barrySensitivityOptimizationNVdiamond2020}. By employing tailored spin control pulse sequences, specific noise sources affecting the spin can be spectrally isolated or decoupled. This capability renders NV-based techniques essential for investigating fluctuations in 2D superconductors, ranging from DC to gigahertz frequencies.
 
 In superconductors, significant fluctuations typically arise from the thermal excitation of quasiparticles\cite{chatterjeeSinglespinQubitMagnetic2022,dolgirevCharacterizingTwodimensionalSuperconductivity2022b} or variations in the superconducting order parameter\cite{curtisProbingBerezinskiiKosterlitzThoulessVortex2024}. Fluctuations in the supercurrent generate transverse magnetic noise, leading to the dephasing of the NV electron spin when it is in proximity. This dephasing can be characterized using Hahn-echo $T_2$ measurements.
 
