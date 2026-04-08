@@ -1,7 +1,70 @@
 \chapter{Appendix}\label{sec:appendix}
 
 \section{Experimental setup and tools}
-\subsection{Fitting fluorescence oscillations - oscillating probe under a fixed Gaussian beam}\label{app:pl_osc}
+
+\subsection{Magnetic field alignment and hysterisis}
+The majority of this work is performed on a AttoDRY 2200 cryostat (Attocube) with a \qty{1}{\tesla} vector magnet with a \qty{9}{\tesla} coil for the $z$-axis. To explore interesting phases of material an external magnetic field is applied to the materials, for example in a field cooldown procedure. For small magnetic fields ($\lesssim\qty{10}{\milli\tesla}$), the alignment of the external field to the NV center axis is not critical, but for larger fields, especially near the ground state and excited state level anti-crossings, the NV fluorescence is greatly quenched due to spin mixing. The mechanics of this covered deeply by \citeauthor{tetienneMagneticfielddependentPhotodynamicsSingle2012}\cite{tetienneMagneticfielddependentPhotodynamicsSingle2012}. This effect can in fact be used for qualitative mapping of magnetic field, but in many instances necessitate a well aligned magnetic field. The magnetic field alignment can be done in steps of increasing precision, but the precision of alignment is always limited by the accuracy of the applied field. This is a challenge due to the superconducting magnetics that tend to retain a remnant field. An automated protocol is used here to remove a majority of the remnant field. A field alignment is then performed using the NV fluorescence and then using a series of ODMR measurement with progressive correction.
+
+The alignment process begins with removal of the remnant magnetic field. The hysteresis effect is most noticeable after working at higher fields ($\gtrsim\qty{75}{\milli\tesla}$) and then returning to set zero field by simply ramping down the individual axis, leaving a remnant field of several \unit{\milli\tesla}.
+
+\begin{figure}[p]
+    \centering 
+    \sbox{\tempcaptionbox}{
+        \parbox{\textwidth}{
+            \caption[Magnetic field alignment - ODMR method]{Magnetic field alignment - ODMR method. (a-b) Illustration of magnetic field vectors with respect to NV orientation for a well aligned initial magnetic field, and the corresponding ODMR lines for a swept angle $\alpha$, and (c-d) the same for a misaligned initial magnetic field. Reused with permission from Springer Nature\cite{thielQuantitativeNanoscaleVortex2016}.}
+            \label{fig:alignA}
+                        }
+                        }
+    \includegraphics[
+        width=\textwidth,
+        height=\dimexpr\textheight-\ht\tempcaptionbox-\dp\tempcaptionbox-4ex\relax,
+        keepaspectratio
+    ]{../figures/alignmentA.png}
+    \usebox{\tempcaptionbox}
+\end{figure}
+
+For this particular system with its magnet configuration, and vectors fields applied typically not exceeding \qty{200}{\milli\tesla} the following protocol is used and greatly reduces the remnant field. Irrespective of the starting conditions, the magnet is first ramped down to zero field. An axis individually ramped to a starting value of \qty{50}{\milli\tesla}. The field is then reversed in direction along the axis. This training of the field is what reduces the remnant field. This procedure is repeated in 20 steps with decreasing field values until zero field. The procedure is then performed on the other axis. The training procedure can also be done along any arbitrary axis if necessary and the commands for both the procedure are available in the 'magnetic field tools' notebook\cite{jayaramQudiScanningProbe2026}.
+
+Now the field alignment using the NV fluorescence is performed. This procedure is available with a GUI in 'magnet control' module\cite{jayaramQudiScanningProbe2026}. Depending on the known crystallographic orientation of the diamond probe used, the magnetic field sweep range is set. A fixed vector field magnitude $\rho$ is used while the in plane angle $\phi$ and the azimuthal angle $\theta$ is swept. The NV fluorescence is averaged at each point and maximum in fluorescence is seen when the field is well aligned\cite{tetienneMagneticfielddependentPhotodynamicsSingle2012}.
+
+If a better aligned field is required, for example at high magnetic field or close to a LAC, then field alignment using the ODMR method is performed. This is detailed in a notebook titled 'magnetic field alignment - ODMR method'\cite{jayaramQudiScanningProbe2026}. The method is based on the work from\citeauthor{thielQuantitativeNanoscaleVortex2016}\cite{thielQuantitativeNanoscaleVortex2016}. An illustration of this method is shown in \cref{fig:alignA}. 
+
+This method is used to find the two unknowns of $\theta_0$, and $\phi_0$, which are the spherical coordinates defined w.r.t to the NV axis and $\mathbf{B}_{\text{init}}$. The method requires precise control over the external magnetic field and is therefore suitable for a vector magnet. It is also based on the fact that the magnetic fields applied parallel to the NV axis couple to the NV spin and the perpendicular fields only introduce a weak, second order effect. For a field parallel to the NV axis, the ODMR resonance frequency is shifted by $\Delta\nu_{\text{ESR}} = \gamma_{\text{NV}}\lvert \mathbf{B}_{\text{init}} \rvert$ with $\gamma_{\text{NV}}=\qty{28}{\mega\hertz/\milli\tesla}$. For a weak perpendicular field $\mathbf{B}_{\text{perp}}$ in addition to this, no change in the ODMR position is seen irrespective of angle $\alpha$ (in the plane perpendicular to $\mathbf{B}_{\text{init}}$), but only when $\mathbf{B}_{\text{init}}$ is perfectly along the NV axis. This serves as a check for magnetic field alignment.
+
+The magnetic field direction found from the fluorescence measurement or best last known direction is used to define the $\mathbf{B}_{\text{init}}$. 
+\begin{equation}
+\mathbf{B}_{\text{init}} = B_{\text{init}} 
+\begin{pmatrix}
+\sin(\theta_0) \cos(\phi_0) \\
+\sin(\theta_0) \sin(\phi_0) \\
+\cos(\theta_0)
+\end{pmatrix}
+\end{equation}
+
+From here a set of $\mathbf{B}_{\text{perp}}$ are determined for a list of $\alpha$. This gives a set of 
+\begin{equation}
+    \mathbf{B}(\alpha) = B_{\text{init}} \hat{\mathbf{e}}_i + R_{\mathbf{B}_{\text{init}}}(\alpha) B_{\text{perp}} \hat{\mathbf{e}}_p
+\end{equation}
+where $R_{\mathbf{B}_{\text{init}}}(\alpha)$ is the rotation matrix by angle $\alpha$ around $\hat{\mathbf{e}}_i$, and $\hat{\mathbf{e}}_{i(p)}$ is the unit vector along $\mathbf{B}_{\text{init}(\text{perp})}$.
+
+An ODMR measurement is then performed for over all $\mathbf{B}(\alpha)$. For a misaligned field this gives a wandering ODMR spectrum as shown in \cref{fig:alignA}. For an angle $\alpha$ we then have 
+\begin{equation}
+    \begin{split}
+       \Delta\nu_{\text{ESR}}(\alpha) &= \gamma_{\text{NV}} \hat{\mathbf{e}}_{\text{NV}} \cdot \mathbf{B}(\alpha) \\
+       &= \gamma_{\text{NV}} \left[ B_{\text{init}} \cos(\theta_0) - B_{\text{perp}} \sin(\theta_0) \sin(\alpha) \right]. 
+    \end{split}
+\end{equation}
+
+The quantity $\Delta\nu_{\text{ESR}}$ is then determined from the fit of the ODMR resonance positions that show a sinusoidal behavior over $\alpha$. The  $\mathbf{B}_{\text{perp}}$ for maximum splitting is also determined. This is used to determine the $\theta_0$ as
+\begin{equation}
+    \theta_0 = sin^{-1} \left( \frac{\Delta\nu_{\text{ESR}}}{2 \gamma_{\text{NV}} B_{\text{perp}}} \right).
+\end{equation}
+
+The rotation axis for $\theta_0$ is known from the cross product between $\mathbf{B}_{\text{perp}}$ and $\mathbf{B}_{\text{init}}$. Then the first estimate of the NV axis is determined by rotation of the $\mathbf{B}_{\text{init}}$ in the cross product plane by $\theta_0$ amount. This procedure iteratively gives better values for $\hat{\mathbf{e}}_{\text{NV}}$.
+
+An additional alignment procedure can be performed if the resulting field orientations do not converge. This assumes that since the $\theta_0$ is very sensitive to the set values for $\mathbf{B}_{\text{perp}}$ being accurate, that the $\theta_0$ may be wrong in value, but is nevertheless in the correct plane. In this case, the procedure would benefit from a sweep of $\theta_0$ now in the plane of $\hat{\mathbf{e}}_{\text{NV}}$ and $\mathbf{B}_{\text{init}}$, previously determined. This is also iteratively done, as well as for the orthogonal plane, which yields good magnetic field alignment.
+
+\subsection[Fitting fluorescence oscillations]{Fitting fluorescence oscillations - oscillating probe under a fixed Gaussian beam}\label{app:pl_osc}
 Assume the spatial intensity profile of the focused laser spot is characterized by a fundamental Gaussian distribution:
 \begin{equation}
     \centering
@@ -75,7 +138,7 @@ In this system the $V_0$ and $V_1$ are set to have a constant difference of \qty
 \subsection{Gradiometric fluorescence readout}\label{app:grad_pl_readout}
 A technical detail that is important to the realization of all measurements with synchronization of the mechanical oscillation with readout (gradiometric), is the choice of analysis method for the readout. Typically, a normalized mean over the many readout repetitions is performed. The signal window ($\sim\qty{200}{\nano\second}$) is at the beginning of the readout and gives the spin contrast and the reference window of the same width is to the tail of the readout once the steady state population is achieved. The signal is normalized to this reference (mean-norm method). In the case of gradiometric readout, since the fluorescence varies depending on the position of the emitter under the excitation beam (see \cref{fig:pl_osc}), the mean-norm method is invalid. The analysis is therefore only done with a summation over the signal window.
 
-\subsection{Gradiometric scan - small field}\label{app:grad_xy}
+\subsection{Gradiometric scan - small fields}\label{app:grad_xy}
 
 Gradiometric scans are performed with a very low applied voltage of \qty{1}{\milli\volt} across a current carrying wire, the same device as described in the main text. The phase map in \cref{fig:grad_xy_1mV} shows a faintly visible signal corresponding to the edge of the wire. Applying a spatial smoothing filter (symmetric Gaussian kernel of \qty{5}{px} and \qty{11}{px}), the signal can be recovered. The acquisition settings remain the same as described in the main text.
 
@@ -159,6 +222,8 @@ On investigating few layer \ce{NbSe2} it is observed that the ODMR contrast meas
 
 \section{Nanofabrication}
 
+\subsection{Sample preparation and recipes}
+
 \subsection{Cantilever bridge simulation}
 
 The cantilever bridge attaching the cantilever to the support structure is simulated. The motivation is to determine a better shape or breaking action of the cantilever such that snapping it off the support structure is easier. It is known from previous efforts that even simple rectangular shaped bridge with a width of \qty{200}{\nano\meter} can prove challenging to break off, even capable of lifting the entire membrane with it. 
@@ -218,8 +283,9 @@ The test is performed by performing a similar etch of \ce{Ar}/\ce{SF6} chemistry
 
 As a result of this all etch processes in the RIE-ICP performed in this work are done using a \qty{50}{\milli\meter} diameter Sapphire carrier with \qty{50}{\nano\meter} of \ce{Cr} back coating. The metal choice is not detrimental to the process. The metal survives for many etch cycles and the Sapphire is chemically inert to the process gases. A deep etch performed on diamond using this process yields good results with only the initial non-planarity of the diamond causing height variations.
 
+An inadvertent advantage of this process is also noted. The use of the large Sapphire carrier ensures that that carrier itself is laying parallel to the graphite etching plate, especially if the graphite plate has always been used in combination with the carrier. This means that the samples placed on the Sapphire carrier are significantly more parallel to the so-called etching plane, as opposed to when placed directly on to the graphite. Since the Sapphire is also robust against all the etching chemistry used here it also retains this flatness. The RIE-ICP machine is equipped with an endpoint detection system that uses a light camera with a very long working distance objective for a navigation and a \qty{657}{\nano\meter} laser for interferometric detection of etch rates. This system is unfortunately extremely sensitive to the angle of the sample w.r.t to the etching plane which is perpendicular to the beam path (with the possibility of some adjustment). Typically, samples placed directly on the graphite plate lead to irrecoverable tilted samples for endpoint detection. The sapphire carrier solves this problem as well.
 
-\subsection{Metal deposition - selectivity and effective deposition rate}\label{app:metal_deposition}
+\subsection[Metal deposition]{Metal deposition - selectivity and effective deposition rate}\label{app:metal_deposition}
 
 Central to the nanofabrication in this work is the metal deposition process. The technique of e-beam evaporation with the Univex 400 (Leybold) is used for deposition in the shared user facility. A variety of metals are available for deposition at deposition rates of \qty{0.5}{\angstrom/\second} to \qty{2}{\angstrom/\second}. A few figures of merit determine the suitability of the deposited metal to the process. The initial choice of metal is the most important since it determines the suitability to the process. The surface roughness, sidewall roughness and quality of the metal is important for application where low resistance contact with material is to be created, or for the purpose of use as a hard etch mask and the transfer of a rough sidewall is undesirable. Certain metals deposit rougher than other for the deposition conditions, which is inherent to the technique and material properties. This could be addressed but require much time and effort, and may not be intrinsically suitable to the deposition technique. For example, \ce{Al} proves to be a troublesome metal to deposit. It quickly forms an oxide layer while stored in the crucible. This layer is difficult and unpredictable to melt and results initial high current in the evaporator which can be hard for the control loop to adjust to when reaching the metal. The \ce{Al} also exhibits different wetting behavior of the crucible, often riding up the walls and causing an overflow. This changes the equilibrium of the heat exchange between the crucible and the cooling jacket, also disrupting the control loop. The end results of such a deposition may be incorrect deposition thickness and degraded quality of metal. This can be verified by SEM imaging and by profilometry.
 

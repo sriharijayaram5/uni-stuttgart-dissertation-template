@@ -1,12 +1,16 @@
 % -*- coding:utf-8 mod:LaTeX -*-
 \documentclass[
-  fontsize=10pt,
+  fontsize=10pt, % FOR A5
+  % fontsize=11pt, % FOR A4
   numbers=noenddot,
   english,  % English as main language; this parameter is passed to other packages (e.g., selnolig in the case of lualatex)
   paper=a5,
+  % paper=a4,
   twoside,  % we are optimizing for both screen and two-side printing. So the page numbers will jump, but the content is configured to stay in the middle (by using the geometry package)
-  DIV=10,
-  BCOR=5mm,
+  DIV=10, % FOR A5
+  BCOR=10mm, % FOR A5
+  % DIV=8, % FOR A4
+  % BCOR=10mm, % FOR A4
   headings=small,
   bibliography=totoc,
   % idxtotoc,   % Index ins Inhaltsverzeichnis
@@ -23,7 +27,7 @@
 \usepackage{fix-cm}
 \usepackage{lmodern} % Highly recommended alongside T1 to prevent pixelation,
 \usepackage{textcomp}       % Provides \textminus and other symbols
-
+\usepackage{emptypage}
 \RequirePackage{silence}
 \WarningsOff[latexfont] % Suppresses all 'latexfont' category warnings
 \WarningFilter{latex}{Font shape} % Specifically filters remaining font shape substitutions

@@ -32,9 +32,9 @@
   * setup chapter - information on magnet specs - base temperature - operable frequency ranges and ele. limits
   * ~~step edge - effect of the proximity to the sample edge - finite sample effect - vortices seemingly nucleated and entering from edge~~
   * ~~nice picture from sample S6~~
-  * scan 65 fast cool and sc77 slow cool at 165mT - show the better vortex shape
-  * scan 78 slow cooldown 165mT large scan - show auto correlation change in space
-  * info on applied field hysteris of magnetic and how to ramp it to zero
+  * ~~scan 65 fast cool and sc77 slow cool at 165mT - show the better vortex shape~~
+  * ~~scan 78 slow cooldown 165mT large scan - show auto correlation change in space~~
+  * ~~info on applied field hysteris of magnetic and how to ramp it to zero~~
   * add info of Jayich and Meriles paper
 
 Scan 78 coord.
