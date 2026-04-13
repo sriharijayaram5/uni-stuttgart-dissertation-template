@@ -8,6 +8,8 @@
     \end{minipage}
 \end{flushright}
 \section{Introduction}
+NV microscopy\cite{stegemannModularLowcost3D2023}, and tuning fork based AFM\cite{edwardsFastHighresolutionAtomic1997} have proved to be techniques with low experimental overhead and complexity for even ambitious experiments. This makes a large part of these techniques quite accessible to researchers. 
+
 
 \section{NV microscopy}
 
@@ -231,7 +233,72 @@ This four-phase readout is represented on the Bloch sphere in \cref{fig:bloch_gr
     \label{fig:bloch_grad}
 \end{figure}
 
-As a first step in performing gradiometry measurements, the synchronization of the tip oscillation and spin readout is established. The synchronization time $t_0$ determines the arrival of any sequence after the trigger by the mechanical oscillation. This is depicted in \cref{fig:gradiometry}. To verify correct synchronization, the fluorescence is measured as a function of the $t_0$ time. The fluorescence from a short \qty{200}{\nano\second} window is integrated from the total \qty{3}{\micro\second} readout pulse. The probe is oscillating at a fixed frequency of $\sim\qty{32}{\kilo\hertz}$. For a fixed excitation beam and an emitter oscillating in and out of the beam, a periodic fluorescence signal is expected. The measurement for various probe excitation amplitudes $A_{exc}$ is shown in \cref{fig:pl_osc}. The oscillation is fit to a function for an oscillating emitter in a Gaussian beam (see \cref{app:pl_osc}). The extracted oscillation amplitudes from the fit are shown in the figure, showing a maximum of $\qty{30(2)}{\nano\meter}$. The oscillation amplitudes can also be extracted by performing time resolved and locked in readout while doing an AFM scan over a magnetic/fluorescence quenching feature of known dimensions\cite{huxterScanningGradiometrySingle2022}.
+As a first step in performing gradiometry measurements, the synchronization of the tip oscillation and spin readout is established. The synchronization time $t_0$ determines the arrival of any sequence after the trigger by the mechanical oscillation. This is depicted in \cref{fig:gradiometry}. To verify correct synchronization, the fluorescence is measured as a function of the $t_0$ time. The fluorescence from a short \qty{200}{\nano\second} window is integrated from the total \qty{3}{\micro\second} readout pulse. The probe is oscillating at a fixed frequency of $\sim\qty{32}{\kilo\hertz}$. For a fixed excitation beam and an emitter oscillating in and out of the beam, a periodic fluorescence signal is expected. The measurement for various probe excitation amplitudes $A_{exc}$ is shown in \cref{fig:pl_osc}. The oscillation is fit to a function for an oscillating emitter in a Gaussian beam.% (see \cref{app:pl_osc}). 
+% [Fitting fluorescence oscillations]
+\subsection*{Fitting fluorescence oscillations - oscillating probe under a fixed Gaussian beam}\label{app:pl_osc}
+
+Assume the spatial intensity profile of the focused laser spot is characterized by a fundamental Gaussian distribution:
+\begin{equation}
+    \centering
+    I(x) = I_{max} \exp\left(-\frac{2(x - x_c)^2}{w_0^2}\right),
+\end{equation}
+
+where $x_c$ is the spatial center of the laser focus, $w_0$ is the $1/e^2$ beam waist radius. The position of an emitter oscillating harmonically along the $x$-axis is given by:
+\begin{equation}
+    \centering
+    x(t) = x_{eq} + \Delta x \sin(2 \pi f_{tf} t + \beta),
+\end{equation}
+where $x_{eq}$ is the equilibrium position of the emitter, $\Delta x$ is the physical oscillation amplitude, and $f_{tf}$ the frequency of the tuning fork. Substituting the kinematic equation into the intensity profile yields the time-dependent intensity observed by the emitter:
+\begin{equation}
+    \centering
+    I(t) = I_{max} \exp\left(-\frac{2}{w_0^2}\left(x_{eq} - x_c + \Delta x \sin(2 \pi f_{tf} t + \beta)\right)^2\right)
+\end{equation}
+
+The exponent of the derived physical model can be factored to isolate the static offset and the dynamic oscillation:
+\begin{equation}
+    \centering
+    P(t) = -\left( \frac{\sqrt{2}(x_{eq} - x_c)}{w_0} + \frac{\sqrt{2}\Delta x}{w_0} \sin(2 \pi f_{tf} t + \beta) \right)^2
+\end{equation}
+
+The fitting function used has the form,
+\begin{equation}\label{eq:grad_fit}
+    \begin{split}
+    y &= C \cdot exp(P) \\
+    P(t) &= -(A + B \sin(2 \pi f_{tf} t + \beta))^2
+    \end{split}
+\end{equation}
+
+Comparing these yields the following equivalences:
+\begin{equation}
+    \centering
+    A = \frac{\sqrt{2}(x_{eq} - x_c)}{w_0}
+\end{equation}
+\begin{equation}
+    \centering
+    B = \frac{\sqrt{2}\Delta x}{w_0}
+\end{equation}
+
+Rearranging the expression for $B$ allows for the direct calculation of the oscillation amplitude $\Delta x$:
+\begin{equation}
+    \centering
+    \Delta x = \frac{B \cdot w_0}{\sqrt{2}}
+\end{equation}
+To resolve $\Delta x$ in nanometers, the parameter $w_0$ must be defined. For a diffraction-limited optical system, the beam waist depends fundamentally on the emission wavelength ($\lambda$) and the numerical aperture ($\text{NA}$) of the objective. If the objective lens is fully overfilled (yielding a truncated Gaussian approximating an Airy disk), the $1/e^2$ beam waist can be approximated by:
+\begin{equation}
+    \centering
+    w_0 \approx \frac{0.42 \lambda}{\text{NA}}
+\end{equation}
+
+Substituting this approximation into the amplitude equation yields the final formula\cite{zhangGaussianApproximationsFluorescence2007}:
+\begin{equation}
+    \centering
+    \Delta x \approx \frac{0.42 \cdot B \cdot \lambda}{\sqrt{2} \cdot \text{NA}}
+\end{equation}
+
+
+This derivation assumes strictly one-dimensional motion across the center of the beam spot and neglects axial ($z$-axis) variations in the point spread function. Furthermore, the constant $0.42$ is an ideal diffraction-limited approximation. Aberrations, incomplete pupil filling, wrong estimation of NA, beam shaping due to a emitter in a waveguide, etc. will expand $w_0$, meaning the calculated $\Delta x$ using the ideal formula represents a theoretical lower bound for the true physical amplitude.
+
+The extracted oscillation amplitudes from the fit are shown in the figure, showing a maximum of $\qty{30(2)}{\nano\meter}$. The oscillation amplitudes can also be extracted by performing time resolved and locked in readout while doing an AFM scan over a magnetic/fluorescence quenching feature of known dimensions\cite{huxterScanningGradiometrySingle2022}.
 
 \begin{figure}[h]
     \centering 
@@ -263,5 +330,7 @@ This technique is also extended to a lock-in like scheme where the current is os
     \caption[Gradiometry spatial scan]{Gradiometry spatial scan. The mechanical oscillation is at $\sim\qty{195}{\kilo\hertz}$. (a) AFM micrograph of the region, collected during the measurement. The gold wire made with metal deposition is seen as the higher topographic feature. (b) NV fluorescence collected by averaging over the four-phase readout counts. (c) Conventional magnetometry scan over the same region showing the static magnetic {{\O}}rsted field of the current carrying wire. (d) Gradiometry scan showing the local gradient of magnetic field $B_1$, measured using the techniques described above. The measured phase is unwrapped to create the image shown. Both the scans are performed over comparable time scales. No spatial filtering/smoothing is performed on the data.}
     \label{fig:grad_xy}
 \end{figure}
+
+\subsection{Bayesian optimization and tracking}
 
 \section{Outlook}

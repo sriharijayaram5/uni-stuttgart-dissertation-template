@@ -1,16 +1,11 @@
 % -*- coding:utf-8 mod:LaTeX -*-
 \documentclass[
-  fontsize=10pt, % FOR A5
-  % fontsize=11pt, % FOR A4
+  fontsize=14pt, % FOR A4
   numbers=noenddot,
   english,  % English as main language; this parameter is passed to other packages (e.g., selnolig in the case of lualatex)
-  paper=a5,
-  % paper=a4,
+  paper=a4,
   twoside,  % we are optimizing for both screen and two-side printing. So the page numbers will jump, but the content is configured to stay in the middle (by using the geometry package)
-  DIV=10, % FOR A5
-  BCOR=10mm, % FOR A5
-  % DIV=8, % FOR A4
-  % BCOR=10mm, % FOR A4
+  DIV=none, % Disable KOMA-Script margin calculation to use geometry instead
   headings=small,
   bibliography=totoc,
   % idxtotoc,   % Index ins Inhaltsverzeichnis
@@ -22,6 +17,34 @@
   %               draft    % um zu sehen, wo noch nachgebessert werden muss - wichtig, da Bindungskorrektur mit drin
   draft=false
 ]{scrbook}
+
+% \documentclass[
+%   fontsize=10pt, % FOR A5
+%   % fontsize=12pt, % FOR A4
+%   fontsize=12pt, % FOR A4
+%   numbers=noenddot,
+%   english,  % English as main language; this parameter is passed to other packages (e.g., selnolig in the case of lualatex)
+%   paper=a5,
+%   % paper=a4,
+%   paper=a4,
+%   twoside,  % we are optimizing for both screen and two-side printing. So the page numbers will jump, but the content is configured to stay in the middle (by using the geometry package)
+%   DIV=10, % FOR A5
+%   BCOR=10mm, % FOR A5
+%   % DIV=7, % FOR A4
+%   % BCOR=10mm, % FOR A4
+%   DIV=none, % Disable KOMA-Script margin calculation to use geometry instead
+%   headings=small,
+%   bibliography=totoc,
+%   % idxtotoc,   % Index ins Inhaltsverzeichnis
+%   % liststotoc, % List of * ins Inhaltsverzeichnis, mit liststotocnumbered werden die Abbildungsverzeichnisse nummeriert
+%   listof=totoc,
+%   % headsepline,
+%   % cleardoublepage=empty,
+%   % parskip=half,
+%   %               draft    % um zu sehen, wo noch nachgebessert werden muss - wichtig, da Bindungskorrektur mit drin
+%   draft=false
+% ]{scrbook}
+
 \usepackage[utf8]{inputenc} % Allows UTF-8 input
 \usepackage[T1]{fontenc}
 \usepackage{fix-cm}
@@ -91,52 +114,14 @@
 \csundef{P@MDback@hrulefill}
 \makeatother
 
-% \ifluatex
-%   \usepackage[no-math]{fontspec}
-%   \usepackage{unicode-math}
-
-%   \ifwindows
-%     \setmainfont{XCharter}
-%     \setsansfont[Ligatures=TeX]{Arial}
-%   \else
-%     \usepackage{helvet} % source: comment to https://tex.stackexchange.com/q/212357/9075
-%     \setmainfont{XCharter}
-%   \fi
-
-%   % Use Inconsolata font (https://ctan.org/pkg/inconsolata)
-%   % See https://tex.stackexchange.com/q/2241/9075 for a list of other alternative mono-spaced fonts
-%   % No [Ligatures=TeX], because we want " rendered as upquotes, not as typographic correct ones
-%   % shapely l, upright quotes
-%   % If it is too large, add ",Scale=.9"
-%   \ifwindows
-%     \setmonofont[StylisticSet={1,3}]{Inconsolata}
-%   \else
-%     \setmonofont[StylisticSet={1,3}]{Inconsolatazi4}
-%   \fi
-
-%   \usepackage{selnolig}
-
-% \else
-%   \usepackage{XCharter}
-%   \usepackage[scaled=.95]{helvet}
-
-%   % Has to be loaded AFTER any font packages. See https://tex.stackexchange.com/a/2869/9075.
-%   \usepackage[T1]{fontenc}
-% \fi
-% Source - https://tex.stackexchange.com/a/134111
-% Posted by MBR, modified by community. See post 'Timeline' for change history
-% Retrieved 2026-02-03, License - CC BY-SA 4.0
-
-% Source - https://tex.stackexchange.com/a/134111
-% Posted by MBR, modified by community. See post 'Timeline' for change history
-% Retrieved 2026-02-03, License - CC BY-SA 4.0
 \addtokomafont{disposition}{\sffamily}
 \setkomafont{subsection}{\sffamily\bfseries}
 \renewcommand{\familydefault}{\sfdefault}
 % \usepackage{inconsolata}
 \usepackage{cmbright}
 
-
+\usepackage{layout}
+% In the document body:
 \usepackage{setspace}
 \usepackage{pifont}
 \newcommand{\dingcheck}{\ding{51}}
@@ -148,7 +133,9 @@
 \setkomafont{pageheadfoot}{\small\sffamily}
 \setkomafont{pagenumber}{\small\sffamily\bfseries}
 
-\typearea[current]{last}
+% \typearea[current]{last} % For A5
+% Use geometry to strictly enforce the "at least 2cm" margin rule
+\usepackage[a4paper, left=3cm, right=2.5cm, top=2.5cm, bottom=5cm, bindingoffset=5mm, footskip=2.5cm]{geometry}
 
 \usepackage[
   babel=true, % Enable language-specific kerning. Take language-settings from the languge of the current document (see Section 6 of microtype.pdf)
@@ -238,7 +225,7 @@
 \definecolor{pdflinkcolor}{rgb}{0,0,0.6}
 \definecolor{pdfcitecolor}{rgb}{0,0,0.6}
 \usepackage{listings}
-
+\usepackage{rotating}
 \definecolor{eclipseStrings}{RGB}{42,0.0,255}
 \definecolor{eclipseKeywords}{RGB}{127,0,85}
 \colorlet{numb}{magenta!60!black}
@@ -720,7 +707,7 @@
   {\usebibmacro{postnote}}
 
 \begin{document}
-\setstretch{1.2}
+% \setstretch{1.2}
 \raggedbottom
 
 \title{Low Temperature Scanning Probe Microscopy with NV Centers in Diamond}
@@ -737,7 +724,10 @@
 \maketitle
 
 \pagestyle{scrheadings}
-\frontmatter
+% \layout
+\onehalfspacing
+% \frontmatter is removed to keep numbering continuous and Arabic from the title page
+
 \chapter*{Kurzfassung}
 \begin{otherlanguage}{ngerman}
   Kurzfassung der Arbeit.
@@ -772,7 +762,8 @@ I would like to thank everyone.
 
 \renewcommand*{\chapterpagestyle}{scrplain}
 \pagestyle{scrheadings}
-\mainmatter
+% \mainmatter is removed to prevent the page counter from resetting to 1
+
 \include{Chapters/nvc_diamond.tex}
 \include{Chapters/chp_setup.tex}
 \include{Chapters/chp_2d_SC.tex}

@@ -64,68 +64,6 @@ The rotation axis for $\theta_0$ is known from the cross product between $\mathb
 
 An additional alignment procedure can be performed if the resulting field orientations do not converge. This assumes that since the $\theta_0$ is very sensitive to the set values for $\mathbf{B}_{\text{perp}}$ being accurate, that the $\theta_0$ may be wrong in value, but is nevertheless in the correct plane. In this case, the procedure would benefit from a sweep of $\theta_0$ now in the plane of $\hat{\mathbf{e}}_{\text{NV}}$ and $\mathbf{B}_{\text{init}}$, previously determined. This is also iteratively done, as well as for the orthogonal plane, which yields good magnetic field alignment.
 
-\subsection[Fitting fluorescence oscillations]{Fitting fluorescence oscillations - oscillating probe under a fixed Gaussian beam}\label{app:pl_osc}
-Assume the spatial intensity profile of the focused laser spot is characterized by a fundamental Gaussian distribution:
-\begin{equation}
-    \centering
-    I(x) = I_{max} \exp\left(-\frac{2(x - x_c)^2}{w_0^2}\right),
-\end{equation}
-
-where $x_c$ is the spatial center of the laser focus, $w_0$ is the $1/e^2$ beam waist radius. The position of an emitter oscillating harmonically along the $x$-axis is given by:
-\begin{equation}
-    \centering
-    x(t) = x_{eq} + \Delta x \sin(2 \pi f_{tf} t + \beta),
-\end{equation}
-where $x_{eq}$ is the equilibrium position of the emitter, $\Delta x$ is the physical oscillation amplitude, and $f_{tf}$ the frequency of the tuning fork. Substituting the kinematic equation into the intensity profile yields the time-dependent intensity observed by the emitter:
-\begin{equation}
-    \centering
-    I(t) = I_{max} \exp\left(-\frac{2}{w_0^2}\left(x_{eq} - x_c + \Delta x \sin(2 \pi f_{tf} t + \beta)\right)^2\right)
-\end{equation}
-
-The exponent of the derived physical model can be factored to isolate the static offset and the dynamic oscillation:
-\begin{equation}
-    \centering
-    P(t) = -\left( \frac{\sqrt{2}(x_{eq} - x_c)}{w_0} + \frac{\sqrt{2}\Delta x}{w_0} \sin(2 \pi f_{tf} t + \beta) \right)^2
-\end{equation}
-
-The fitting function used has the form,
-\begin{equation}\label{eq:grad_fit}
-    \begin{split}
-    y &= C \cdot exp(P) \\
-    P(t) &= -(A + B \sin(2 \pi f_{tf} t + \beta))^2
-    \end{split}
-\end{equation}
-
-Comparing these yields the following equivalences:
-\begin{equation}
-    \centering
-    A = \frac{\sqrt{2}(x_{eq} - x_c)}{w_0}
-\end{equation}
-\begin{equation}
-    \centering
-    B = \frac{\sqrt{2}\Delta x}{w_0}
-\end{equation}
-
-Rearranging the expression for $B$ allows for the direct calculation of the oscillation amplitude $\Delta x$:
-\begin{equation}
-    \centering
-    \Delta x = \frac{B \cdot w_0}{\sqrt{2}}
-\end{equation}
-To resolve $\Delta x$ in nanometers, the parameter $w_0$ must be defined. For a diffraction-limited optical system, the beam waist depends fundamentally on the emission wavelength ($\lambda$) and the numerical aperture ($\text{NA}$) of the objective. If the objective lens is fully overfilled (yielding a truncated Gaussian approximating an Airy disk), the $1/e^2$ beam waist can be approximated by:
-\begin{equation}
-    \centering
-    w_0 \approx \frac{0.42 \lambda}{\text{NA}}
-\end{equation}
-
-Substituting this approximation into the amplitude equation yields the final formula\cite{zhangGaussianApproximationsFluorescence2007}:
-\begin{equation}
-    \centering
-    \Delta x \approx \frac{0.42 \cdot B \cdot \lambda}{\sqrt{2} \cdot \text{NA}}
-\end{equation}
-
-
-This derivation assumes strictly one-dimensional motion across the center of the beam spot and neglects axial ($z$-axis) variations in the point spread function. Furthermore, the constant $0.42$ is an ideal diffraction-limited approximation. Aberrations, incomplete pupil filling, wrong estimation of NA, beam shaping due to a emitter in a waveguide, etc. will expand $w_0$, meaning the calculated $\Delta x$ using the ideal formula represents a theoretical lower bound for the true physical amplitude.
-
 \subsection*{Trigger level sweep for gradiometry triggering}\label{app:phase_volt}
 In this system the $V_0$ and $V_1$ are set to have a constant difference of \qty{200}{\milli\volt}, such that $V_0 = V_1 + \qty{200}{\milli\volt}$ (see \cref{fig:gradiometry}). In \cref{fig:phase_volt}, $V_0$ is swept and the gradiometry phase collected for a fixed $t_0$. This is similar to a $t_0$ sweep but with limited range and only serves the purpose to ensure that the full measurement is optimized by reducing dead time. Setting the trigger level close to the value that gives maximum phase ensures a small $t_0$ time and therefore an oscillation period is not wasted.
 \begin{figure}[h]
