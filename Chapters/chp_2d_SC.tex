@@ -9,16 +9,22 @@
 \end{flushright}
 
 \section{Introduction}
-
-\section{2D superconductivity}
-
+TODO.
+\subsection{2D superconductivity}
+TODO.
+\subsection{Pearl model}
+TODO.
 \section{Scanning quantum microscopy}
-
+TODO.
 \subsection{Mapping Meissner effect and vortices}
 
-Local magnetic field measurements are performed on thin-layer samples of the two-dimensional superconductor 2H-\ce{NbSe2} utilizing the developed cryogenic atomic force microscope (AFM) and magnetometer, operating at a base temperature of 1.8 K. The sample investigated is as depicted in \cref{fig:s2_ovw}. The different large flake of the material also has two thicker regions towards the edge, visible as different contrast in the micrograph. The AFM scan shows the presence of bubbles and residue that is inherent to the vdW material transfer process used, rendering a challenging landscape for most scanning probes.
+Local magnetic field measurements are performed on thin-layer samples of the two-dimensional superconductor 2H-\ce{NbSe2} utilizing the developed cryogenic AFM and magnetometer. The measurements are performed at various temperatures, with the system achieving an operating base temperature of \qty{1.8}{\kelvin}, well below the superconducting transition temperature of $\sim\qty{6.5}{\kelvin}$\cite{zhangNonreciprocalSuperconductingNbSe22020}. 
 
-A single Nitrogen-Vacancy (NV) center, facilitates the detection of local magnetic responses from the \ce{NbSe2} sample, through the protective hexagonal boron nitride \ce{h-BN} cladding. The \ce{NbSe2} two distinct thickness regions in th flake are: $\qty{5.03}{\nano\meter}$ (corresponding to seven atomic layers) and $\qty{12.55}{\nano\meter}$. 
+The phase diagram for the thinner \ce{NbSe2} region is illustrated in \cref{fig:phase_diag}. The phase diagram shows three distinct regimes: the vortex glass (VG), vortex liquid (VL), and metallic (M) states. These phases are identified via transport measurements characterizing the transitions between superconducting and dissipative states\cite{zhangNonreciprocalSuperconductingNbSe22020}. In this context, $T_M$ denotes the melting temperature, while $H_{c1}$ and $H_{c2}$ correspond to the lower and upper critical fields of a type-II superconductor, respectively. It is noted that few layer \ce{NbSe2} shows a very low $H_{c1}$ of $\sim\unit{\micro\tesla}$, such that even the remnant field in the system is sufficient to introduce vortices.
+
+The optical image and AFM micrograph of the thin sample investigated is as shown in \cref{fig:s2_ovw}. As is often with 2D materials, the different thickness of the material are visible as optical contrast with DIC microscopy. The fives sided flake is the sample with two visible thicker regions on the right and left. The entire sample is encapsulated with \ce{h-BN}, the edge of which is not visible in the optical image. The optical image shows a seemingly pristine sample. The AFM scan tells a different story and shows the presence of bubbles and residue that is inherent to the 2D material transfer process used, rendering a challenging landscape for most scanning probes. 
+
+The \ce{NbSe2} two distinct thickness regions in the flake are of the thickness $\qty{5.03}{\nano\meter}$ (corresponding to seven atomic layers) and $\qty{12.55}{\nano\meter}$. The thinner region is first addressed to see the existence of vortices at the 2D limit. From the AFM scan it is seen that the top left of the flake in the thin region presents a good region for an SQM scan due to the lack of large bubbles, and the possibility to scan over the edge of the sample. The SQM scan allows the detection of local magnetic responses from the \ce{NbSe2} sample, through the protective hexagonal boron nitride \ce{h-BN} cladding.  
 
 \begin{figure}[H]
     \centering 
@@ -27,9 +33,7 @@ A single Nitrogen-Vacancy (NV) center, facilitates the detection of local magnet
     \label{fig:phase_diag}
 \end{figure}
 
-The phase diagram for the thinner \ce{NbSe2} region, illustrated in \cref{fig:phase_diag}, delineates three distinct regimes: the vortex glass (VG), vortex liquid (VL), and metallic (M) states. These phases were identified via transport measurements characterizing the transitions between superconducting and dissipative states\cite{zhangNonreciprocalSuperconductingNbSe22020}. In this context, $T_M$ denotes the melting temperature, while $H_{c1}$ and $H_{c2}$ correspond to the lower and upper critical fields of a type-II superconductor, respectively.
-
-\cref{fig:s2_ovw} displays a magnetic scan acquired at the metallic phase and at \qty{2}{\kelvin}, within the vortex glass state. The data reveals a pronounced diamagnetic response along the flake edge, indicative of the Meissner effect. Control measurements taken at \qty{10}{\kelvin} ($T > T_c$) show a complete vanishing of this magnetic response, confirming that the signals observed at \qty{2}{\kelvin} originate exclusively from the superconducting state.
+\cref{fig:s2_ovw} displays the results. For a comparison, the sample is warmed up to $\qty{10}{\kelvin}>T_c$ and a magnetic field of \qty{6}{\milli\tesla} is applied out of the plane of the sample. A SQM magnetic scan is acquired at the metallic phase. The scan shows no magnetic response from the sample, although the sample is clearly identified in the topography and NV fluorescence images. The sample is then cooled down to $\qty{2}{\kelvin}<T_c$, within the vortex glass state. The data reveals a pronounced diamagnetic response along the flake edge, indicative of the Meissner effect. This is in stark contrast to the measurement in the metallic state confirming that the signals observed at \qty{2}{\kelvin} originate exclusively from the superconducting state.
 
 \begin{figure}[H]
     \centering 
@@ -40,11 +44,9 @@ The phase diagram for the thinner \ce{NbSe2} region, illustrated in \cref{fig:ph
     \label{fig:s2_ovw}
 \end{figure}
 
-Due to the geometric confinement of the sample, where the flake thickness is significantly less than the London penetration depth of bulk \ce{NbSe2} ($\lambda \approx \qty{125}{\nano\meter}$)\cite{callaghanFieldDependenceVortex2005,fletcherPenetrationDepthStudy2007}, the external magnetic field is only partially screened. The effective field screening is approximately \qty{-100}{\micro\tesla}. 
+Due to the geometric confinement of the sample, where the flake thickness is significantly less than the London penetration depth of bulk \ce{NbSe2} ($\lambda \approx \qty{125}{\nano\meter}$)\cite{callaghanFieldDependenceVortex2005,fletcherPenetrationDepthStudy2007}, the external magnetic field is only partially screened. The effective field screening is approximately \qty{-100}{\micro\tesla}. This is significantly smaller than the applied bias magnetic field. The flake is still superconducting and the field is only partially repelled.
 
-Superimposed on this background, positive magnetic signals are observed and attributed to superconducting vortices, which persist across the majority of the superconducting phase space. Notably, vortex nucleation occurs at external field strengths as low as a few \unit{\milli\tesla}, a value significantly below the first critical field ($H_{c1}$) reported for bulk \ce{NbSe2}.
-
-This premature vortex formation is a consequence of the sample's few-layer thickness, which permits magnetic field penetration and local suppression of the superconducting order parameter.
+Superimposed on this Meissner effect background, positive magnetic signals are seen. These are attributed to superconducting vortices, which persist across the majority of the superconducting phase space. Notably, vortex nucleation occurs at external field strengths as low as a few \unit{\milli\tesla}, a value significantly below the first critical field ($H_{c1}$) reported for bulk \ce{NbSe2}. This premature vortex formation is a consequence of the sample's few-layer thickness, which permits magnetic field penetration and local suppression of the superconducting order parameter.
 
 \begin{figure}[H]
     \centering 
@@ -57,9 +59,9 @@ This premature vortex formation is a consequence of the sample's few-layer thick
 
 \subsection{Single vortex mapping}
 
-The vertical confinement inherent to the thin \ce{NbSe2} layers induces a radial expansion of the vortices, consistent with the Pearl vortex model\cite{pearlCURRENTDISTRIBUTIONSUPERCONDUCTING1964}. High-resolution scanning of a single vortex (\cref{fig:s2_single}) confirms this profile; the vortex exhibits a spatial extent exceeding that of bulk vortices, aligning with the scaling behavior predicted for Pearl vortices in thin-film superconductors\cite{fridmanAnomalousThicknessDependence2025}. 
+The vertical confinement of the thin \ce{NbSe2} layers introduces an increase in the size of the vortices, consistent with the Pearl vortex model\cite{pearlCURRENTDISTRIBUTIONSUPERCONDUCTING1964}. High-resolution scanning of a single vortex (\cref{fig:s2_single}) confirms this profile; the vortex exhibits a spatial extent exceeding that of bulk vortices, aligning with the scaling behavior predicted for Pearl vortices in thin-film superconductors\cite{fridmanAnomalousThicknessDependence2025}, well above the spatial resolution of the SQM probe $(\sim\qty{30}{\nano\meter})$. 
 
-Post-fabrication characterization via AFM (\cref{fig:s2_ovw}) indicates the presence of surface residue on the flake. While such surface contamination presents significant technical impediments for tunneling-based probes like Scanning Tunneling Microscopy (STM)\cite{zomerFastPickTechnique2014}, the Scanning Quantum Microscopy (SQM) technique employed here demonstrates superior robustness. SQM enables high-resolution, non-invasive mapping of superconducting vortices despite surface imperfections. Although residues may induce minor artifacts in the magnetic field map, these deviations are systematically correctable a-posteriori by correlating the magnetic data with AFM topography.
+Post-fabrication characterization via standard AFM (\cref{fig:s2_ovw}) indicates the presence of surface residue on the flake. While such surface contamination presents significant technical impediments for tunneling-based probes like Scanning Tunneling Microscopy (STM)\cite{zomerFastPickTechnique2014}, the Scanning Quantum Microscopy (SQM) technique employed here robustness to such samples. SQM enables high-resolution, non-invasive mapping of superconducting vortices despite surface imperfections. Although residues may induce minor artifacts in the magnetic field map, these deviations are systematically correctable a-posteriori by correlating the magnetic data with AFM topography or can be simply accounted for during data interpretation. Some situations can arise where residue can attach itself onto the tip of the scanning probe and render it unable to perform measurements. Although seldom, this does happen with the NV SQM but can simply be removed by performing a fast scan with a harder than usual AFM contact force. The picked up residue shows itself as a sudden increase in topography and loss of SQM resolution.
 
 \begin{figure}[H]
     \centering 
@@ -70,7 +72,7 @@ Post-fabrication characterization via AFM (\cref{fig:s2_ovw}) indicates the pres
 
 \subsection{Thickness dependence}
 
-In the regime of few-layer \ce{NbSe2}, the superconducting response is strongly influenced by substrate roughness, structural disorder, and finite-size effects. These local perturbations induce significant deviations from the canonical vortex profile and arrangements typically observed in pristine superconductors, resulting in distorted and anisotropic vortex cores. Furthermore, the multi-band nature of superconductivity in \ce{NbSe2}\cite{noatQuasiparticleSpectra22015,zehetmayerExperimentalEvidenceTwoband2010} allows for the potential stabilization of multi-flux-quanta vortices\cite{gozlinskiBandresolvedCaroliGennes2023}.
+In the regime of few-layer \ce{NbSe2}, the superconducting response is strongly influenced by substrate roughness, structural disorder, and finite-size effects. These local perturbations induce significant deviations from the canonical vortex profile and arrangements typically observed in pristine superconductors, resulting in distorted and anisotropic vortex shapes. Furthermore, the multi-band nature of superconductivity in \ce{NbSe2}\cite{noatQuasiparticleSpectra22015,zehetmayerExperimentalEvidenceTwoband2010} allows for the potential stabilization of multi-flux-quanta vortices\cite{gozlinskiBandresolvedCaroliGennes2023}.
 
 \begin{figure}[p]
     \centering 
@@ -303,5 +305,7 @@ At the maximum applied field of \qty{200}{\milli\tesla} in \cref{fig:step_fields
 \end{figure}
 
 Besides the shape of these vortices, it is noted that the magnetic field measured in the vortex region is not uniform. This directly relates to the enclosed magnetic flux quantum. The fundamental property of a superconductor is the quantization of vorticity\cite{onsagerStatisticalHydrodynamics1949,londonProblemMolecularTheory1948,abrikosovMagneticPropertiesSuperconductors1957}, or the magnetic flux of these vortices. The magnetic flux $\Phi$ is defined as the integral of the magnetic field $\mathbf{B}$ over the sample, i.e., $\Phi = \int dxdy \mathbf{B} \cdot \hat{\mathbf{n}}$, for the unit vector $\hat{\mathbf{n}}$ normal to the sample surface. The implication is the quantization of magnetic field penetrating a superconductor, i.e., the magnetic field in a type-II superconductor increases in steps of the magnetic flux quanta $\Phi_0 = hc/2e$ (CGS units)\cite{abrikosovMagneticPropertiesSuperconductors1957}. These vortices also show a phase change of $2\pi$ of the complex superconducting order parameter around vortex core. This quantization holds true for the variety of superconducting materials with integer flux quanta, irrespective of other superconducting properties, material, composition, temperature, purity, etc.\cite{iguchiSuperconductingVorticesCarrying2023}. This is supported by many experimental works\cite{changScanningHallProbe1992,hessScanningtunnelingmicroscopyStudyDistortion1992,schlusselWideFieldImagingSuperconductor2018}. Despite the established universality of the integer flux quantization, there are reports where it is possible to have vortex excitations that carry a fraction of the flux quantum. This fraction is not a rational number, and exhibits continuous change dependent on temperature, challenging the universality of the flux quantization\cite{iguchiSuperconductingVorticesCarrying2023}.
+
+\subsection*{Outlook}
 
 The results in \ce{NbSe2} presented here entertain a similar conclusion, calling for a thorough investigation of more sample at various field and temperature conditions. An additional step junction in the vicinity immediately presents more complex behavior (see \cref{fig:fig:large_step_app}). The layered nature of this superconductor further allows for the study of complex junctions at various step sizes and angle, twisting between layers, and heterostructures. 

@@ -1,6 +1,6 @@
 % -*- coding:utf-8 mod:LaTeX -*-
 \documentclass[
-  fontsize=14pt, % FOR A4
+  fontsize=13pt, % FOR A4
   numbers=noenddot,
   english,  % English as main language; this parameter is passed to other packages (e.g., selnolig in the case of lualatex)
   paper=a4,
@@ -135,8 +135,8 @@
 
 % \typearea[current]{last} % For A5
 % Use geometry to strictly enforce the "at least 2cm" margin rule
-\usepackage[a4paper, left=3cm, right=2.5cm, top=2.5cm, bottom=5cm, bindingoffset=5mm, footskip=2.5cm]{geometry}
-
+\usepackage[a4paper, left=3cm, right=3cm, top=3cm, bottom=6cm, bindingoffset=5mm, footskip=3cm]{geometry}
+% \usepackage[a4paper, left=3cm, right=2.5cm, top=2.5cm, bottom=5cm, bindingoffset=5mm, footskip=2.5cm]{geometry}
 \usepackage[
   babel=true, % Enable language-specific kerning. Take language-settings from the languge of the current document (see Section 6 of microtype.pdf)
   expansion=alltext,
@@ -439,7 +439,7 @@
     text-series-to-math = true
 }
 \DeclareSIUnit{\dummy}{}
-\DeclareSIUnit{\sqrthertz}{\text{$\sqrt{\mathrm{Hz}}$}}
+\DeclareSIUnit{\sqrthertz}{\text{$\sqrt{\mathsf{Hz}}$}}
 \DeclareSIUnit{\angstrom}{\text{\AA}}
 \usepackage{varioref}
 \usepackage{hyperref}

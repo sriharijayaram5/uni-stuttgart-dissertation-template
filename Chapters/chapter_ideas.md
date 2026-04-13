@@ -36,6 +36,7 @@
   * ~~scan 78 slow cooldown 165mT large scan - show auto correlation change in space~~
   * ~~info on applied field hysteris of magnetic and how to ramp it to zero~~
   * add info of Jayich and Meriles paper
+  * existence of vortices at 2d
 
 Scan 78 coord.
 2.5-3.5, 4-5, 5.5-6.5, 7-8, 9-10, 10.5-11.5, 12-13, 14-15
