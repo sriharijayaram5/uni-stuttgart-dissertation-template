@@ -10,8 +10,127 @@
 
 \section{Introduction}
 TODO.
-\subsection{2D superconductivity}
-TODO.
+\section{Superconductivity\footnotemark}\footnotetext{The derviations follow notes by Alexander Tsirlin, Leipzig University\cite{TopicsQuantumMagnetism}}
+
+\subsection*{London description of superconductivity}
+Developed by the London brothers in 1935\cite{londonElectromagneticEquationsSupraconductor1935} this description is the first yet relevant today phenomenological theory of superconductivity. It is described using Maxwell's electrodynamics(\ref{app:Maxwell}) and the two postulates of superconductivity:
+
+\begin{itemize}
+    \item \text{Ideal conductor}: the state with $\rho = 0$.
+    \item \text{Ideal diamagnet}: the state with $\mathbf{B} = 0$.
+\end{itemize}
+
+The dynamics of a charge carrier with mass $m_s$ and charge $e_s$ are governed by the equation of motion:
+\begin{equation}
+    m_s \frac{d\mathbf{v}}{dt} = e_s \mathbf{E}
+\end{equation}
+
+For a condensate composed of Cooper pairs, these parameters are defined as $m_s = 2m_e$ and $e_s = -2e$. Defining the superfluid density $n_s$ as the concentration of electrons participating in the superconducting state, the density of charge carriers (pairs) is $n_s/2$. The resulting supercurrent density is expressed as $\mathbf{j}_s = -n_s e \mathbf{v}$. Substituting into the equation of motion yields the first London Equation:
+
+\begin{equation}\label{eq:first_london}
+    \frac{d\mathbf{j}_s}{dt} = \frac{n_s e^2}{m_e} \mathbf{E}
+\end{equation}
+
+This expression describes the temporal variation of the supercurrent in response to a local electric field. Comparing this with the standard Drude model for DC conductivity:
+\begin{equation}
+    \mathbf{j} = \frac{n_e e^2 \tau}{m_e} \mathbf{E}
+\end{equation}
+
+While the forms are mathematically similar, the First London equation depicts a scattering-free limit. For an applied electric field the charge carriers undergo constant acceleration, and retain their velocity of zero field, unlike a normal conductor.
+
+By taking the curl of \cref{eq:first_london} and $\nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t}$, we obtain:
+
+\begin{equation}
+    \frac{\partial}{\partial t} \left( \nabla \times \mathbf{j}_s + \frac{n_s e^2}{m_e} \mathbf{B} \right) = 0.
+\end{equation}
+
+Integrating this and setting the integration constant to zero (corresponding to the Meissner effect) yields the second London equation:
+
+\begin{equation}\label{eq:second_london}
+    \nabla \times \mathbf{j}_s = -\frac{n_s e^2}{m_e} \mathbf{B}
+\end{equation}
+
+This relation defines the spatial variation of the supercurrent and leads directly magnetic flux expulsion within the bulk of a superconductor. \cref{eq:first_london,eq:second_london} may be expressed in terms of the magnetic vector potential $\mathbf{A}$ as a single London equation:
+
+\begin{equation}
+    \mathbf{j}_s = -\frac{n_s e^2}{m_e} \mathbf{A}
+\end{equation}
+
+where $\mathbf{A}$ is defined as:
+
+\begin{equation}
+    \mathbf{B} = \nabla \times \mathbf{A}, \quad \mathbf{E} = -\nabla \phi - \frac{\partial \mathbf{A}}{\partial t}
+\end{equation}
+
+In this representation, $\phi$ denotes the scalar electrostatic potential. The London equations are note gauge-invariant and a London gauge\footnotemark  is required to satisfy this transformation.
+\footnotetext{$\nabla \phi=0$; $\nabla\cdot\mathbf{A}=0$ (from charge conservation - Coulomb gauge)}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Pen Depth %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{Penetration depth}
+
+The spatial distribution of the magnetic field and supercurrent within a superconductor is determined by decoupling the London equations using standard vector identities. In a stationary state, Ampere’s Law is given by $\nabla \times \mathbf{B} = \mu_0 \mathbf{j}_s$. Applying the curl operator to both sides:
+
+\begin{equation}
+    \nabla \times (\nabla \times \mathbf{B}) = \mu_0 (\nabla \times \mathbf{j}_s)
+\end{equation}
+
+Utilizing the vector identity $\nabla \times (\nabla \times \mathbf{B}) = \nabla(\nabla \cdot \mathbf{B}) - \nabla^2 \mathbf{B}$, and noting that $\nabla \cdot \mathbf{B} = 0$ as per Gauss’s Law, we arrive at:
+
+\begin{equation}
+    -\nabla^2 \mathbf{B} = \mu_0 (\nabla \times \mathbf{j}_s)
+\end{equation}
+
+Substituting \cref{eq:second_london}, we obtain:
+
+\begin{equation}
+    \nabla^2 \mathbf{B} = \frac{\mu_0 n_s e^2}{m_e} \mathbf{B} = \frac{\mathbf{B}}{\lambda_L^2}
+\end{equation}
+
+The characteristic length scale is the London penetration depth $\lambda_L$, which is defined as:
+
+\begin{equation}
+    \lambda_L = \sqrt{\frac{m_e}{\mu_0 n_s e^2}}
+\end{equation}
+
+This parameter quantifies the extent to which a magnetic field penetrates the superconducting bulk. The exponential decay solution, $\mathbf{B}(x) = \mathbf{B}(0) e^{-x/\lambda_L}$, describes the Meissner Effect, where $x>0$ is inside the superconductor.
+
+An analogous equation describes the spatial distribution of the supercurrent density $\mathbf{j}_s$:
+
+\begin{equation}
+    \nabla^2 \mathbf{j}_s = \frac{\mathbf{j}_s}{\lambda_L^2}
+\end{equation}
+
+This describes that both the magnetic field and the screening currents responsible for magnetic field expulsion are confined to a thin surface layer of thickness $\lambda_L$.
+
+\subsection*{Generalized London equation}
+The charge carriers in the superconductor can be described by a macroscopic wavefunction (order parameter) of the superconducting state
+\begin{equation}
+    \Psi(\mathbf{r}) = \sqrt{n_s/2} e^{-i\theta(\mathbf{r})},
+\end{equation}
+
+where $\theta(\mathbf{r})$ denotes the phase, and the amplitude $\sqrt{n_s/2}$ ensures the normalization of $|\Psi(\mathbf{r})|^2$ to the charge carrier concentration. This $\theta(\mathbf{r})$ is the singular phase assigned to the condensate.
+
+The momentum operator $\hat{\mathbf{p}} = -i\hbar\nabla$ acting upon the macroscopic wavefunction gives:
+
+\begin{equation}
+    \mathbf{p} = \frac{\langle \Psi | \hat{\mathbf{p}} | \Psi \rangle}{\langle \Psi | \Psi \rangle} = -\hbar \nabla \theta
+\end{equation}
+
+In the presence of a magnetic field, this gives the canonical momentum of a Cooper pair:
+
+\begin{equation}
+    \mathbf{p} = 2m_e \mathbf{v} - 2e \mathbf{A} \tag{3.19}
+\end{equation}
+
+This gives both the kinetic momentum and the magnetic potential. This gives the derivation of the supercurrent density $\mathbf{j}_s = -n_s e \mathbf{v}$:
+
+\begin{equation}
+    \mathbf{j}_s = \frac{n_s e}{m_e} \left( \frac{\hbar}{2} \nabla \theta - e \mathbf{A} \right) = \frac{1}{\mu_0 \lambda_L^2} \left( \frac{\Phi_0}{2\pi} \nabla \theta - \mathbf{A} \right),
+\end{equation}
+
+where $\Phi_0 = \frac{\pi\hbar}{e}$ represents the magnetic flux quantum. This result illustrates that the supercurrent is driven by both the gradient of the superconducting phase and the external magnetic field.
+
 \subsection{Pearl model}
 TODO.
 \section{Scanning quantum microscopy}
