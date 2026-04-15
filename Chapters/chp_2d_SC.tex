@@ -125,12 +125,35 @@ In the presence of a magnetic field, this gives the canonical momentum of a Coop
 
 This gives both the kinetic momentum and the magnetic potential. This gives the derivation of the supercurrent density $\mathbf{j}_s = -n_s e \mathbf{v}$:
 
+\begin{align}
+    \mathbf{j}_s &= \frac{n_s e}{m_e} \left( \frac{\hbar}{2} \nabla \theta - e \mathbf{A} \right) \\
+    &= \frac{1}{\mu_0 \lambda_L^2} \left( \frac{\Phi_0}{2\pi} \nabla \theta - \mathbf{A} \right),
+\end{align}
+
+where $\Phi_0 = \frac{\pi\hbar}{e}$ represents the magnetic flux quantum. This is called the generalized London equation.This result illustrates that the supercurrent is driven by both the gradient of the superconducting phase and the external magnetic field.
+
+\subsection*{Flux quantization}
+
+The generalized London equation directly leads to flux quantization. Consider a superconducting loop in an external magnetic field, with an integration path in this loop far from the boundary such that $\mathbf{j}_s = 0$. The path integral is also then zero giving:
+
 \begin{equation}
-    \mathbf{j}_s = \frac{n_s e}{m_e} \left( \frac{\hbar}{2} \nabla \theta - e \mathbf{A} \right) = \frac{1}{\mu_0 \lambda_L^2} \left( \frac{\Phi_0}{2\pi} \nabla \theta - \mathbf{A} \right),
+    \frac{\Phi_0}{2\pi} \oint \nabla \theta \cdot d\mathbf{l} = \oint \mathbf{A} \cdot d\mathbf{l}
 \end{equation}
 
-where $\Phi_0 = \frac{\pi\hbar}{e}$ represents the magnetic flux quantum. This result illustrates that the supercurrent is driven by both the gradient of the superconducting phase and the external magnetic field.
+Per Stokes' theorem, the closed-loop line integral of the vector potential $\mathbf{A}$ is equivalent to the surface integral of its curl, $\nabla \times \mathbf{A} = \mathbf{B}$. The right-hand side thus represents the total magnetic flux $\Phi$ threading the loop:
+\begin{equation}
+    \oint \mathbf{A} \cdot d\mathbf{l} = \iint \mathbf{B} \cdot d\mathbf{S} = \Phi
+\end{equation}
 
+This shows the relation between the line integral over $\nabla \theta$ and $\Phi$. Integrating over the gradient of the phase over a full loop gives a change proportional to $2\pi$. We have then
+\begin{equation}
+    \Phi = \frac{\Phi_0}{2\pi} \cdot 2\pi n = n\Phi_0
+\end{equation}
+where $n \in \mathbb{Z}$. This result reveals a fundamental property of superconductors: the magnetic flux enclosed in a superconducting loop is constrained to discrete values. The magnetic flux quantum, $\Phi_0$, is defined as:
+\begin{equation}
+    \Phi_0 = \frac{2\pi\hbar}{|e_s|} = \frac{h}{2e} = \qty{2.0678e-15}{\tesla\meter^2}
+\end{equation}
+%%%%%%%%%%%%%%%%%% Pearl model 
 \subsection{Pearl model}
 TODO.
 \section{Scanning quantum microscopy}
