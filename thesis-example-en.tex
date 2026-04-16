@@ -21,18 +21,18 @@
 % \documentclass[
 %   fontsize=10pt, % FOR A5
 %   % fontsize=12pt, % FOR A4
-%   fontsize=12pt, % FOR A4
+%   % fontsize=12pt, % FOR A4
 %   numbers=noenddot,
 %   english,  % English as main language; this parameter is passed to other packages (e.g., selnolig in the case of lualatex)
 %   paper=a5,
 %   % paper=a4,
-%   paper=a4,
+%   % paper=a4,
 %   twoside,  % we are optimizing for both screen and two-side printing. So the page numbers will jump, but the content is configured to stay in the middle (by using the geometry package)
 %   DIV=10, % FOR A5
 %   BCOR=10mm, % FOR A5
 %   % DIV=7, % FOR A4
 %   % BCOR=10mm, % FOR A4
-%   DIV=none, % Disable KOMA-Script margin calculation to use geometry instead
+%   % DIV=none, % Disable KOMA-Script margin calculation to use geometry instead
 %   headings=small,
 %   bibliography=totoc,
 %   % idxtotoc,   % Index ins Inhaltsverzeichnis
@@ -133,7 +133,7 @@
 \setkomafont{pageheadfoot}{\small\sffamily}
 \setkomafont{pagenumber}{\small\sffamily\bfseries}
 
-% \typearea[current]{last} % For A5
+\typearea[current]{last} % For A5
 % Use geometry to strictly enforce the "at least 2cm" margin rule
 \usepackage[a4paper, left=3cm, right=3cm, top=3cm, bottom=6cm, bindingoffset=5mm, footskip=3cm]{geometry}
 % \usepackage[a4paper, left=3cm, right=2.5cm, top=2.5cm, bottom=5cm, bindingoffset=5mm, footskip=2.5cm]{geometry}

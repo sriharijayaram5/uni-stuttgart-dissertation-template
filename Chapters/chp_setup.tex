@@ -7,8 +7,9 @@
         \preamblecite{zhuObservationPlaidlikeSpin2024}
     \end{minipage}
 \end{flushright}
+
 \section{Introduction}
-NV microscopy\cite{stegemannModularLowcost3D2023}, and tuning fork based AFM\cite{edwardsFastHighresolutionAtomic1997} have proved to be techniques with low experimental overhead and complexity for even ambitious experiments. This makes a large part of these techniques quite accessible to researchers. TODO.
+NV microscopy\cite{stegemannModularLowcost3D2023}, and tuning fork based AFM\cite{edwardsFastHighresolutionAtomic1997} have proved to be techniques with low experimental overhead and complexity for even ambitious experiments. This makes a large part of these techniques quite accessible to researchers. Nevertheless, to perform AC magnetic field sensing and to achieve this at cryogenic temperatures requires instrumentation built with consideration and foresight. The main measurement system used in this work is built around an AttoDRY 2200 (Attocube) closed cycle cryostat with a variable temperature insert, achieving a bae temperature of \qty{1.8}{\kelvin}. This chapter details the experimental setup and the various methods implemented for this work. The system performs NV microscopy, which is a combination of confocal microscopy and MW electronics for spin control. The optical system developed to perform this is described. The NV center used is part of an AFM system that works in tandem. This chapter also introduces the measurement modalities using in SQM in various experiments.
 
 
 \section{NV microscopy}
@@ -174,6 +175,17 @@ The shift in resonance frequency is calculated as,
 
 The new $f_0$ is then set to be $f_0 + \delta_{\nu}$, and the measurement is repeated at the next spatial scan point. The estimation can also be repeated multiple times at one position to achieve lower errors, since the range of frequency where the slope is valid is limited by the linewidth of the resonance, albeit at the cost of measurement time.
 
+\subsection{Bayesian optimization and tracking}
+Experimental design built around maximizing measurement utility promises faster measurements for the same SNR. Hardware and sensors centric techniques are available, as described previously such as lock-in\cite{schoenfeldRealTimeMagnetic2011}, spin-to-charge conversion readout\cite{shieldsEfficientReadoutSingle2015}, and single shot readout\cite{neumannSingleShotReadoutSingle2010}. These techniques although are poorly suited for real word applications, large bandwidth, and again do not maximize on measurement utility. This means, the more time an experimental procedure spends measuring data that contributes low information to an expected signal, so-called low utility-function values, the higher the speedup possible from smart measurement design. Such a measurement design with on the fly adaptation of measurement strategy is sequential Bayesian experiment (SBE) design\cite{dushenkoSequentialBayesianExperiment2020}. Implementation of this scheme shows more than 1 order of magnitude speed up in NV magnetometry compared to a conventional CW-ODMR scheme. In this work, SBE is implemented to allow for fast magnetic field maps of samples that show a strong magnetic response and therefore constitute a large change in NV resonance frequency. The scheme developed by \citeauthor{dushenkoSequentialBayesianExperiment2020} is available as open source software and is used for this work.
+
+The implementation is described in this section. The measurement scheme is set up with knowledge of the expected signal function. For the tracking of one transition resonance of the NV at power broadened conditions\cite{dreauAvoidingPowerBroadening2011} requires the model of a single Lorentzian function. The only experimental parameter that is varied is the excitation frequency $f$, and the Lorentzian parameters (resonance frequency $f_B$, linewidth $\sigma$, amplitude $\alpha$, background $d$) are unknowns $\theta$. The measurement is initialized with a range of allowed excitation/MW frequencies, and initial guess for the unknown parameters. The measurement sequence follows a setting choice, measurement with the chosen setting, and analysis. Note that unlike conventional ODMR sweeps that complete a full sweep before analysis, here single frequency point measurements are performed and inferred.
+
+The strength in SBE comes from treating the unknowns $\theta$ as random variables with a probability distribution $p(\theta)$. This probability is given by conditional distribution $p(\theta \mid  y_n,f_n)$ where $y_n = \{ y_1,y_2,\dots,y_n\}$ is the measurement result for measurement setting $f_n = \{ f_1,f_2,\dots,f_n\}$. The measurement setting in the $n+1^{\text{th}}$ iteration is informed by $p(\theta \mid  y_n,f_n)$. The decision is made by considering information entropy of the parameter distribution, a predicted change in which is seen as an improvement. Here a utility function $U(f)$ is used where a new setting $f_{n+1}$ is used to maximize $U(f)$. In this case, the frequency points that narrow the parameter distribution serve higher utility. On obtaining the result $y_{n+1}$ for $f_{n+1}$ the parameter distribution is refined using Bayesian inference with
+\begin{equation}
+    p(\theta \mid f_{n+1}, d_{n+1}) \propto p(f_{n+1} \mid \theta, d_{n+1}) p(\theta \mid f_n, d_n),
+\end{equation}
+where $p(f_{n+1} \mid \theta, d_{n+1})$ is the probability of measuring $y_{n+1}$ given $(\theta, d_{n+1})$. After each iteration new data is used to narrow the parameter distribution. This combines the experimentalist's approach of a rough initial guess to guide the measurement and fitting the data at the end of the long measurement. This also allows for real time stopping of measurements based on the current probability distribution\cite{dushenkoSequentialBayesianExperiment2020}.
+
 \subsection{Gradiometry and lock-in}
 
 A coincidental feature of the SQM is the mechanical oscillation of the probe, which is used to maintain and control AFM contact with the sample. This oscillation is typically in plane for commercially available tips. In conventional SQM modes, this small oscillation is averaged over during the measurement, with little impact on resolution for typical operation. Even in this configuration, state-of-the-art SQMs achieve sensitivities of a few \unit{\micro\tesla/\sqrthertz}\cite{sunMagneticDomainsDomain2021,songDirectVisualizationMagnetic2021}. In probes on an oscillating tip such as SQUID-on-tip (SOT), increased sensitivity has been demonstrated by utilizing the mechanical oscillation convert a static gradient signal into an effective time varying signal, as seen by the sensor. This technique of 'gradiometry' is demonstrated by \textcite{huxterScanningGradiometrySingle2022} resolving magnetic stray fields with a sensitivity of $\sim\qty{120}{\nano\tesla/\sqrthertz}$. To improve the resolution, sensitivity and to make the mechanical oscillation of the probe accessible for future measurements, gradiometry is implemented in the RT SQM system. An overview of the technique and results with gradiometry is presented in this section.
@@ -331,8 +343,6 @@ This technique is also extended to a lock-in like scheme where the current is os
     \label{fig:grad_xy}
 \end{figure}
 
-\subsection{Bayesian optimization and tracking}
-TODO.
 
 \section{Outlook}
 TODO.
