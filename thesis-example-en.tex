@@ -348,8 +348,8 @@
 %   \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
 
 % % 2. Remove "Visited on" (urldate)
-% \AtEveryBibitem{\clearfield{urldate}} 
-% \AtEveryCitekey{\clearfield{urldate}}
+\AtEveryBibitem{\clearfield{urldate}} 
+\AtEveryCitekey{\clearfield{urldate}}
 % \AtEveryBibitem{\clearfield{issn}}
 
 % % 3. Make the DOI clickable and remove the "DOI:" prefix (Optional style choice)
@@ -542,17 +542,19 @@
 }{}
 \DeclareMathSymbol{\powerset}{\mathord}{MnSyC}{180}
 \usepackage{ustutt-titlepage}
-% \setlength{\evensidemargin}{-24pt}
-% \setlength{\oddsidemargin}{-24pt}
+
 \usepackage[
   translate=babel,
-  abbreviations,         % create "abbreviations" glossary
-  nomain,                % don't create "main" glossary
-  stylemods=longbooktabs % do the adjustments for the longbooktabs styles
+  abbreviations,
+  nomain,
+  nonumberlist
 ]{glossaries-extra}
-\setglossarystyle{long3col-booktabs}
-% \makeglossaries TODO
-\input{abbreviations}
+% Load the official multicolumn glossary styles
+\usepackage{glossary-mcols} 
+\makenoidxglossaries
+% Set the style to the native multicolumn index
+\setglossarystyle{mcolindex}
+
 \usepackage{xspace}
 \makeatletter
 \xspaceaddexceptions{\grqq \grq \csq@qclose@i \} }
@@ -691,6 +693,7 @@
 % \AtBeginEnvironment{table}{\footnotesize}
 % \AtBeginEnvironment{tabular}{\footnotesize}
 \usepackage{tipa}
+
 % \usepackage{physics}
 \DeclareCiteCommand{\preamblecite}
   {\usebibmacro{prenote}%
@@ -706,6 +709,8 @@
   {\multicitedelim}
   {\usebibmacro{postnote}}
 
+\include{Chapters/abbreviations.tex}
+
 \begin{document}
 % \setstretch{1.2}
 \raggedbottom
@@ -718,7 +723,7 @@
 \secondexaminer{Prof.~Dr.~Sebastian Loth}
 \examchair{Prof.~Dr.~Mathias Scheurer}
 \dateofexamination{3\textsuperscript{rd} August, 2026}
-\placeofbirth{Kaloor, Cochin}
+\placeofbirth{Cochin, India}
 \faculty{Fakultät für Mathematik und Physik}
 \department{3. Physikalisches Institut}
 \maketitle
@@ -749,14 +754,27 @@ I would like to thank everyone.
 
 \microtypesetup{protrusion=false}
 \tableofcontents
+%%%%%%%%%%%%%%%%%
+\cleardoublepage
+{
+\footnotesize % Reduces the font size of the entries
+\printnoidxglossary[
+    type=abbreviations, 
+    sort=letter, 
+    title={Abbreviations} % Works normally now without shifting
+]
+}
+%%%%%%%%%%%%%%%%%
+\cleardoublepage
+\phantomsection
+% \addcontentsline{toc}{section}{\listfigurename}
 \listoffigures
+%%%%%%%%%%%%%%%%%
+\cleardoublepage
+\phantomsection
+% \addcontentsline{toc}{section}{\listtablename}
 \listoftables
-% \lstlistoflistings
-
-\chapter*{List of Definitions}
-\addcontentsline{toc}{chapter}{List of Definitions}
-% \listtheorems{definition} TODO
-% \printglossary[type=\acronymtype,title={Abbreviations}] TODO
+%%%%%%%%%%%%%%%%%
 
 \microtypesetup{protrusion=true}
 

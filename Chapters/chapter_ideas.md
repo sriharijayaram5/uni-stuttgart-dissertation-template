@@ -25,7 +25,7 @@
 
 * Still TODO 17.03.26
   * 2D superconductivity motivation
-  * more nbse2 results - temp sweep maybe - correlation maps over sample
+  * ~~more nbse2 results - temp sweep maybe - correlation maps over sample~~
   * SQM for 2DSC motivation
   * ~~info on contrast loss on contact with NbSe2~~
   * ~~add in dynamics theory - expand on Pipim's work - attribute~~
@@ -35,8 +35,11 @@
   * ~~scan 65 fast cool and sc77 slow cool at 165mT - show the better vortex shape~~
   * ~~scan 78 slow cooldown 165mT large scan - show auto correlation change in space~~
   * ~~info on applied field hysteris of magnetic and how to ramp it to zero~~
-  * add info of Jayich and Meriles paper
+  * ~~add info of Jayich and Meriles paper~~
   * existence of vortices at 2d
+* Ruoming comments 20 Aril
+  * Add motivation specifically for NbSe2
+  * Add NV outlook for superconductivity
 
 Scan 78 coord.
 2.5-3.5, 4-5, 5.5-6.5, 7-8, 9-10, 10.5-11.5, 12-13, 14-15
