@@ -40,6 +40,7 @@
 * Ruoming comments 20 Aril
   * Add motivation specifically for NbSe2
   * Add NV outlook for superconductivity
+  * Refine outlook everyhwere
 
 Scan 78 coord.
 2.5-3.5, 4-5, 5.5-6.5, 7-8, 9-10, 10.5-11.5, 12-13, 14-15

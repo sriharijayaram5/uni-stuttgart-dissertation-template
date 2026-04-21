@@ -334,7 +334,7 @@
 \usepackage[
   backend=biber,
   style=nature,    % Loads the standard Nature formatting,
-  maxbibnames = 99, % List all authors in bibliography
+  maxbibnames = 6, % List all authors in bibliography
   % sorting=none,  % Nature style implies 'none' (sorted by appearance), so this is optional
   isbn=false,      % Nature doesn't use ISBNs
   url=false,       % Nature doesn't print URLs for articles
@@ -731,26 +731,17 @@
 \pagestyle{scrheadings}
 % \layout
 \onehalfspacing
-% \frontmatter is removed to keep numbering continuous and Arabic from the title page
+\frontmatter %is removed to keep numbering continuous and Arabic from the title page
 
-\chapter*{Kurzfassung}
-\begin{otherlanguage}{ngerman}
-  Kurzfassung der Arbeit.
-\end{otherlanguage}
-\clearpage
+\include{Chapters/abstract_de.tex}
+\cleardoublepage 
 
-\chapter*{Abstract}
-\emph{Write an abstract for your work.}
-
-\emph{Introduction.}
-In one sentence, what’s the topic?
-
+\include{Chapters/abstract.tex}
 \pagestyle{scrheadings}
-\clearpage
+\cleardoublepage 
 
-\chapter*{Danksagungen}
-I would like to thank everyone.
-\clearpage
+\include{Chapters/acknowledgements.tex}
+\cleardoublepage 
 
 \microtypesetup{protrusion=false}
 \tableofcontents
@@ -780,7 +771,7 @@ I would like to thank everyone.
 
 \renewcommand*{\chapterpagestyle}{scrplain}
 \pagestyle{scrheadings}
-% \mainmatter is removed to prevent the page counter from resetting to 1
+\mainmatter %is removed to prevent the page counter from resetting to 1
 
 \glsresetall
 \include{Chapters/nvc_diamond.tex}
