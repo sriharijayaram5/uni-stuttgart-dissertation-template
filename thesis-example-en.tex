@@ -693,7 +693,7 @@
 % \AtBeginEnvironment{table}{\footnotesize}
 % \AtBeginEnvironment{tabular}{\footnotesize}
 \usepackage{tipa}
-
+\usepackage{pdfpages}
 % \usepackage{physics}
 \DeclareCiteCommand{\preamblecite}
   {\usebibmacro{prenote}%
@@ -724,7 +724,7 @@
 \examchair{Prof.~Dr.~Mathias Scheurer}
 \dateofexamination{3\textsuperscript{rd} August, 2026}
 \placeofbirth{Cochin, India}
-\faculty{Fakultät für Mathematik und Physik}
+\faculty{Fakultät 8 für Mathematik und Physik}
 \department{3. Physikalisches Institut}
 \maketitle
 
@@ -787,5 +787,15 @@
     heading=bibintoc,   % Adds "Bibliography" to your Table of Contents
     title={References}  % Changes the title from "Bibliography" to "References"
 ]
+
+\cleardoublepage
+\chapter{Declarations}
+\input{Chapters/ai_tools.tex}
+\cleardoublepage
+\input{Chapters/conformity.tex}
+\cleardoublepage
+\input{Chapters/declaration.tex}
+\cleardoublepage
+\input{Chapters/cv.tex}
 
 \end{document}
